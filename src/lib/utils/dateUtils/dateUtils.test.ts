@@ -110,6 +110,23 @@ describe('dateUtils', () => {
     });
   });
 
+  describe('endOf', () => {
+
+    it('month', () => {
+      const date = dateUtils.parse('2021-07-16');
+      const actual = dateUtils.endOf(date, 'month');
+
+      expect(actual).toEqual('2021-07-31');
+    });
+
+    it('year', () => {
+      const date = dateUtils.parse('2021-07-28');
+      const actual = dateUtils.endOf(date, 'year');
+
+      expect(actual).toEqual('2021-12-31');
+    });
+  });
+
   describe('addDay', () => {
 
     it('positive value', () => {

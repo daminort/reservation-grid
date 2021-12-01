@@ -4,6 +4,8 @@ import {
   startOfDay,
   startOfMonth,
   startOfYear,
+  endOfMonth,
+  endOfYear,
   addDays,
 } from 'date-fns';
 
@@ -65,6 +67,21 @@ function startOf(date: DateString, unit: Unit = 'day'): string {
       return format(startOfMonth(originDate));
     case 'year':
       return format(startOfYear(originDate));
+    default:
+      return format(startOfDay(originDate));
+  }
+}
+
+function endOf(date: DateString, unit: Unit = 'month'): string {
+  const originDate = (typeof date === 'string')
+    ? parse(date)
+    : date;
+
+  switch (unit) {
+    case 'month':
+      return format(endOfMonth(originDate));
+    case 'year':
+      return format(endOfYear(originDate));
     default:
       return format(startOfDay(originDate));
   }
@@ -225,6 +242,7 @@ const dateUtils = {
   parse,
   format,
   startOf,
+  endOf,
   addDay,
   createRange,
   getDate,
