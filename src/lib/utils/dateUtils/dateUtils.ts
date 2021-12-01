@@ -101,12 +101,12 @@ function createRange(start: string, end: string): string[] {
 
 function getDate(date: string): number {
   const parsed = parse(date);
-  return parsed ? parsed.getDate() : 0;
+  return parsed.getDate();
 }
 
 function getDay(date: string, locale: Locale): string {
   const parsed = parse(date);
-  if (!parsed) {
+  if (!parsed || format(parsed) === '1970-01-01') {
     return '??';
   }
 
