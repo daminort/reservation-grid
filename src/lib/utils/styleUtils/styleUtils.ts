@@ -14,7 +14,7 @@ function setVariables(customTheme: Theme): void {
 
   Object.entries(customTheme).forEach((entry) => {
     const [key, value] = entry;
-    const variable = `--knd-${key.replace('.', '-')}`;
+    const variable = `--rvg-${key.replace('.', '-')}`;
     root.style.setProperty(variable, value);
   });
 }

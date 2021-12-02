@@ -25,4 +25,30 @@ describe('styleUtils', () => {
 
   });
 
+  describe('setVariables', () => {
+
+    it('default theme', () => {
+      const theme = styleUtils.createTheme();
+      styleUtils.setVariables(theme);
+
+      let fontFace = document.documentElement.style.getPropertyValue('--rvg-font-face');
+      let fontSize = document.documentElement.style.getPropertyValue('--rvg-font-size');
+
+      expect(fontFace).toEqual('sans-serif');
+      expect(fontSize).toEqual('14px');
+    });
+
+    it('custom theme', () => {
+      const theme = styleUtils.createTheme(customTheme);
+      styleUtils.setVariables(theme);
+
+      let fontFace = document.documentElement.style.getPropertyValue('--rvg-font-face');
+      let fontSize = document.documentElement.style.getPropertyValue('--rvg-font-size');
+
+      expect(fontFace).toEqual('arial');
+      expect(fontSize).toEqual('16px');
+    });
+
+  });
+
 });
