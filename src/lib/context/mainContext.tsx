@@ -21,7 +21,7 @@ const initialValue: MainContext = {
 
 const mainContext = createContext<MainContext>(initialValue);
 
-type Props = {
+interface Props {
   value: MainContext;
 };
 
