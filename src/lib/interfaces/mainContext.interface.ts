@@ -1,6 +1,6 @@
 import { DayType } from './grid.interface'
 import { Theme } from './theme.interface';
-import { LocaleKeys } from './locale.interface';
+import { LocaleKey } from './locale.interface';
 
 type OnClickTitle = (value: string) => void;
 type OnClickCell = (value: string, date: number, dayType: DayType) => void;
@@ -13,7 +13,7 @@ export interface MainContext {
   selectedColumns: string[];
   selectedRows: string[];
   theme: Theme;
-  locale: LocaleKeys;
+  locale: LocaleKey;
   onClickTitle: OnClickTitle,
   onClickCell: OnClickCell,
 }

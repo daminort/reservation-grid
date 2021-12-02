@@ -1,6 +1,6 @@
-import { Locale } from '../../interfaces/locale.interface';
-import { LOCALES } from '../../constants/locales';
-import { ReservedPeriod } from '../../interfaces/reservedPeriod'
+import { Locale } from 'lib/interfaces/locale.interface';
+import { LOCALES } from 'lib/constants/locales';
+import { ReservedPeriod } from 'lib/interfaces/reservedPeriod'
 import { dateUtils } from './index';
 
 describe('dateUtils', () => {

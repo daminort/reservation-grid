@@ -1,5 +1,5 @@
-import { Theme } from '../../interfaces/theme.interface';
-import { useMainContext } from '../../context';
+import { Theme } from 'lib/interfaces/theme.interface';
+import { useMainContext } from 'lib/context';
 
 const useTheme = (): Theme => {
   const { theme } = useMainContext();

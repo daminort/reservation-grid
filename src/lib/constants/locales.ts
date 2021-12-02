@@ -1,4 +1,4 @@
-import { Locales } from '../interfaces/locale.interface';
+import { Locales } from 'lib/interfaces/locale.interface';
 
 const LOCALES: Locales = {
   en: { mo: 'Mo', tu: 'Tu', we: 'We', th: 'Th', fr: 'Fr', sa: 'Sa', su: 'Su' },

@@ -9,11 +9,11 @@ import {
   addDays,
 } from 'date-fns';
 
-import { Locale } from '../../interfaces/locale.interface';
-import { DaysRange, DaysRangeOptions } from '../../interfaces/daysRange.interface';
-import { DatePosition, DateStatus, DayType } from '../../interfaces/grid.interface';
-import { ReservedPeriod } from '../../interfaces/reservedPeriod'
-import { FORMATS } from '../../constants/locales';
+import { Locale } from 'lib/interfaces/locale.interface';
+import { DaysRange, DaysRangeOptions } from 'lib/interfaces/daysRange.interface';
+import { DatePosition, DateStatus, DayType } from 'lib/interfaces/grid.interface';
+import { ReservedPeriod } from 'lib/interfaces/reservedPeriod'
+import { FORMATS } from 'lib/constants/locales';
 
 import { DateString, Unit, DayMap, Intersection } from './types'
 

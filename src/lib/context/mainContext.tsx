@@ -1,8 +1,8 @@
 import React, { FC, createContext, useContext } from 'react';
 
-import { MainContext } from '../interfaces/mainContext.interface';
-import { THEME } from '../constants/theme';
-import { dateUtils } from '../utils/dateUtils';
+import { MainContext } from 'lib/interfaces/mainContext.interface';
+import { THEME } from 'lib/constants/theme';
+import { dateUtils } from 'lib/utils/dateUtils';
 
 const today = dateUtils.format(new Date());
 

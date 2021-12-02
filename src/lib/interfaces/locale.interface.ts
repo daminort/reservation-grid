@@ -14,4 +14,4 @@ export interface Locales {
   ru: Locale,
 }
 
-export type LocaleKeys = 'en' | 'ua' | 'ru';
+export type LocaleKey = 'en' | 'ua' | 'ru';

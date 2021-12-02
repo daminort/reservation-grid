@@ -1,4 +1,4 @@
-import { DatePosition, DateStatus, DayType } from '../../interfaces/grid.interface'
+import { DatePosition, DateStatus, DayType } from 'lib/interfaces/grid.interface'
 
 export type DateString = Date | string;
 export type Unit = 'day' | 'month' | 'year';

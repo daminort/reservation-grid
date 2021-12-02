@@ -1,5 +1,5 @@
-import { Theme } from '../../interfaces/theme.interface';
-import { THEME } from '../../constants/theme';
+import { Theme } from 'lib/interfaces/theme.interface';
+import { THEME } from 'lib/constants/theme';
 import { styleUtils } from './index';
 
 describe('styleUtils', () => {

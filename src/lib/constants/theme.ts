@@ -1,4 +1,4 @@
-import { Theme } from '../interfaces/theme.interface';
+import { Theme } from 'lib/interfaces/theme.interface';
 
 const THEME: Theme = {
   'font.face': 'sans-serif',
