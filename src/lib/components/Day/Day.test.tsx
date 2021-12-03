@@ -29,7 +29,7 @@ describe('Day', () => {
     'intersection.normal.end.maybe.start',
     'intersection.maybe.end.normal.start',
   ];
-  
+
   it.each(types)('%s', (type: DayType) => {
     const { getByTestId } = setup(type);
 
