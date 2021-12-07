@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 
-import { DayType } from 'lib/interfaces/grid.interface';
 import {
   DoubleMaybeEndStart,
   DoubleNormalEndStart,
@@ -15,6 +14,8 @@ import {
   SingleNormalFull,
   SingleNormalStart,
 } from 'lib/components/Days';
+
+import { DayProps } from './Day.interface';
 
 const days = {
   'single.free': <SingleFree />,
@@ -31,11 +32,7 @@ const days = {
   'intersection.maybe.end.normal.start': <IntersectionMaybeEndNormalStart />,
 }
 
-interface Props {
-  type: DayType,
-}
-
-const Day: FC<Props> = ({ type }) => {
+const Day: FC<DayProps> = ({ type }) => {
 
   const day = days[type] || <SingleFree />;
 
