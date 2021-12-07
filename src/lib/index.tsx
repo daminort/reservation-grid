@@ -1,12 +1,15 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 
-const ReservationGrid = (): JSX.Element => {
+import { Grid, GridProps } from 'lib/components/Grid';
+
+const ReservationGrid: FC<GridProps> = (props) => {
   return (
-    <div>ReservationGrid</div>
+    <Grid {...props} />
   );
 };
 
 export default ReservationGrid;
 export {
   ReservationGrid,
+  GridProps,
 }

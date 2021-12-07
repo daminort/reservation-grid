@@ -2,30 +2,37 @@
   "name": "@daminort/reservation-grid",
   "version": "1.0.0",
   "description": "A modular grid that allows managing reservations for a hotel",
+  "author": "Daminort",
+  "homepage": "https://github.com/daminort/reservation-grid#readme",
+  "license": "MIT",
   "main": "dist/index.js",
-  "scripts": {
-    "test": "clear && jest"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/daminort/reservation-grid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/daminort/reservation-grid/issues"
   },
   "keywords": [
     "react",
     "reservation grid",
     "rooms booking"
   ],
-  "author": "Daminort",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/daminort/reservation-grid/issues"
+  "scripts": {
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "test": "clear && jest"
   },
-  "homepage": "https://github.com/daminort/reservation-grid#readme",
   "dependencies": {
     "clsx": "^1.1.1",
     "date-fns": "^2.27.0"
   },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.6",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/react-hooks": "^7.0.2",
@@ -36,8 +43,6 @@
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
     "jest": "^27.4.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
     "rollup": "^2.60.2",
     "rollup-plugin-sass": "^1.2.10",
     "rollup-plugin-typescript2": "^0.31.1",
