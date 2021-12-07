@@ -35,7 +35,7 @@ const Row: FC<RowProps> = (props) => {
 
     const isWeekend = cell.isWeekend;
     const isToday = highlightToday && cell.isToday;
-    const isSelected = selected || (Array.isArray(selectedColumns) && selectedColumns.includes(value));
+    const isSelected = selected || (Array.isArray(selectedColumns) && selectedColumns.includes(cell.value));
 
     const className = clsx('cell', 'clickable', {
       'weekend': isWeekend,

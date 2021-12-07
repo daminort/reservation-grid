@@ -19,9 +19,10 @@
     "rooms booking"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "start": "rollup -c -w",
-    "test": "clear && jest"
+    "build": "rm -rf dist && rollup -c",
+    "start": "rm -rf dist && rollup -c -w",
+    "test": "clear && jest",
+    "relink": "npm link example/node_modules/react"
   },
   "dependencies": {
     "clsx": "^1.1.1",

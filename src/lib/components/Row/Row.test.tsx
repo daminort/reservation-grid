@@ -19,6 +19,11 @@ describe('Row', () => {
   const partialContext: Partial<MainContext> = {
     start: '2021-11-01',
     end: '2021-11-30',
+    selectedColumns: [
+      '2021-11-17',
+      '2021-11-18',
+      '2021-11-19',
+    ],
     onClickTitle: jest.fn(),
     onClickCell: jest.fn(),
   };
@@ -42,6 +47,9 @@ describe('Row', () => {
     const info = getByTestId(`info-${row01.value}`);
     const start = getByTestId(`cell-${row01.value}-${partialContext.start}`);
     const end = getByTestId(`cell-${row01.value}-${partialContext.end}`);
+    const selected01 = getByTestId(`cell-Number 1-2021-11-17`);
+    const selected02 = getByTestId(`cell-Number 1-2021-11-18`);
+    const selected03 = getByTestId(`cell-Number 1-2021-11-17`);
     const weekend01 = getByTestId(`cell-Number 1-2021-11-14`);
     const weekend02 = getByTestId(`cell-Number 1-2021-11-27`);
 
@@ -59,6 +67,10 @@ describe('Row', () => {
 
     expect(weekend01).toHaveClass('weekend');
     expect(weekend02).toHaveClass('weekend');
+
+    expect(selected01).toHaveClass('selected');
+    expect(selected02).toHaveClass('selected');
+    expect(selected03).toHaveClass('selected');
   });
 
   it('selected row', () => {
