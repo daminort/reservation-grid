@@ -19,7 +19,7 @@ const Grid: FC = () => {
     onChangeSelectedRows,
   } = useMainContext();
 
-  const { start, end } = useMemo(() => createStartEnd(year, month), [year, month]);
+  const { start, end } = useMemo(() => createStartEnd(+year, +month), [year, month]);
   const rows = useMemo(() => data.map(row => row.value), [data]);
 
   const onClickTitle = useCallback((value) => {

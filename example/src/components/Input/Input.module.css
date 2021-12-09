@@ -1,0 +1,10 @@
+.input {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background: var(--color-bg);
+  border-color: var(--color-border);
+  border-width: 1px;
+  border-style: solid;
+  color: inherit;
+  width: 100%;
+}

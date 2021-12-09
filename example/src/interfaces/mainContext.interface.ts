@@ -2,8 +2,8 @@ import { Theme, LocaleKey, Row } from '@daminort/reservation-grid';
 import { Partial } from 'rollup-plugin-typescript2/dist/partial';
 
 export interface MainContext {
-  year: number;
-  month: number;
+  year: string;
+  month: string;
   highlightToday: boolean;
   showInfo: boolean;
   title: string;
@@ -15,8 +15,8 @@ export interface MainContext {
 
   data: Row[];
 
-  onChangeYear: (year: number) => void;
-  onChangeMonth: (month: number) => void;
+  onChangeYear: (year: string) => void;
+  onChangeMonth: (month: string) => void;
   onChangeHighlightToday: (value: boolean) => void;
   onChangeShowInfo: (value: boolean) => void;
 

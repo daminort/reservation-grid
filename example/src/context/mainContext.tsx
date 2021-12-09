@@ -1,12 +1,12 @@
-import { grid } from 'mocks';
 import React, { FC, createContext, useContext } from 'react';
 import { THEME } from '@daminort/reservation-grid';
 
 import { MainContext } from 'interfaces/mainContext.interface';
+import { grid } from 'mocks';
 
 const initialValue: MainContext = {
-  year: 2021,
-  month: 11,
+  year: '2021',
+  month: '11',
   highlightToday: true,
   showInfo: true,
   title: 'Number',
@@ -17,7 +17,7 @@ const initialValue: MainContext = {
     '2021-11-19',
   ],
   selectedRows: [
-    'Number 3',
+    '# 3',
   ],
   theme: THEME,
   locale: 'en',

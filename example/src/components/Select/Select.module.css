@@ -1,0 +1,7 @@
+.select {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background: var(--color-bg);
+  border-color: var(--color-border);
+  color: inherit;
+}

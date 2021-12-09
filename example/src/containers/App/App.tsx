@@ -5,12 +5,14 @@ import { MainProvider, initialValue } from 'context/mainContext';
 
 import { Grid } from 'containers/Grid';
 import { Header } from 'containers/Header';
+import { Config } from 'containers/Config';
+import { Props } from 'containers/Props';
 import s from './App.module.css';
 
 const App: FC = () => {
 
-  const [year, setYear] = useState<number>(initialValue.year);
-  const [month, setMonth] = useState<number>(initialValue.month);
+  const [year, setYear] = useState<string>(initialValue.year);
+  const [month, setMonth] = useState<string>(initialValue.month);
 
   const [title, setTitle] = useState<string>(initialValue.title);
   const [info, setInfo] = useState<string>(initialValue.info);
@@ -61,6 +63,21 @@ const App: FC = () => {
       <div className={s.container}>
         <Header />
         <Grid />
+        <div className={s.settings}>
+          <div className={s.left}>
+            <div className={s.config}>
+              <h3>Configuration</h3>
+              <Config />
+            </div>
+            <div className={s.theme}>
+              <h3>Theme</h3>
+            </div>
+          </div>
+          <div className={s.props}>
+            <h3>Props</h3>
+            <Props />
+          </div>
+        </div>
       </div>
     </MainProvider>
   );
