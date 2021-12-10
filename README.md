@@ -4,12 +4,14 @@ A modular grid that allows managing reservations for a hotel
 ![Reservation Grid](images/rg.png)
 
 ## Installation
+<a name="installation"></a>
 
 ```
 npm install @daminort/reservation-grid
 ```
 
 ## Usage
+<a name="usage"></a>
 
 ```javascript
 import React, { FC, useCallback } from 'react';
@@ -53,6 +55,7 @@ const App: FC = () => {
 ```
 
 ## Props
+<a name="props"></a>
 
 |Name|Type|Required|Default|Example|
 |----|----|--------|-------|-------|
@@ -71,6 +74,7 @@ const App: FC = () => {
 |onClickCell|Function|-|-|({ value, date, dayType }) => console.log({ value, date, dayType })
 
 #### Data
+<a name="data"></a>
 
 The data is an array of the Rows:
 ```javascript
@@ -114,6 +118,7 @@ const data: Row[] = [
 ```
 
 #### Locale
+<a name="locale"></a>
 
 Locale can be either `en`, `ua` or `ru`:
 ```javascript
@@ -121,6 +126,7 @@ type LocaleKey = 'en' | 'ua' | 'ru';
 ```
 
 #### Theme
+<a name="theme"></a>
 
 You can change appearance of the Reservation Grid. And you don't need to pass the entire theme: just pass keys you want to change.
 
@@ -145,6 +151,7 @@ const THEME: Theme = {
 ```
 
 ## Local development
+<a name="local"></a>
 
 In order to have an ability test package locally without need to publish it to the NPM follow the next steps:
 
@@ -168,3 +175,7 @@ npm run relink
 
 You should go through points 1-2 every time you update package.
 
+## License
+<a name="license"></a>
+
+[MIT](/LICENSE) © [Daminort](https://github.com/daminort)
