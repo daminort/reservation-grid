@@ -1,8 +1,36 @@
+.wrapper {
+  position: relative;
+}
+
 .container {
   font-size: 0.7rem;
   border-radius: 0.25rem;
   background: var(--color-code);
   padding: 1rem;
-  max-height: calc(100vh - 500px);
+  max-height: 428px;
   overflow-y: auto;
+}
+
+.icon {
+  position: absolute;
+  right: 6px;
+  top: -24px;
+  cursor: pointer;
+  animation: copyInit 0.3s;
+}
+
+.active {
+  animation: copyActive 0.3s;
+}
+
+@keyframes copyInit {
+  0% { transform: scale(1) }
+  50% { transform: scale(1.5) }
+  100% { transform: scale(1) }
+}
+
+@keyframes copyActive {
+  0% { transform: scale(1) }
+  50% { transform: scale(1.5) }
+  100% { transform: scale(1) }
 }

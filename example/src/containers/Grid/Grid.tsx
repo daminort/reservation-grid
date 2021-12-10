@@ -15,6 +15,7 @@ const Grid: FC = () => {
     selectedColumns,
     selectedRows,
     data,
+    theme,
     onChangeSelectedColumns,
     onChangeSelectedRows,
   } = useMainContext();
@@ -42,6 +43,7 @@ const Grid: FC = () => {
     selectedColumns,
     selectedRows,
     data,
+    theme,
     onClickTitle: onClickTitle,
     onClickCell: onClickCell,
   }

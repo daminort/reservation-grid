@@ -6,6 +6,7 @@ import { MainProvider, initialValue } from 'context/mainContext';
 import { Grid } from 'containers/Grid';
 import { Header } from 'containers/Header';
 import { Config } from 'containers/Config';
+import { ThemeConfig } from 'containers/ThemeConfig';
 import { Props } from 'containers/Props';
 import s from './App.module.css';
 
@@ -71,6 +72,7 @@ const App: FC = () => {
             </div>
             <div className={s.theme}>
               <h3>Theme</h3>
+              <ThemeConfig />
             </div>
           </div>
           <div className={s.props}>
