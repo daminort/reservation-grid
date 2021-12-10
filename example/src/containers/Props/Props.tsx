@@ -17,6 +17,7 @@ const Props: FC = () => {
     selectedRows,
     data,
     theme,
+    locale,
   } = useMainContext();
 
   const { start, end } = useMemo(() => createStartEnd(+year, +month), [year, month]);
@@ -34,6 +35,7 @@ const Props: FC = () => {
     selectedRows,
     data,
     theme,
+    locale,
     onClickTitle: '(value) => console.log(value)',
     onClickCell: '({ value, date, dateType }) => console.log({ value, date, dateType })',
   }, null, 2);

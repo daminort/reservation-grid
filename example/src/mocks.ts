@@ -72,3 +72,9 @@ export const yearItems: SelectItem[] = [
   { value: '2024', title: '2024' },
   { value: '2025', title: '2025' },
 ];
+
+export const localeItems: SelectItem[] = [
+  { value: 'en', title: 'English' },
+  { value: 'ua', title: 'Ukrainian' },
+  { value: 'ru', title: 'Russian' },
+];

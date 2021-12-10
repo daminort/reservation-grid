@@ -217,7 +217,15 @@ function getDayType(date: string, periods: ReservedPeriod[] = []): DayType {
 
   const intersection: Intersection = [];
 
-  for (const period of periods) {
+  const sortedPeriods: ReservedPeriod[] = periods.sort((a, b) => {
+    if (a.start === b.start) {
+      return 0;
+    }
+
+    return a.start < b.start ? -1 : 1;
+  })
+
+  for (const period of sortedPeriods) {
     const position = detectDayPosition(date, period.start, period.end);
     const dayType = detectDayType(period.status, position);
 

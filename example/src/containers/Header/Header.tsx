@@ -5,11 +5,20 @@ import { Select } from 'components/Select';
 import s from './Header.module.css';
 
 import { replacePeriod } from 'utils/mockUtils';
-import { monthItems, yearItems } from 'mocks';
+import { monthItems, yearItems, localeItems } from 'mocks';
 
 const Header: FC = () => {
 
-  const { data, month, year, onChangeMonth, onChangeYear, onChangeData } = useMainContext();
+  const {
+    data,
+    month,
+    year,
+    locale,
+    onChangeMonth,
+    onChangeYear,
+    onChangeData,
+    onChangeLocale,
+  } = useMainContext();
 
   const onChangeMonthLocal = useCallback((month) => {
     const resData = replacePeriod(data, month, year);
@@ -23,11 +32,20 @@ const Header: FC = () => {
     onChangeData(resData);
   }, [data, month, onChangeYear, onChangeData]);
 
+  const onChangeLocaleLocal = useCallback((locale) => {
+    onChangeLocale(locale);
+  }, [onChangeLocale]);
+
   return (
     <div className={s.container}>
       <h2>Reservation Grid</h2>
       <div className={s.subTitle}>
         <div className={s.description}>A modular grid that allows managing reservations for a hotel</div>
+        <Select
+          value={locale}
+          items={localeItems}
+          onChange={onChangeLocaleLocal}
+        />
         <Select
           value={month}
           items={monthItems}
