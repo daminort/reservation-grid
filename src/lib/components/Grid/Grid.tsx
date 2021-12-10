@@ -2,10 +2,11 @@ import React, { FC, useState, useEffect } from 'react';
 
 import { MainProvider } from 'lib/context';
 import { Theme } from 'lib/interfaces/theme.interface';
+import { Row } from 'lib/interfaces/row';
 import { styleUtils } from 'lib/utils/styleUtils';
 
 import { Header } from 'lib/components/Header';
-import { Row } from 'lib/components/Row';
+import { Row as VisualRow } from 'lib/components/Row';
 
 import { GridProps } from './Grid.interface';
 
@@ -13,18 +14,17 @@ const Grid: FC<GridProps> = (props) => {
   const {
     start,
     end,
-    title,
-    info,
-    highlightToday,
-    showInfo,
-    rows,
-    selectedColumns,
-    selectedRows,
+    title = 'Number',
+    info = '',
+    highlightToday = true,
+    showInfo = true,
+    selectedColumns = [],
+    selectedRows = [],
     data,
     theme,
-    locale,
-    onClickTitle,
-    onClickCell,
+    locale = 'en',
+    onClickTitle = () => {},
+    onClickCell = () => {},
   } = props;
 
   const [customTheme, setCustomTheme] = useState<Theme>(styleUtils.createTheme(theme));
@@ -49,17 +49,13 @@ const Grid: FC<GridProps> = (props) => {
     onClickCell,
   };
 
-  const renderRow = (rowValue: string) => {
-    const isSelected = Array.isArray(selectedRows) && selectedRows.includes(rowValue);
-    const row = data.find(row => row.value === rowValue);
-    if (!row) {
-      return null;
-    }
+  const renderRow = (row: Row) => {
+    const isSelected = Array.isArray(selectedRows) && selectedRows.includes(row.value);
 
     return (
-      <Row
-        key={rowValue}
-        value={rowValue}
+      <VisualRow
+        key={row.value}
+        value={row.value}
         info={row.info}
         periods={row.periods}
         selected={isSelected}
@@ -76,7 +72,7 @@ const Grid: FC<GridProps> = (props) => {
             info={info}
           />
           <tbody>
-            {rows.map(rowValue => renderRow(rowValue))}
+            {data.map(row => renderRow(row))}
           </tbody>
         </table>
       </div>

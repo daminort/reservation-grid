@@ -13,6 +13,12 @@ describe('Grid', () => {
     cleanup();
   });
 
+  const minProps: GridProps = {
+    start: '2021-11-01',
+    end: '2021-11-30',
+    data: grid,
+  };
+
   const props: GridProps = {
     start: '2021-11-01',
     end: '2021-11-30',
@@ -20,7 +26,6 @@ describe('Grid', () => {
     info: 'Seats',
     highlightToday: true,
     showInfo: true,
-    rows: grid.map(row => row.value),
     selectedColumns: [
       '2021-11-17',
       '2021-11-18',
@@ -37,6 +42,27 @@ describe('Grid', () => {
   const setup = (props: GridProps) => {
     return render(<Grid {...props} />);
   }
+
+  it('render with minimal props', () => {
+    const { getByTestId } = setup(minProps);
+
+    const wrapper = getByTestId('grid-wrapper');
+    const title = getByTestId('title-Number 2');
+    const c1 = getByTestId('cell-Number 1-2021-11-04');
+    const c2 = getByTestId('cell-Number 2-2021-11-11');
+    const c3 = getByTestId('cell-Number 5-2021-11-05');
+    const weekend01 = getByTestId('cell-Number 4-2021-11-14');
+    const weekend02 = getByTestId('cell-Number 5-2021-11-27');
+
+    expect(wrapper).toBeInTheDocument();
+    expect(title).toBeInTheDocument();
+    expect(c1).toBeInTheDocument();
+    expect(c2).toBeInTheDocument();
+    expect(c3).toBeInTheDocument();
+
+    expect(weekend01).toHaveClass('weekend');
+    expect(weekend02).toHaveClass('weekend');
+  });
 
   it('normal render', () => {
     const { getByTestId } = setup(props);

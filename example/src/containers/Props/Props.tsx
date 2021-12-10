@@ -21,7 +21,6 @@ const Props: FC = () => {
   } = useMainContext();
 
   const { start, end } = useMemo(() => createStartEnd(+year, +month), [year, month]);
-  const rows = useMemo(() => data.map(row => row.value), [data]);
 
   const props = JSON.stringify({
     start,
@@ -30,7 +29,6 @@ const Props: FC = () => {
     info,
     highlightToday,
     showInfo,
-    rows,
     selectedColumns,
     selectedRows,
     data,

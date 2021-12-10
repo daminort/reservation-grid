@@ -1,6 +1,149 @@
 # Reservation Grid
 A modular grid that allows managing reservations for a hotel
 
+![Reservation Grid](images/rg.png)
+
+## Installation
+
+```
+npm install @daminort/reservation-grid
+```
+
+## Usage
+
+```javascript
+import React, { FC, useCallback } from 'react';
+import { ReservationGrid, DayType, Row } from '@daminort/reservation-grid';
+
+const App: FC = () => {
+
+  const onClickTitle = useCallback((value: string) => {
+    console.log(`Selected row with # ${value}`);
+  }, []);
+
+  const onClickCell = useCallback(({ value: string, date: string, dayType: DayType }) => {
+    console.log('Selected cell:', { value, date, dayType });
+  }, []);
+
+  const data: Row[] = [
+    value: '# 1',
+    info: '4',
+    periods: [
+      { start: '2021-11-04', end: '2021-11-09', status: 'confirmed' },
+      { start: '2021-11-09', end: '2021-11-12', status: 'awaiting' },
+    ],
+  ];
+
+  return (
+    <ReservationGrid
+      highlightToday
+      showInfo
+      start="2021-11-01"
+      end="2021-11-30"
+      title="Number"
+      info="Seats"
+      locale="en"
+      data={data}
+      onClickTitle={onClickTitle}
+      onClickCell={onClickCell}
+    />
+  );
+};
+
+```
+
+## Props
+
+|Name|Type|Required|Default|Example|
+|----|----|--------|-------|-------|
+|start|string|*|-|'2021-11-01'
+|end|string|*|-|'2021-11-30'
+|highlightToday|boolean|-|true|
+|showInfo|boolean|-|true|
+|selectedColumns|string[]|-|[ ]|['2021-11-01', '2021-11-02']
+|selectedRows|string[]|-|[ ]|['# 1']
+|theme|Theme|-|default theme|
+|locale|LocaleKey|-|en|
+|title|string|-|'Number'|
+|info|string|-|empty string|
+|data|Row[]|*|-|see example above
+|onClickTitle|Function|-|-|(value) => console.log(value)
+|onClickCell|Function|-|-|({ value, date, dayType }) => console.log({ value, date, dayType })
+
+#### Data
+
+The data is an array of the Rows:
+```javascript
+type DateStatus = 'awaiting' | 'confirmed' | 'inaccessible';
+
+interface ReservedPeriod {
+  start: string;
+  end: string;
+  status: DateStatus;
+}
+
+interface Row {
+  value: string;
+  info: string;
+  periods: ReservedPeriod[];
+}
+
+```
+
+Example:
+```javascript
+const data: Row[] = [
+  {
+    value: 'Number 1',
+    info: '4 seats',
+    periods: [
+      { start: '2021-11-04', end: '2021-11-09', status: 'confirmed' },
+      { start: '2021-11-09', end: '2021-11-12', status: 'awaiting' },
+      { start: '2021-11-21', end: '2021-11-26', status: 'confirmed' },
+    ],
+  },
+  {
+    value: 'Number 2',
+    info: '3 seats',
+    periods: [
+      { start: '2021-11-01', end: '2021-11-02', status: 'confirmed' },
+      { start: '2021-11-14', end: '2021-11-27', status: 'confirmed' },
+    ],
+  },
+];
+```
+
+#### Locale
+
+Locale can be either `en`, `ua` or `ru`:
+```javascript
+type LocaleKey = 'en' | 'ua' | 'ru';
+```
+
+#### Theme
+
+You can change appearance of the Reservation Grid. And you don't need to pass the entire theme: just pass keys you want to change.
+
+Default theme:
+```javascript
+const THEME: Theme = {
+  'font.face': 'sans-serif',
+  'font.size': '14px',
+  'color.text': '#30424F',
+  'color.background': '#FFFFFF',
+  'color.border': '#DDEBF3',
+  'color.free': 'transparent',
+  'color.awaiting': '#DDEBF3',
+  'color.confirmed': '#006490',
+  'color.inaccessible': '#759AB5',
+  'color.today': '#E4FFE6',
+  'color.selected': '#FFF2F2',
+  'color.weekend': '#F8FAFB',
+  'width.title': '50%',
+  'width.info': '50%',
+};
+```
+
 ## Local development
 
 In order to have an ability test package locally without need to publish it to the NPM follow the next steps:

@@ -22,7 +22,6 @@ const Grid: FC = () => {
   } = useMainContext();
 
   const { start, end } = useMemo(() => createStartEnd(+year, +month), [year, month]);
-  const rows = useMemo(() => data.map(row => row.value), [data]);
 
   const onClickTitle = useCallback((value) => {
     onChangeSelectedRows([value]);
@@ -40,7 +39,6 @@ const Grid: FC = () => {
     info,
     highlightToday,
     showInfo,
-    rows,
     selectedColumns,
     selectedRows,
     data,

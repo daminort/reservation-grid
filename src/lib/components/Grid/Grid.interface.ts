@@ -4,9 +4,8 @@ import { Row } from 'lib/interfaces/row';
 import { Theme } from 'lib/interfaces/theme.interface';
 
 export type GridProps = Omit<MainContext, 'theme' | 'locale'> & {
-  title: string;
-  info: string;
-  rows: string[];
+  title?: string;
+  info?: string;
   data: Row[];
   theme?: Partial<Theme>;
   locale?: LocaleKey;

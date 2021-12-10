@@ -14,12 +14,12 @@ type OnClickCell = (eventData: OnClickEventData) => void;
 export interface MainContext {
   start: string;
   end: string;
-  highlightToday: boolean;
-  showInfo: boolean;
-  selectedColumns: string[];
-  selectedRows: string[];
-  theme: Theme;
-  locale: LocaleKey;
-  onClickTitle: OnClickTitle,
-  onClickCell: OnClickCell,
+  highlightToday?: boolean;
+  showInfo?: boolean;
+  selectedColumns?: string[];
+  selectedRows?: string[];
+  theme?: Theme;
+  locale?: LocaleKey;
+  onClickTitle?: OnClickTitle,
+  onClickCell?: OnClickCell,
 }
