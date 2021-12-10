@@ -27,7 +27,7 @@ const Grid: FC = () => {
     onChangeSelectedRows([value]);
   }, [onChangeSelectedRows]);
 
-  const onClickCell = useCallback((value, date) => {
+  const onClickCell = useCallback(({ value, date }) => {
     onChangeSelectedColumns([date]);
     onChangeSelectedRows([value]);
   }, [onChangeSelectedColumns, onChangeSelectedRows]);

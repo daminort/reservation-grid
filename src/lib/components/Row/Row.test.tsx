@@ -100,24 +100,24 @@ describe('Row', () => {
     const c3 = getByTestId('cell-Number 1-2021-11-26');
 
     fireEvent.click(c1);
-    expect(partialContext.onClickCell).toHaveBeenCalledWith(
-      row01.value,
-      '2021-11-04',
-      'single.normal.start'
-    );
+    expect(partialContext.onClickCell).toHaveBeenCalledWith({
+      value: row01.value,
+      date: '2021-11-04',
+      dayType: 'single.normal.start',
+    });
 
     fireEvent.click(c2);
-    expect(partialContext.onClickCell).toHaveBeenCalledWith(
-      row01.value,
-      '2021-11-11',
-      'single.maybe.full'
-    );
+    expect(partialContext.onClickCell).toHaveBeenCalledWith({
+      value: row01.value,
+      date: '2021-11-11',
+      dayType: 'single.maybe.full',
+    });
 
     fireEvent.click(c3);
-    expect(partialContext.onClickCell).toHaveBeenCalledWith(
-      row01.value,
-      '2021-11-26',
-      'single.normal.end'
-    );
+    expect(partialContext.onClickCell).toHaveBeenCalledWith({
+      value: row01.value,
+      date: '2021-11-26',
+      dayType: 'single.normal.end',
+    });
   });
 });

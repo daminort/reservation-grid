@@ -75,24 +75,24 @@ describe('Grid', () => {
     const c3 = getByTestId('cell-Number 5-2021-11-05');
 
     fireEvent.click(c1);
-    expect(props.onClickCell).toHaveBeenCalledWith(
-      'Number 1',
-      '2021-11-04',
-      'single.normal.start'
-    );
+    expect(props.onClickCell).toHaveBeenCalledWith({
+      value: 'Number 1',
+      date: '2021-11-04',
+      dayType: 'single.normal.start',
+    });
 
     fireEvent.click(c2);
-    expect(props.onClickCell).toHaveBeenCalledWith(
-      'Number 2',
-      '2021-11-11',
-      'single.free'
-    );
+    expect(props.onClickCell).toHaveBeenCalledWith({
+      value: 'Number 2',
+      date: '2021-11-11',
+      dayType: 'single.free',
+    });
 
     fireEvent.click(c3);
-    expect(props.onClickCell).toHaveBeenCalledWith(
-      'Number 5',
-      '2021-11-05',
-      'single.disabled'
-    );
+    expect(props.onClickCell).toHaveBeenCalledWith({
+      value: 'Number 5',
+      date: '2021-11-05',
+      dayType: 'single.disabled',
+    });
   });
 });

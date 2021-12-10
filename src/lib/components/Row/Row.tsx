@@ -28,7 +28,7 @@ const Row: FC<RowProps> = (props) => {
       return;
     }
 
-    onClickCell(value, date, dayType)
+    onClickCell({ value, date, dayType });
   }, [value, onClickCell]);
 
   const renderCell = (cell: DaysRange) => {

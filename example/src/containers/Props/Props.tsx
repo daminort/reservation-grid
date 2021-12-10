@@ -35,7 +35,7 @@ const Props: FC = () => {
     data,
     theme,
     onClickTitle: '(value) => console.log(value)',
-    onClickCell: '(value, date, dateType) => console.log(value, date, dateType)',
+    onClickCell: '({ value, date, dateType }) => console.log({ value, date, dateType })',
   }, null, 2);
 
   const showCopy = Boolean(navigator.clipboard);
