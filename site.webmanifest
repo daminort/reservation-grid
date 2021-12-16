@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Reservation Grid",
+    "short_name": "Reservation Grid",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
