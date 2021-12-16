@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use NodeJS 12
+      - name: Use NodeJS 16
         uses: actions/setup-node@v2.5.0
         with:
           node-version: '16.x'
