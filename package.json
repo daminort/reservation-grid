@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "A modular grid that allows managing reservations for a hotel",
   "author": "Daminort",
-  "homepage": "https://github.com/daminort/reservation-grid#readme",
+  "homepage": "https://daminort.github.io/reservation-grid",
   "license": "MIT",
   "main": "dist/index.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/daminort/reservation-grid.git"
@@ -23,6 +25,7 @@
     "build": "rm -rf dist && rollup -c",
     "start": "rm -rf dist && rollup -c -w",
     "test": "jest",
+    "deploy": "./gh-pages.sh",
     "relink": "npm link example/node_modules/react"
   },
   "dependencies": {
@@ -44,6 +47,7 @@
     "@types/react-dom": "^17.0.11",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
+    "gh-pages": "^3.2.3",
     "jest": "^27.4.3",
     "rollup": "^2.60.2",
     "rollup-plugin-sass": "^1.2.10",
