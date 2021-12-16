@@ -1,9 +1,10 @@
 import { Theme } from 'lib/interfaces/theme.interface';
+import { THEME } from 'lib/constants/theme';
 import { useMainContext } from 'lib/context';
 
 const useTheme = (): Theme => {
   const { theme } = useMainContext();
-  return theme;
+  return theme || THEME;
 }
 
 export {

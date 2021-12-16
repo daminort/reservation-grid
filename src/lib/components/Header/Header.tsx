@@ -9,7 +9,7 @@ import { HeaderProps } from './Header.interface';
 
 const Header: FC<HeaderProps> = ({ title, info }) => {
 
-  const { start, end, locale, highlightToday, showInfo, selectedColumns } = useMainContext();
+  const { start, end, locale = 'en', highlightToday, showInfo, selectedColumns } = useMainContext();
   const range = useDaysRange(start, end, locale);
 
   const renderCell = (cell: DaysRange, field: keyof DaysRange) => {

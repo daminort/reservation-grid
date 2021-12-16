@@ -12,7 +12,7 @@ import { RowProps } from './Row.interface';
 const Row: FC<RowProps> = (props) => {
   const { value, info, periods, selected } = props;
 
-  const { start, end, locale, highlightToday, showInfo, selectedColumns, onClickTitle, onClickCell } = useMainContext();
+  const { start, end, locale = 'en', highlightToday, showInfo, selectedColumns, onClickTitle, onClickCell } = useMainContext();
   const range: DaysRange[] = useDaysRange(start, end, locale);
 
   const onClickTitleLocal = useCallback(() => {
