@@ -1,0 +1,10 @@
+.container {
+  margin-bottom: 2rem;
+}
+
+.subTitle {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  grid-gap: 1rem;
+  align-items: center;
+}

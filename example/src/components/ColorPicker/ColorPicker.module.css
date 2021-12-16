@@ -1,0 +1,33 @@
+.wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 25px 1fr;
+  grid-gap: 0.5rem;
+  align-items: center;
+}
+
+.example {
+  width: 25px;
+  height: 25px;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-border);
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.dimmer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 98;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.container {
+  position: absolute;
+  z-index: 100;
+  bottom: 1.75rem;
+}
