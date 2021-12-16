@@ -183,6 +183,15 @@ npm login
 npm publish --access public
 ```
 
+## Publishing Demo to GitHub Pages
+<a name="gh-pages"></a>
+
+```
+npm run deploy
+```
+
+It will build the demo application from `/example` folder and publish it via `gh-pages` package 
+
 ## License
 <a name="license"></a>
 
