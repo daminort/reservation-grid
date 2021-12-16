@@ -175,6 +175,14 @@ npm run relink
 
 You should go through points 1-2 every time you update package.
 
+## Publishing
+<a name="publishing"></a>
+
+```
+npm login
+npm publish --access public
+```
+
 ## License
 <a name="license"></a>
 
