@@ -23,12 +23,12 @@ const Row: FC<RowProps> = (props) => {
     onClickTitle(value);
   }, [value, onClickTitle]);
 
-  const onClickCellLocal = useCallback((date, dayType) => () => {
+  const onClickCellLocal = useCallback((date, dayType, periods) => () => {
     if (!onClickCell) {
       return;
     }
 
-    onClickCell({ value, date, dayType });
+    onClickCell({ value, date, dayType, periods });
   }, [value, onClickCell]);
 
   const renderCell = (cell: DaysRange) => {
@@ -49,7 +49,7 @@ const Row: FC<RowProps> = (props) => {
       <td
         key={cell.value}
         className={className}
-        onClick={onClickCellLocal(cell.value, dayType)}
+        onClick={onClickCellLocal(cell.value, dayType, periods)}
         data-testid={`cell-${value}-${cell.value}`}
       >
         <Day type={dayType} />

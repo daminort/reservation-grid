@@ -6,6 +6,7 @@ type OnClickEventData = {
   value: string;
   date: string;
   dayType: DayType;
+  periods: Object;
 };
 
 type OnClickTitle = (value: string) => void;

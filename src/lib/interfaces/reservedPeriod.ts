@@ -4,4 +4,5 @@ export interface ReservedPeriod {
   start: string;
   end: string;
   status: DateStatus;
+  payload: Object;
 }
