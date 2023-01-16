@@ -1,6 +1,6 @@
 {
   "name": "@jylopez/reservation-grid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A modular grid that allows managing reservations for a hotel",
   "author": "Daminort",
   "homepage": "https://daminort.github.io/reservation-grid",
