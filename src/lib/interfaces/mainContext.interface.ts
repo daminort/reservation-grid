@@ -1,12 +1,13 @@
 import { DayType } from './grid.interface'
 import { Theme } from './theme.interface';
 import { LocaleKey } from './locale.interface';
+import { ReservedPeriod } from './reservedPeriod';
 
 type OnClickEventData = {
   value: string;
   date: string;
   dayType: DayType;
-  periods: Object;
+  periods: ReservedPeriod;
 };
 
 type OnClickTitle = (value: string) => void;
