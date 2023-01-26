@@ -1,5 +1,5 @@
 import React, { FC, useCallback, Fragment, useMemo } from 'react';
-import { Theme } from '@daminort/reservation-grid';
+import { Theme } from '@jylopez/reservation-grid';
 
 import { useMainContext } from 'context/mainContext';
 import { ColorPicker } from 'components/ColorPicker';

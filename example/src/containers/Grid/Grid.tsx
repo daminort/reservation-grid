@@ -1,5 +1,5 @@
 import React, { FC, useMemo, useCallback } from 'react';
-import { ReservationGrid, GridProps } from '@daminort/reservation-grid';
+import { ReservationGrid, GridProps } from '@jylopez/reservation-grid';
 
 import { useMainContext } from 'context/mainContext';
 import { createStartEnd } from 'utils/dateUtils';

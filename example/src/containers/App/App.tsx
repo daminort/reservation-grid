@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { Theme, LocaleKey, Row } from '@daminort/reservation-grid';
+import { Theme, LocaleKey, Row } from '@jylopez/reservation-grid';
 
 import { MainProvider, initialValue } from 'context/mainContext';
 

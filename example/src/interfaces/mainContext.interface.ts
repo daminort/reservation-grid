@@ -1,4 +1,4 @@
-import { Theme, LocaleKey, Row } from '@daminort/reservation-grid';
+import { Theme, LocaleKey, Row } from '@jylopez/reservation-grid';
 import { Partial } from 'rollup-plugin-typescript2/dist/partial';
 
 export interface MainContext {

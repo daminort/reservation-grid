@@ -7,7 +7,7 @@ A modular grid that allows managing reservations for a hotel
 <a name="installation"></a>
 
 ```
-npm install @daminort/reservation-grid
+npm install @jylopez/reservation-grid
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ npm install @daminort/reservation-grid
 
 ```javascript
 import React, { FC, useCallback } from 'react';
-import { ReservationGrid, DayType, Row } from '@daminort/reservation-grid';
+import { ReservationGrid, DayType, Row } from '@jylopez/reservation-grid';
 
 const App: FC = () => {
 

@@ -1,4 +1,4 @@
-import { Row } from '@daminort/reservation-grid';
+import { Row } from '@jylopez/reservation-grid';
 import { SelectItem } from 'components/Select';
 
 export const row01: Row = {

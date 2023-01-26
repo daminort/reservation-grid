@@ -1,4 +1,4 @@
-import { Row, ReservedPeriod } from '@daminort/reservation-grid';
+import { Row, ReservedPeriod } from '@jylopez/reservation-grid';
 
 export function replacePeriod(data: Row, month: string, year: string): Row[] {
   return data.map((row: Row) => {

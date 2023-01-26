@@ -1,5 +1,5 @@
 import React, { FC, createContext, useContext } from 'react';
-import { THEME } from '@daminort/reservation-grid';
+import { THEME } from '@jylopez/reservation-grid';
 
 import { MainContext } from 'interfaces/mainContext.interface';
 import { grid } from 'mocks';
