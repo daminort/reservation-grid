@@ -16,7 +16,7 @@ export const row02: Row = {
   info: '3 + 1',
   periods: [
     { start: '2021-11-01', end: '2021-11-02', status: 'confirmed' },
-    { start: '2021-11-14', end: '2021-11-27', status: 'confirmed' },
+    { start: '2021-11-14', end: '2021-11-27', status: 'paid' },
   ],
 };
 
