@@ -7,6 +7,7 @@ export interface Theme {
   'color.free': string;
   'color.awaiting': string;
   'color.confirmed': string;
+  'color.paid': string;
   'color.inaccessible': string;
   'color.today': string;
   'color.selected': string;

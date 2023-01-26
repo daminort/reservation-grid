@@ -78,7 +78,7 @@ const App: FC = () => {
 
 The data is an array of the Rows:
 ```javascript
-type DateStatus = 'awaiting' | 'confirmed' | 'inaccessible';
+type DateStatus = 'awaiting' | 'confirmed' | 'paid' | 'inaccessible';
 
 interface ReservedPeriod {
   start: string;
@@ -141,6 +141,7 @@ const THEME: Theme = {
   'color.free': 'transparent',
   'color.awaiting': '#DDEBF3',
   'color.confirmed': '#006490',
+  'color.paid': '#009074',
   'color.inaccessible': '#759AB5',
   'color.today': '#E4FFE6',
   'color.selected': '#FFF2F2',

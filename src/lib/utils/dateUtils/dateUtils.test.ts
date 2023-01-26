@@ -254,6 +254,10 @@ describe('dateUtils', () => {
       const full = dateUtils.detectDayType('confirmed', 'middle');
       const end = dateUtils.detectDayType('confirmed', 'end');
 
+      const paidStart = dateUtils.detectDayType('paid', 'start');
+      const paidFull = dateUtils.detectDayType('paid', 'middle');
+      const paidEnd = dateUtils.detectDayType('paid', 'end');
+
       expect(free).toEqual('single.free');
       expect(disabled).toEqual('single.disabled');
 
@@ -264,6 +268,10 @@ describe('dateUtils', () => {
       expect(start).toEqual('single.normal.start');
       expect(full).toEqual('single.normal.full');
       expect(end).toEqual('single.normal.end');
+
+      expect(paidStart).toEqual('single.normal.start');
+      expect(paidFull).toEqual('single.normal.full');
+      expect(paidEnd).toEqual('single.normal.end');
     });
   });
 

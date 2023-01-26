@@ -8,6 +8,7 @@ const THEME: Theme = {
   'color.border': '#DDEBF3',
   'color.free': 'transparent',
   'color.awaiting': '#DDEBF3',
+  'color.paid': '#009074',
   'color.confirmed': '#006490',
   'color.inaccessible': '#759AB5',
   'color.today': '#E4FFE6',

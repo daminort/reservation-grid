@@ -189,6 +189,11 @@ function detectDayType(status: DateStatus, position: DatePosition): DayType {
       'middle': 'single.normal.full',
       'end': 'single.normal.end',
     },
+    'paid': {
+      'start': 'single.normal.start',
+      'middle': 'single.normal.full',
+      'end': 'single.normal.end',
+    },
   }
 
   return map[status][position] || 'single.free';

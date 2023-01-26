@@ -1,4 +1,4 @@
-type DateStatus = 'awaiting' | 'confirmed' | 'inaccessible';
+type DateStatus = 'awaiting' | 'confirmed' | 'paid' | 'inaccessible';
 type DatePosition = 'none' | 'start' | 'middle' | 'end';
 
 type DayType = 'single.free'
