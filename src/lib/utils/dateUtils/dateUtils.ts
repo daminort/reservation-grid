@@ -190,9 +190,9 @@ function detectDayType(status: DateStatus, position: DatePosition): DayType {
       'end': 'single.normal.end',
     },
     'paid': {
-      'start': 'single.normal.start',
-      'middle': 'single.normal.full',
-      'end': 'single.normal.end',
+      'start': 'single.paid.start',
+      'middle': 'single.paid.full',
+      'end': 'single.paid.end',
     },
   }
 
@@ -208,11 +208,26 @@ function detectIntersectionDayType(intersection: Intersection): DayType {
   if (one === 'single.maybe.end' && two === 'single.maybe.start') {
     return 'double.maybe.end.start';
   }
+  if (one === 'single.paid.end' && two === 'single.paid.start') {
+    return 'double.paid.end.start';
+  }
   if (one === 'single.normal.end' && two === 'single.maybe.start') {
     return 'intersection.normal.end.maybe.start';
   }
+  if (one === 'single.normal.end' && two === 'single.paid.start') {
+    return 'intersection.normal.end.paid.start';
+  }
   if (one === 'single.maybe.end' && two === 'single.normal.start') {
     return 'intersection.maybe.end.normal.start';
+  }
+  if (one === 'single.maybe.end' && two === 'single.paid.start') {
+    return 'intersection.maybe.end.paid.start';
+  }
+  if (one === 'single.paid.end' && two === 'single.maybe.start') {
+    return 'intersection.paid.end.maybe.start';
+  }
+  if (one === 'single.paid.end' && two === 'single.normal.start') {
+    return 'intersection.paid.end.normal.start';
   }
 
   return one;
