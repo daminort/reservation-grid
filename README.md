@@ -154,27 +154,28 @@ const THEME: Theme = {
 ## Local development
 <a name="local"></a>
 
-In order to have an ability test package locally without need to publish it to the NPM follow the next steps:
+To set up dev environment:
 
-1. Build package
+1. Create link in root directory:
 ```
-npm run build
+npm link
 ```
 
-2. Go to the package in which you are planning to use Reservation Grid and link it there (in our case - `example` folder)
+2. Go into example folder and link the package out to the root folder
 ```
 cd example
-npm run relink
-```
-This command will remove folder `node_modules/@daminort` and create new actual linked folder.
-
-3. Go back to the package folder and link React package. It is needed to avoid errors regarding different React instances:
-```
-cd ..
-npm run relink
+npm link @jylopez/reservation-grid
 ```
 
-You should go through points 1-2 every time you update package.
+That's it. You are now set up to develop. You just need to do the following steps everytime you make a change. (I know, it's annoying.)
+
+1. Change something in the code.
+
+2. `npm run build`
+
+3. `cd example`
+
+4. `npm run start`
 
 ## Publishing
 <a name="publishing"></a>
