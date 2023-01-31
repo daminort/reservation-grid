@@ -12,8 +12,9 @@
   --rvg-color-today: #E4FFE6;
   --rvg-color-selected: #5d5d5d;
   --rvg-color-weekend: #F8FAFB;
-  --rvg-width-title: 50%;
-  --rvg-width-info: 50%;
+  --rvg-width-title: 34%;
+  --rvg-width-info: 33%;
+  --rvg-width-column3: 33%;
 }
 
 .wrapper {
@@ -75,7 +76,8 @@
 }
 
 .title,
-.info {
+.info,
+.column3 {
   min-width: 54px;
 }
 
@@ -85,6 +87,10 @@
 
 .info {
   width: var(--rvg-width-info);
+}
+
+.column3 {
+  width: var(--rvg-width-column3);
 }
 
 .fixed {

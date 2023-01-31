@@ -22,6 +22,7 @@ describe('Header', () => {
   const props: HeaderProps = {
     title: 'Number',
     info: 'Seats',
+    column3: 'Fruits'
   }
 
   const setup = (props: HeaderProps) => {
@@ -38,6 +39,7 @@ describe('Header', () => {
 
     const title = getByTestId('title');
     const info = getByTestId('info');
+    const column3 = getByTestId('column3');
     const start = getByTestId(`cell-day-${partialContext.start}`);
     const end = getByTestId(`cell-date-${partialContext.end}`);
     const weekend01 = getByTestId(`cell-day-2021-11-14`);
@@ -45,6 +47,7 @@ describe('Header', () => {
 
     expect(title).toBeInTheDocument();
     expect(info).toBeInTheDocument();
+    expect(column3).toBeInTheDocument();
     expect(start).toBeInTheDocument();
     expect(end).toBeInTheDocument();
 

@@ -16,8 +16,10 @@ const Grid: FC<GridProps> = (props) => {
     end,
     title = 'Number',
     info = '',
+    column3 = '',
     highlightToday = true,
     showInfo = true,
+    showColumn3 = true,
     selectedColumns = [],
     selectedRows = [],
     data,
@@ -41,6 +43,7 @@ const Grid: FC<GridProps> = (props) => {
     end,
     highlightToday,
     showInfo,
+    showColumn3,
     selectedColumns,
     selectedRows,
     theme: customTheme,
@@ -57,6 +60,7 @@ const Grid: FC<GridProps> = (props) => {
         key={row.value}
         value={row.value}
         info={row.info}
+        column3={row.column3}
         periods={row.periods}
         selected={isSelected}
       />
@@ -70,6 +74,7 @@ const Grid: FC<GridProps> = (props) => {
           <Header
             title={title}
             info={info}
+            column3={column3}
           />
           <tbody>
             {data.map(row => renderRow(row))}

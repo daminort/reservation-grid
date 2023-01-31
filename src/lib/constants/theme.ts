@@ -14,8 +14,9 @@ const THEME: Theme = {
   'color.today': '#E4FFE6',
   'color.selected': '#FFF2F2',
   'color.weekend': '#F8FAFB',
-  'width.title': '50%',
-  'width.info': '50%',
+  'width.title': '34%',
+  'width.info': '33%',
+  'width.column3': '33%',
 };
 
 export {

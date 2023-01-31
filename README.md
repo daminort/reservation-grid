@@ -40,6 +40,7 @@ const App: FC = () => {
     <ReservationGrid
       highlightToday
       showInfo
+      showColumn3
       start="2021-11-01"
       end="2021-11-30"
       title="Number"
@@ -63,6 +64,7 @@ const App: FC = () => {
 |end|string|*|-|'2021-11-30'
 |highlightToday|boolean|-|true|
 |showInfo|boolean|-|true|
+|showColumn3|boolean|-|true|
 |selectedColumns|string[]|-|[ ]|['2021-11-01', '2021-11-02']
 |selectedRows|string[]|-|[ ]|['# 1']
 |theme|Theme|-|default theme|

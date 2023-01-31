@@ -9,8 +9,10 @@ const initialValue: MainContext = {
   month: '11',
   highlightToday: true,
   showInfo: true,
+  showColumn3: true,
   title: 'Number',
   info: 'Seats',
+  column3: 'Fruits',
   selectedColumns: [
     '2021-11-17',
     '2021-11-18',
@@ -27,9 +29,11 @@ const initialValue: MainContext = {
   onChangeMonth: () => {},
   onChangeHighlightToday: () => {},
   onChangeShowInfo: () => {},
+  onChangeShowColumn3: () => {},
 
   onChangeTitle: () => {},
   onChangeInfo: () => {},
+  onChangeColumn3: () => {},
 
   onChangeSelectedColumns: () => {},
   onChangeSelectedRows: () => {},

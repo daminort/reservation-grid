@@ -4,6 +4,7 @@ import { SelectItem } from 'components/Select';
 export const row01: Row = {
   value: '# 1',
   info: '4',
+  column3: 'Banana',
   periods: [
     { start: '2021-11-04', end: '2021-11-09', status: 'confirmed' },
     { start: '2021-11-09', end: '2021-11-12', status: 'awaiting' },

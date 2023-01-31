@@ -11,6 +11,7 @@ const initialValue: MainContext = {
   end: dateUtils.endOf(today, 'month'),
   highlightToday: true,
   showInfo: true,
+  showColumn3: true,
   selectedColumns: [],
   selectedRows: [],
   theme: THEME,

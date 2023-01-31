@@ -3,6 +3,7 @@ import { Row } from 'lib/interfaces/row';
 export const row01: Row = {
   value: 'Number 1',
   info: '4 seats',
+  column3: 'Banana',
   periods: [
     { start: '2021-11-04', end: '2021-11-09', status: 'confirmed' },
     { start: '2021-11-09', end: '2021-11-12', status: 'awaiting' },

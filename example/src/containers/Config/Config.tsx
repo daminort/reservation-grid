@@ -10,12 +10,16 @@ const Config: FC = () => {
   const {
     title,
     info,
+    column3,
     highlightToday,
     showInfo,
+    showColumn3,
     onChangeTitle,
     onChangeInfo,
+    onChangeColumn3,
     onChangeHighlightToday,
     onChangeShowInfo,
+    onChangeShowColumn3,
   } = useMainContext();
 
   return (
@@ -34,6 +38,13 @@ const Config: FC = () => {
         onChange={onChangeInfo}
       />
 
+      <label htmlFor="column3">Column 3</label>
+      <Input
+        id="column3"
+        value={column3}
+        onChange={onChangeColumn3}
+      />
+
       <Checkbox
         id="highlightToday"
         label="Highlight Today"
@@ -47,6 +58,13 @@ const Config: FC = () => {
         label="Show Info"
         checked={showInfo}
         onChange={onChangeShowInfo}
+      />
+
+      <Checkbox
+        id="showColumn3"
+        label="Show Column 3"
+        checked={showColumn3}
+        onChange={onChangeShowColumn3}
       />
       <span />
     </div>

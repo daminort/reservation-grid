@@ -45,6 +45,7 @@ describe('Row', () => {
     const row = getByTestId(`row-${row01.value}`);
     const title = getByTestId(`title-${row01.value}`);
     const info = getByTestId(`info-${row01.value}`);
+    const column3 = getByTestId(`column3-${row01.value}`);
     const start = getByTestId(`cell-${row01.value}-${partialContext.start}`);
     const end = getByTestId(`cell-${row01.value}-${partialContext.end}`);
     const selected01 = getByTestId(`cell-Number 1-2021-11-17`);
@@ -56,6 +57,7 @@ describe('Row', () => {
     expect(row).toBeInTheDocument();
     expect(title).toBeInTheDocument();
     expect(info).toBeInTheDocument();
+    expect(column3).toBeInTheDocument();
     expect(start).toBeInTheDocument();
     expect(end).toBeInTheDocument();
 
@@ -64,6 +66,9 @@ describe('Row', () => {
 
     expect(info).toHaveClass('info');
     expect(info).not.toHaveClass('selected');
+
+    expect(column3).toHaveClass('column3');
+    expect(column3).not.toHaveClass('selected');
 
     expect(weekend01).toHaveClass('weekend');
     expect(weekend02).toHaveClass('weekend');
@@ -78,9 +83,11 @@ describe('Row', () => {
 
     const title = getByTestId(`title-${row01.value}`);
     const info = getByTestId(`info-${row01.value}`);
+    const column3 = getByTestId(`column3-${row01.value}`);
 
     expect(title).toHaveClass('selected');
     expect(info).toHaveClass('selected');
+    expect(column3).toHaveClass('selected');
   });
 
   it('onClickTitle', () => {

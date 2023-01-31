@@ -18,6 +18,7 @@ export interface MainContext {
   end: string;
   highlightToday?: boolean;
   showInfo?: boolean;
+  showColumn3?: boolean;
   selectedColumns?: string[];
   selectedRows?: string[];
   theme?: Theme;

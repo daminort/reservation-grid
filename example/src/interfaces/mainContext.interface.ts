@@ -6,8 +6,10 @@ export interface MainContext {
   month: string;
   highlightToday: boolean;
   showInfo: boolean;
+  showColumn3: boolean;
   title: string;
   info: string;
+  column3: string;
   selectedColumns: string[];
   selectedRows: string[];
   theme: Theme;
@@ -19,9 +21,11 @@ export interface MainContext {
   onChangeMonth: (month: string) => void;
   onChangeHighlightToday: (value: boolean) => void;
   onChangeShowInfo: (value: boolean) => void;
+  onChangeShowColumn3: (value: boolean) => void;
 
   onChangeTitle: (title: string) => void;
   onChangeInfo: (info: string) => void;
+  onChangeColumn3: (column3: string) => void;
 
   onChangeSelectedColumns: (columns: string[]) => void;
   onChangeSelectedRows: (rows: string[]) => void;

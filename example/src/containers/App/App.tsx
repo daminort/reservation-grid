@@ -17,9 +17,11 @@ const App: FC = () => {
 
   const [title, setTitle] = useState<string>(initialValue.title);
   const [info, setInfo] = useState<string>(initialValue.info);
+  const [column3, setColumn3] = useState<string>(initialValue.column3);
 
   const [highlightToday, setHighlightToday] = useState<boolean>(initialValue.highlightToday);
   const [showInfo, setShowInfo] = useState<boolean>(initialValue.showInfo);
+  const [showColumn3, setShowColumn3] = useState<boolean>(initialValue.showColumn3);
 
   const [selectedColumns, setSelectedColumns] = useState<string[]>(initialValue.selectedColumns);
   const [selectedRows, setSelectedRows] = useState<string[]>(initialValue.selectedRows);
@@ -34,8 +36,10 @@ const App: FC = () => {
     month,
     highlightToday,
     showInfo,
+    showColumn3,
     title,
     info,
+    column3,
     selectedColumns,
     selectedRows,
     theme,
@@ -46,9 +50,11 @@ const App: FC = () => {
     onChangeMonth: setMonth,
     onChangeHighlightToday: setHighlightToday,
     onChangeShowInfo: setShowInfo,
+    onChangeShowColumn3: setShowColumn3,
 
     onChangeTitle: setTitle,
     onChangeInfo: setInfo,
+    onChangeColumn3: setColumn3,
 
     onChangeSelectedColumns: setSelectedColumns,
     onChangeSelectedRows: setSelectedRows,

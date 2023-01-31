@@ -24,8 +24,10 @@ describe('Grid', () => {
     end: '2021-11-30',
     title: 'Number',
     info: 'Seats',
+    column3: 'Fruits',
     highlightToday: true,
     showInfo: true,
+    showColumn3: true,
     selectedColumns: [
       '2021-11-17',
       '2021-11-18',
