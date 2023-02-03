@@ -12,6 +12,7 @@ type OnClickEventData = {
 
 type OnClickTitle = (value: string) => void;
 type OnClickCell = (eventData: OnClickEventData) => void;
+type OnCellHover = (eventData: OnClickEventData) => void;
 
 export interface MainContext {
   start: string;
@@ -19,10 +20,12 @@ export interface MainContext {
   highlightToday?: boolean;
   showInfo?: boolean;
   showColumn3?: boolean;
+  showToolTip?: boolean;
   selectedColumns?: string[];
   selectedRows?: string[];
   theme?: Theme;
   locale?: LocaleKey;
   onClickTitle?: OnClickTitle,
   onClickCell?: OnClickCell,
+  onCellHover?:OnCellHover
 }

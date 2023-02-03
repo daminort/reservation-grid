@@ -6,9 +6,9 @@ export const row01: Row = {
   info: '4',
   column3: 'Banana',
   periods: [
-    { start: '2021-11-04', end: '2021-11-09', status: 'confirmed' },
+    { start: '2021-11-04', end: '2021-11-09', status: 'confirmed', data: 'sample' },
     { start: '2021-11-09', end: '2021-11-12', status: 'awaiting' },
-    { start: '2021-11-21', end: '2021-11-26', status: 'confirmed' },
+    { start: '2021-11-21', end: '2021-11-26', status: 'confirmed', data:'sample1' },
   ],
 };
 
@@ -16,8 +16,8 @@ export const row02: Row = {
   value: '# 2',
   info: '3 + 1',
   periods: [
-    { start: '2021-11-01', end: '2021-11-02', status: 'confirmed' },
-    { start: '2021-11-14', end: '2021-11-27', status: 'paid' },
+    { start: '2021-11-01', end: '2021-11-02', status: 'confirmed' , data:'test1'},
+    { start: '2021-11-14', end: '2021-11-27', status: 'paid', data:'test1' },
   ],
 };
 
@@ -31,7 +31,7 @@ export const row04: Row = {
   value: '# 4',
   info: '2 + 1',
   periods: [
-    { start: '2021-11-03', end: '2021-11-11', status: 'awaiting' },
+    { start: '2021-11-03', end: '2021-11-11', status: 'awaiting', data:'test2' },
   ],
 };
 
@@ -39,7 +39,7 @@ export const row05: Row = {
   value: '# 5',
   info: '4',
   periods: [
-    { start: '2021-11-01', end: '2021-11-05', status: 'inaccessible' },
+    { start: '2021-11-01', end: '2021-11-05', status: 'inaccessible', data:'test3' },
   ],
 };
 

@@ -5,9 +5,9 @@ export const row01: Row = {
   info: '4 seats',
   column3: 'Banana',
   periods: [
-    { start: '2021-11-04', end: '2021-11-09', status: 'confirmed' },
-    { start: '2021-11-09', end: '2021-11-12', status: 'awaiting' },
-    { start: '2021-11-21', end: '2021-11-26', status: 'confirmed' },
+    { start: '2021-11-04', end: '2021-11-09', status: 'confirmed',data:'sample' },
+    { start: '2021-11-09', end: '2021-11-12', status: 'awaiting',data:'sample1' },
+    { start: '2021-11-21', end: '2021-11-26', status: 'confirmed', data:'sample2' },
   ],
 };
 

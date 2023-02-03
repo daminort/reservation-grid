@@ -8,11 +8,12 @@ import { dateUtils } from 'lib/utils/dateUtils';
 
 import { Day } from 'lib/components/Day';
 import { RowProps } from './Row.interface';
+import '../../tooltip.scss'
 
 const Row: FC<RowProps> = (props) => {
   const { value, info, periods, selected, column3 } = props;
 
-  const { start, end, locale = 'en', highlightToday, showInfo, selectedColumns, onClickTitle, onClickCell, showColumn3 } = useMainContext();
+  const { start, end, locale = 'en', highlightToday, showInfo, selectedColumns, onClickTitle, onClickCell, showColumn3} = useMainContext();
   const range: DaysRange[] = useDaysRange(start, end, locale);
 
   const onClickTitleLocal = useCallback(() => {
@@ -31,7 +32,7 @@ const Row: FC<RowProps> = (props) => {
     onClickCell({ value, date, dayType, periods });
   }, [value, onClickCell]);
 
-  const renderCell = (cell: DaysRange) => {
+  const renderCell = (cell: DaysRange ) => {
 
     const isWeekend = cell.isWeekend;
     const isToday = highlightToday && cell.isToday;
@@ -45,14 +46,21 @@ const Row: FC<RowProps> = (props) => {
 
     const dayType = dateUtils.getDayType(cell.value, periods);
 
+    const dayData = dateUtils.getDayData(cell.value, periods);
+
     return (
       <td
-        key={cell.value}
-        className={className}
-        onClick={onClickCellLocal(cell.value, dayType, periods)}
-        data-testid={`cell-${value}-${cell.value}`}
-      >
-        <Day type={dayType} />
+          key={cell.value}
+          className={className}
+          onClick={onClickCellLocal(cell.value, dayType, periods)}
+          data-testid={`cell-${value}-${cell.value}`}
+        >
+        <div className='tooltip'>
+          <Day type={dayType} />
+          {dayData && 
+            <span className='tooltiptext'>{dayData}</span>
+          }
+        </div>
       </td>
     );
   };

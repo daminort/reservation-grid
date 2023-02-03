@@ -12,12 +12,14 @@ const initialValue: MainContext = {
   highlightToday: true,
   showInfo: true,
   showColumn3: true,
+  showToolTip:false,
   selectedColumns: [],
   selectedRows: [],
   theme: THEME,
   locale: 'en',
   onClickTitle: () => {},
   onClickCell: () => {},
+  onCellHover: () => {}
 }
 
 const mainContext = createContext<MainContext>(initialValue);
