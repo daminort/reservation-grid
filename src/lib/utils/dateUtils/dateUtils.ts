@@ -263,6 +263,19 @@ function getDayType(date: string, periods: ReservedPeriod[] = []): DayType {
     : detectIntersectionDayType(intersection);
 }
 
+function getDayData(date: string, periods: ReservedPeriod[] = []) {
+  for(const period of periods) {
+    const start = period.start
+    const end = period.end
+
+    if (date > start && date < end || date === start || date === end) {
+      return period.data
+    }
+  }
+
+  return ''
+}
+
 const dateUtils = {
   isInvalidDate,
   isToday,
@@ -280,6 +293,7 @@ const dateUtils = {
   detectDayType,
   detectIntersectionDayType,
   getDayType,
+  getDayData
 };
 
 export {

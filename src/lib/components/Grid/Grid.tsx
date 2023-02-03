@@ -45,6 +45,7 @@ const Grid: FC<GridProps> = (props) => {
     showInfo,
     showColumn3,
     selectedColumns,
+    data,
     selectedRows,
     theme: customTheme,
     locale: locale || 'en',
@@ -56,14 +57,14 @@ const Grid: FC<GridProps> = (props) => {
     const isSelected = Array.isArray(selectedRows) && selectedRows.includes(row.value);
 
     return (
-      <VisualRow
-        key={row.value}
-        value={row.value}
-        info={row.info}
-        column3={row.column3}
-        periods={row.periods}
-        selected={isSelected}
-      />
+        <VisualRow
+          key={row.value}
+          value={row.value}
+          info={row.info}
+          column3={row.column3}
+          periods={row.periods}
+          selected={isSelected}
+        />
     )
   }
 
