@@ -31,8 +31,8 @@ const App: FC = () => {
     value: '# 1',
     info: '4',
     periods: [
-      { start: '2021-11-04', end: '2021-11-09', status: 'confirmed' },
-      { start: '2021-11-09', end: '2021-11-12', status: 'awaiting' },
+      { start: '2021-11-04', end: '2021-11-09', status: 'confirmed', displayText:'User 1', onHoverToolTip: "<div><p>User 1</p></div>" },
+      { start: '2021-11-09', end: '2021-11-12', status: 'awaiting', displayText:'User 2', onHonHoverToolTip: "<div><p>User 2</p></div>" },
     ],
   ];
 
@@ -72,6 +72,8 @@ const App: FC = () => {
 |title|string|-|'Number'|
 |info|string|-|empty string|
 |data|Row[]|*|-|see example above
+|displayText|string|-|empty string|see example above
+|onHoverToolTip|html element|*|-|see example above
 |onClickTitle|Function|-|-|(value) => console.log(value)
 |onClickCell|Function|-|-|({ value, date, dayType }) => console.log({ value, date, dayType })
 
@@ -103,17 +105,17 @@ const data: Row[] = [
     value: 'Number 1',
     info: '4 seats',
     periods: [
-      { start: '2021-11-04', end: '2021-11-09', status: 'confirmed' },
-      { start: '2021-11-09', end: '2021-11-12', status: 'awaiting' },
-      { start: '2021-11-21', end: '2021-11-26', status: 'confirmed' },
+      { start: '2021-11-04', end: '2021-11-09', status: 'confirmed', displayText:'User 1', onHoverToolTip: "<div><p>User 1</p></div>" },
+      { start: '2021-11-09', end: '2021-11-12', status: 'awaiting', displayText:'User 2', onHoverToolTip: "<div><p>User 2</p></div>" },
+      { start: '2021-11-21', end: '2021-11-26', status: 'confirmed', displayText:'User 3', onHoverToolTip: "<div><p>User 3</p></div>" },
     ],
   },
   {
     value: 'Number 2',
     info: '3 seats',
     periods: [
-      { start: '2021-11-01', end: '2021-11-02', status: 'confirmed' },
-      { start: '2021-11-14', end: '2021-11-27', status: 'confirmed' },
+      { start: '2021-11-01', end: '2021-11-02', status: 'confirmed', displayText:'User 4', onHoverToolTip: "<div><p>User 4</p></div>" },
+      { start: '2021-11-14', end: '2021-11-27', status: 'confirmed', displayText:'User 5', onHoverToolTip: "<div><p>User 5</p></div>" },
     ],
   },
 ];

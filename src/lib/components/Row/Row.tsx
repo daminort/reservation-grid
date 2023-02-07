@@ -45,8 +45,8 @@ const Row: FC<RowProps> = (props) => {
     });
 
     const dayType = dateUtils.getDayType(cell.value, periods);
-
     const dayData = dateUtils.getDayData(cell.value, periods);
+    const displayText = dateUtils.getDisplayText(cell.value, periods)
 
     return (
       <td
@@ -55,10 +55,17 @@ const Row: FC<RowProps> = (props) => {
           onClick={onClickCellLocal(cell.value, dayType, periods)}
           data-testid={`cell-${value}-${cell.value}`}
         >
-        <div className='tooltip'>
+        <div className='cell'>
+          <br/>
           <Day type={dayType} />
+          <div className='displaytext'>
+            <p>{displayText}</p>
+          </div>
           {dayData && 
-            <span className='tooltiptext'>{dayData}</span>
+          <div className='tooltiptext'>
+            <div  dangerouslySetInnerHTML={ {__html: dayData} } />
+            <i></i>
+          </div>
           }
         </div>
       </td>
