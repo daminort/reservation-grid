@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react'
+
 import { LocaleKey } from 'lib/interfaces/locale.interface';
 import { MainContext } from 'lib/interfaces/mainContext.interface';
 import { Row } from 'lib/interfaces/row';
@@ -9,4 +11,6 @@ export type GridProps = Omit<MainContext, 'theme' | 'locale'> & {
   data: Row[];
   theme?: Partial<Theme>;
   locale?: LocaleKey;
+  renderTitle?: (row: Row) => ReactNode;
+  renderInfo?: (row: Row) => ReactNode;
 }

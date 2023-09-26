@@ -1,4 +1,5 @@
-import React, { FC, createContext, useContext } from 'react';
+import React, { createContext, useContext } from 'react';
+import type { FC, ReactNode } from 'react';
 
 import { MainContext } from 'lib/interfaces/mainContext.interface';
 import { THEME } from 'lib/constants/theme';
@@ -23,7 +24,8 @@ const mainContext = createContext<MainContext>(initialValue);
 
 interface Props {
   value: MainContext;
-};
+  children: ReactNode;
+}
 
 const MainProvider: FC<Props> = ({ value, children }) => {
   return (

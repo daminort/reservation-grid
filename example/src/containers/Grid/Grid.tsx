@@ -1,5 +1,5 @@
 import React, { FC, useMemo, useCallback } from 'react';
-import { ReservationGrid, GridProps } from '@daminort/reservation-grid';
+import { ReservationGrid, GridProps, Row } from '@daminort/reservation-grid';
 
 import { useMainContext } from 'context/mainContext';
 import { createStartEnd } from 'utils/dateUtils';
@@ -23,14 +23,18 @@ const Grid: FC = () => {
 
   const { start, end } = useMemo(() => createStartEnd(+year, +month), [year, month]);
 
-  const onClickTitle = useCallback((value) => {
+  const onClickTitle = useCallback((value: string) => {
     onChangeSelectedRows([value]);
   }, [onChangeSelectedRows]);
 
-  const onClickCell = useCallback(({ value, date }) => {
-    onChangeSelectedColumns([date]);
-    onChangeSelectedRows([value]);
+  const onClickCell = useCallback((data: { value: string, date: string }) => {
+    onChangeSelectedColumns([data.date]);
+    onChangeSelectedRows([data.value]);
   }, [onChangeSelectedColumns, onChangeSelectedRows]);
+
+  const renderTitle = useCallback((row: Row) => {
+    return `Room ${row.value}`;
+  }, []);
 
   const props: GridProps = {
     start,
@@ -44,6 +48,7 @@ const Grid: FC = () => {
     data,
     theme,
     locale,
+    renderTitle: renderTitle,
     onClickTitle: onClickTitle,
     onClickCell: onClickCell,
   }

@@ -1,4 +1,5 @@
 import React, { FC, useCallback } from 'react';
+import type { LocaleKey } from '@daminort/reservation-grid'
 
 import { useMainContext } from 'context/mainContext';
 import { Select } from 'components/Select';
@@ -20,19 +21,19 @@ const Header: FC = () => {
     onChangeLocale,
   } = useMainContext();
 
-  const onChangeMonthLocal = useCallback((month) => {
+  const onChangeMonthLocal = useCallback((month: string) => {
     const resData = replacePeriod(data, month, year);
     onChangeMonth(month);
     onChangeData(resData);
   }, [data, year, onChangeMonth, onChangeData]);
 
-  const onChangeYearLocal = useCallback((year) => {
+  const onChangeYearLocal = useCallback((year: string) => {
     const resData = replacePeriod(data, month, year);
     onChangeYear(year);
     onChangeData(resData);
   }, [data, month, onChangeYear, onChangeData]);
 
-  const onChangeLocaleLocal = useCallback((locale) => {
+  const onChangeLocaleLocal = useCallback((locale: LocaleKey) => {
     onChangeLocale(locale);
   }, [onChangeLocale]);
 

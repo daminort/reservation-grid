@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, ReactNode } from 'react';
 import { render, RenderResult } from '@testing-library/react';
 
 import { MainContext } from 'lib/interfaces/mainContext.interface';
@@ -14,7 +14,7 @@ function reduxRender(ui: ReactElement, partialValue?: Partial<MainContext>): Red
     ...(partialValue ? partialValue : {}),
   }
 
-  const Wrapper: FC = ({ children }): ReactElement => {
+  const Wrapper: FC = ({ children }: { children: ReactNode }): ReactElement => {
     return (
       <MainProvider value={contextValue}>
         {children}

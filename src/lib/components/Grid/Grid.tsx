@@ -22,6 +22,8 @@ const Grid: FC<GridProps> = (props) => {
     selectedRows = [],
     data,
     theme,
+    renderTitle,
+    renderInfo,
     locale = 'en',
     onClickTitle = () => {},
     onClickCell = () => {},
@@ -51,12 +53,14 @@ const Grid: FC<GridProps> = (props) => {
 
   const renderRow = (row: Row) => {
     const isSelected = Array.isArray(selectedRows) && selectedRows.includes(row.value);
+    const value = renderTitle ? renderTitle(row) : row.value;
+    const info = renderInfo ? renderInfo(row) : row.info;
 
     return (
       <VisualRow
         key={row.value}
-        value={row.value}
-        info={row.info}
+        value={value}
+        info={info}
         periods={row.periods}
         selected={isSelected}
       />

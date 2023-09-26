@@ -1,3 +1,4 @@
+import { DayType } from 'lib/interfaces/grid.interface'
 import React, { FC, useCallback } from 'react';
 import clsx from 'clsx';
 
@@ -23,7 +24,7 @@ const Row: FC<RowProps> = (props) => {
     onClickTitle(value);
   }, [value, onClickTitle]);
 
-  const onClickCellLocal = useCallback((date, dayType) => () => {
+  const onClickCellLocal = useCallback((date: string, dayType: DayType) => () => {
     if (!onClickCell) {
       return;
     }
