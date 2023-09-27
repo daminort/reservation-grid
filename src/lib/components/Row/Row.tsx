@@ -1,14 +1,16 @@
-import { DayType } from 'lib/interfaces/grid.interface'
 import React, { FC, useCallback } from 'react';
 import clsx from 'clsx';
 
-import { DaysRange } from 'lib/interfaces/daysRange.interface';
+import type { DayType } from 'lib/interfaces/grid.interface';
+import type { DaysRange } from 'lib/interfaces/daysRange.interface';
+
 import { useMainContext } from 'lib/context';
 import { useDaysRange } from 'lib/hooks';
 import { dateUtils } from 'lib/utils/dateUtils';
 
 import { Day } from 'lib/components/Day';
-import { RowProps } from './Row.interface';
+
+import type { RowProps } from './Row.interface';
 
 const Row: FC<RowProps> = (props) => {
   const { value, info, periods, selected } = props;
@@ -21,7 +23,7 @@ const Row: FC<RowProps> = (props) => {
       return;
     }
 
-    onClickTitle(value);
+    onClickTitle(value as string);
   }, [value, onClickTitle]);
 
   const onClickCellLocal = useCallback((date: string, dayType: DayType) => () => {
@@ -29,12 +31,12 @@ const Row: FC<RowProps> = (props) => {
       return;
     }
 
-    onClickCell({ value, date, dayType });
+    onClickCell({ value: value as string, date, dayType });
   }, [value, onClickCell]);
 
   const renderCell = (cell: DaysRange) => {
 
-    const isWeekend = cell.isWeekend;
+    const { isWeekend } = cell;
     const isToday = highlightToday && cell.isToday;
     const isSelected = selected || (Array.isArray(selectedColumns) && selectedColumns.includes(cell.value));
 

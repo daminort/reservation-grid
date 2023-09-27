@@ -2,10 +2,10 @@ import React from 'react';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
+import { grid } from 'lib/mocks';
+
 import { GridProps } from './Grid.interface';
 import { Grid } from './index';
-
-import { grid } from 'lib/mocks';
 
 describe('Grid', () => {
 
@@ -37,11 +37,11 @@ describe('Grid', () => {
     data: grid,
     onClickTitle: jest.fn(),
     onClickCell: jest.fn(),
-  }
+  };
 
   const setup = (props: GridProps) => {
     return render(<Grid {...props} />);
-  }
+  };
 
   it('render with minimal props', () => {
     const { getByTestId } = setup(minProps);

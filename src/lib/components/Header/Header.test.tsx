@@ -2,10 +2,10 @@ import React from 'react';
 import { cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import { MainContext } from 'lib/interfaces/mainContext.interface';
-
+import type { MainContext } from 'lib/interfaces/mainContext.interface';
 import { testingUtils } from 'lib/utils/testingUtils';
-import { HeaderProps } from './Header.interface';
+
+import type { HeaderProps } from './Header.interface';
 import { Header } from './index';
 
 describe('Header', () => {
@@ -22,16 +22,16 @@ describe('Header', () => {
   const props: HeaderProps = {
     title: 'Number',
     info: 'Seats',
-  }
+  };
 
   const setup = (props: HeaderProps) => {
     const table = (
       <table>
         <Header {...props} />
       </table>
-    )
+    );
     return testingUtils.reduxRender(table, partialContext);
-  }
+  };
 
   it('normal render', () => {
     const { getByTestId } = setup(props);
@@ -40,8 +40,8 @@ describe('Header', () => {
     const info = getByTestId('info');
     const start = getByTestId(`cell-day-${partialContext.start}`);
     const end = getByTestId(`cell-date-${partialContext.end}`);
-    const weekend01 = getByTestId(`cell-day-2021-11-14`);
-    const weekend02 = getByTestId(`cell-date-2021-11-27`);
+    const weekend01 = getByTestId('cell-day-2021-11-14');
+    const weekend02 = getByTestId('cell-date-2021-11-27');
 
     expect(title).toBeInTheDocument();
     expect(info).toBeInTheDocument();

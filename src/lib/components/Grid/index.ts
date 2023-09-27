@@ -1,7 +1,10 @@
 import { Grid } from './Grid';
-import { GridProps } from './Grid.interface';
+import type { GridProps } from './Grid.interface';
+
+export type {
+  GridProps,
+};
 
 export {
   Grid,
-  GridProps,
-}
+};

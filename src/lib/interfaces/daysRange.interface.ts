@@ -1,4 +1,4 @@
-import { Locale } from './locale.interface';
+import type { Locale } from './locale.interface';
 
 export interface DaysRangeOptions {
   start: string;

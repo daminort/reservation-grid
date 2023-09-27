@@ -11,7 +11,11 @@ export interface Locale {
 export interface Locales {
   en: Locale,
   ua: Locale,
-  ru: Locale,
+  de: Locale,
+  fr: Locale,
+  it: Locale,
+  es: Locale,
+  pl: Locale,
 }
 
-export type LocaleKey = 'en' | 'ua' | 'ru';
+export type LocaleKey = keyof Locales;

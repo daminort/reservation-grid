@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react';
 
+import type { DaysRange } from 'lib/interfaces/daysRange.interface';
+import type { LocaleKey } from 'lib/interfaces/locale.interface';
 import { useDaysRange } from 'lib/hooks/useDaysRange/useDaysRange';
-import { DaysRange } from 'lib/interfaces/daysRange.interface';
-import { LocaleKey } from 'lib/interfaces/locale.interface';
 
 describe('useTheme', () => {
 
@@ -11,8 +11,12 @@ describe('useTheme', () => {
   const locale: LocaleKey = 'en';
 
   const expected: DaysRange[] = [
-    { value: '2021-07-04', date: 4, day: 'Su', isWeekend: true, isToday: false },
-    { value: '2021-07-05', date: 5, day: 'Mo', isWeekend: false, isToday: false },
+    {
+      value: '2021-07-04', date: 4, day: 'Su', isWeekend: true, isToday: false,
+    },
+    {
+      value: '2021-07-05', date: 5, day: 'Mo', isWeekend: false, isToday: false,
+    },
   ];
 
   it('normal render', () => {

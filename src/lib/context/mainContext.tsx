@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from 'react';
 import type { FC, ReactNode } from 'react';
 
-import { MainContext } from 'lib/interfaces/mainContext.interface';
+import type { MainContext } from 'lib/interfaces/mainContext.interface';
 import { THEME } from 'lib/constants/theme';
 import { dateUtils } from 'lib/utils/dateUtils';
 
@@ -18,7 +18,7 @@ const initialValue: MainContext = {
   locale: 'en',
   onClickTitle: () => {},
   onClickCell: () => {},
-}
+};
 
 const mainContext = createContext<MainContext>(initialValue);
 
@@ -41,4 +41,4 @@ export {
   MainProvider,
   useMainContext,
   initialValue,
-}
+};

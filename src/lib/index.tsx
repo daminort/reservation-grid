@@ -1,12 +1,13 @@
-import React, { FC } from 'react';
+import React from 'react';
+import type { FC } from 'react';
 
-import { DaysRangeOptions, DaysRange } from 'lib/interfaces/daysRange.interface';
-import { DateStatus, DatePosition, DayType } from 'lib/interfaces/grid.interface';
-import { Locale, Locales, LocaleKey } from 'lib/interfaces/locale.interface';
-import { MainContext } from 'lib/interfaces/mainContext.interface';
-import { ReservedPeriod } from 'lib/interfaces/reservedPeriod';
-import { Row } from 'lib/interfaces/row';
-import { Theme } from 'lib/interfaces/theme.interface';
+import type { DaysRangeOptions, DaysRange } from 'lib/interfaces/daysRange.interface';
+import type { DateStatus, DatePosition, DayType } from 'lib/interfaces/grid.interface';
+import type { Locale, Locales, LocaleKey } from 'lib/interfaces/locale.interface';
+import type { MainContext } from 'lib/interfaces/mainContext.interface';
+import type { ReservedPeriod } from 'lib/interfaces/reservedPeriod';
+import type { Row } from 'lib/interfaces/row';
+import type { Theme } from 'lib/interfaces/theme.interface';
 import { THEME } from 'lib/constants/theme';
 
 import { Grid, GridProps } from 'lib/components/Grid';
@@ -19,15 +20,24 @@ const ReservationGrid: FC<GridProps> = (props) => {
 };
 
 export default ReservationGrid;
-export {
-  ReservationGrid,
+
+export type {
   GridProps,
-  DaysRange, DaysRangeOptions,
-  DateStatus, DatePosition, DayType,
-  Locale, Locales, LocaleKey,
+  DaysRange,
+  DaysRangeOptions,
+  DateStatus,
+  DatePosition,
+  DayType,
+  Locale,
+  Locales,
+  LocaleKey,
   MainContext,
   ReservedPeriod,
   Row,
   Theme,
+};
+
+export {
+  ReservationGrid,
   THEME,
-}
+};

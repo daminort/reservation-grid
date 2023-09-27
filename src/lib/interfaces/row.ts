@@ -1,4 +1,4 @@
-import { ReservedPeriod } from 'lib/interfaces/reservedPeriod';
+import type { ReservedPeriod } from './reservedPeriod';
 
 export interface Row {
   value: string;

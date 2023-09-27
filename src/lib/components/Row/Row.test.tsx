@@ -2,13 +2,13 @@ import React from 'react';
 import { cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import { MainContext } from 'lib/interfaces/mainContext.interface';
+import type { MainContext } from 'lib/interfaces/mainContext.interface';
 
 import { testingUtils } from 'lib/utils/testingUtils';
-import { RowProps } from './Row.interface';
-import { Row } from './index';
-
 import { row01 } from 'lib/mocks';
+
+import type { RowProps } from './Row.interface';
+import { Row } from './index';
 
 describe('Row', () => {
 
@@ -35,9 +35,9 @@ describe('Row', () => {
           <Row {...props} />
         </tbody>
       </table>
-    )
+    );
     return testingUtils.reduxRender(row, partialContext);
-  }
+  };
 
   it('normal render', () => {
     const { getByTestId } = setup({ ...row01, selected: false });
@@ -47,11 +47,11 @@ describe('Row', () => {
     const info = getByTestId(`info-${row01.value}`);
     const start = getByTestId(`cell-${row01.value}-${partialContext.start}`);
     const end = getByTestId(`cell-${row01.value}-${partialContext.end}`);
-    const selected01 = getByTestId(`cell-Number 1-2021-11-17`);
-    const selected02 = getByTestId(`cell-Number 1-2021-11-18`);
-    const selected03 = getByTestId(`cell-Number 1-2021-11-17`);
-    const weekend01 = getByTestId(`cell-Number 1-2021-11-14`);
-    const weekend02 = getByTestId(`cell-Number 1-2021-11-27`);
+    const selected01 = getByTestId('cell-Number 1-2021-11-17');
+    const selected02 = getByTestId('cell-Number 1-2021-11-18');
+    const selected03 = getByTestId('cell-Number 1-2021-11-17');
+    const weekend01 = getByTestId('cell-Number 1-2021-11-14');
+    const weekend02 = getByTestId('cell-Number 1-2021-11-27');
 
     expect(row).toBeInTheDocument();
     expect(title).toBeInTheDocument();

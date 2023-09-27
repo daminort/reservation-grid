@@ -9,20 +9,28 @@ import {
   addDays,
 } from 'date-fns';
 
-import { Locale } from 'lib/interfaces/locale.interface';
-import { DaysRange, DaysRangeOptions } from 'lib/interfaces/daysRange.interface';
-import { DatePosition, DateStatus, DayType } from 'lib/interfaces/grid.interface';
-import { ReservedPeriod } from 'lib/interfaces/reservedPeriod'
+import type { Locale } from 'lib/interfaces/locale.interface';
+import type { DaysRange, DaysRangeOptions } from 'lib/interfaces/daysRange.interface';
+import type { DatePosition, DateStatus, DayType } from 'lib/interfaces/grid.interface';
+import type { ReservedPeriod } from 'lib/interfaces/reservedPeriod';
+
 import { FORMATS } from 'lib/constants/locales';
 
-import { DateString, Unit, DayMap, Intersection } from './types'
+import type { DateString, Unit, DayMap, Intersection } from './types';
 
 function isInvalidDate(date: unknown): boolean {
-  if (date instanceof Date && date.toString() === 'Invalid Date') {
-    return true;
-  }
+  return date instanceof Date && date.toString() === 'Invalid Date';
+}
 
-  return false;
+function parse(date: string): Date {
+  const datePart = date.substring(0, 10);
+  const parsed = libParse(datePart, FORMATS.date, new Date());
+
+  return !isInvalidDate(parsed) ? parsed : new Date(1970, 0, 1);
+}
+
+function format(date: Date): string {
+  return libFormat(date, FORMATS.date);
 }
 
 function isToday(date: DateString): boolean {
@@ -42,17 +50,6 @@ function isWeekend(date: string): boolean {
   const dayKey = libFormat(parsed, 'cccccc').toLowerCase();
 
   return (dayKey === 'sa' || dayKey === 'su');
-}
-
-function parse(date: string): Date {
-  const datePart = date.substring(0, 10);
-  const parsed = libParse(datePart, FORMATS.date, new Date());
-
-  return !isInvalidDate(parsed) ? parsed : new Date(1970, 0, 1);
-}
-
-function format(date: Date): string {
-  return libFormat(date, FORMATS.date);
 }
 
 function startOf(date: DateString, unit: Unit = 'day'): string {
@@ -129,7 +126,7 @@ function getDay(date: string, locale: Locale): string {
 
   const dayKey = libFormat(parsed, 'cccccc').toLowerCase();
 
-  return locale[dayKey] || '??';
+  return locale[dayKey as keyof Locale] || '??';
 }
 
 function createDaysRange(options: DaysRangeOptions): DaysRange[] {
@@ -189,7 +186,7 @@ function detectDayType(status: DateStatus, position: DatePosition): DayType {
       'middle': 'single.normal.full',
       'end': 'single.normal.end',
     },
-  }
+  };
 
   return map[status][position] || 'single.free';
 }
@@ -223,7 +220,7 @@ function getDayType(date: string, periods: ReservedPeriod[] = []): DayType {
     }
 
     return a.start < b.start ? -1 : 1;
-  })
+  });
 
   for (const period of sortedPeriods) {
     const position = detectDayPosition(date, period.start, period.end);

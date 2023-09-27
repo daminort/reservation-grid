@@ -1,6 +1,7 @@
-import { Locale } from 'lib/interfaces/locale.interface';
+import type { Locale } from 'lib/interfaces/locale.interface';
+import type { ReservedPeriod } from 'lib/interfaces/reservedPeriod';
 import { LOCALES } from 'lib/constants/locales';
-import { ReservedPeriod } from 'lib/interfaces/reservedPeriod'
+
 import { dateUtils } from './index';
 
 describe('dateUtils', () => {
@@ -83,7 +84,7 @@ describe('dateUtils', () => {
       const actual = dateUtils.format(date);
 
       expect(actual).toEqual(start);
-    })
+    });
   });
 
   describe('startOf', () => {
@@ -193,13 +194,17 @@ describe('dateUtils', () => {
         start: '2021-07-04',
         end: '2021-07-05',
         locale,
-      }
+      };
 
       const actual = dateUtils.createDaysRange(options);
 
       expect(actual).toEqual([
-        { value: '2021-07-04', date: 4, day: 'Su', isWeekend: true, isToday: false },
-        { value: '2021-07-05', date: 5, day: 'Mo', isWeekend: false, isToday: false },
+        {
+          value: '2021-07-04', date: 4, day: 'Su', isWeekend: true, isToday: false,
+        },
+        {
+          value: '2021-07-05', date: 5, day: 'Mo', isWeekend: false, isToday: false,
+        },
       ]);
     });
 
@@ -208,7 +213,7 @@ describe('dateUtils', () => {
         start: '2021-07-30',
         end: '2021-07-28',
         locale,
-      }
+      };
 
       const actual = dateUtils.createDaysRange(options);
 
@@ -296,7 +301,7 @@ describe('dateUtils', () => {
       { start: '2021-06-20', end: '2021-06-25', status: 'awaiting' },
       { start: '2021-06-25', end: '2021-06-28', status: 'awaiting' },
       { start: '2021-06-29', end: '2021-06-30', status: 'inaccessible' },
-    ]
+    ];
 
     it('start', () => {
       const actual = dateUtils.getDayType('2021-06-10', periods);

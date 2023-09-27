@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React from 'react';
+import type { FC } from 'react';
 
 import {
   DoubleMaybeEndStart,
@@ -30,7 +31,7 @@ const days = {
   'double.maybe.end.start': <DoubleMaybeEndStart />,
   'intersection.normal.end.maybe.start': <IntersectionNormalEndMaybeStart />,
   'intersection.maybe.end.normal.start': <IntersectionMaybeEndNormalStart />,
-}
+};
 
 const Day: FC<DayProps> = ({ type }) => {
 

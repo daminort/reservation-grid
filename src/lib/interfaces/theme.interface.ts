@@ -13,4 +13,4 @@ export interface Theme {
   'color.weekend': string;
   'width.title': string;
   'width.info': string;
-};
+}

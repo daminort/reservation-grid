@@ -1,8 +1,8 @@
 import React, { FC, useState, useEffect } from 'react';
 
+import type { Theme } from 'lib/interfaces/theme.interface';
+import type { Row } from 'lib/interfaces/row';
 import { MainProvider } from 'lib/context';
-import { Theme } from 'lib/interfaces/theme.interface';
-import { Row } from 'lib/interfaces/row';
 import { styleUtils } from 'lib/utils/styleUtils';
 
 import { Header } from 'lib/components/Header';
@@ -64,8 +64,8 @@ const Grid: FC<GridProps> = (props) => {
         periods={row.periods}
         selected={isSelected}
       />
-    )
-  }
+    );
+  };
 
   return (
     <MainProvider value={contextValue}>
@@ -84,4 +84,6 @@ const Grid: FC<GridProps> = (props) => {
   );
 };
 
-export { Grid };
+export {
+  Grid,
+};

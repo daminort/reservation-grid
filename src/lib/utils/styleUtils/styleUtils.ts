@@ -1,11 +1,11 @@
-import { Theme } from 'lib/interfaces/theme.interface';
+import type { Theme } from 'lib/interfaces/theme.interface';
 import { THEME } from 'lib/constants/theme';
 
 function createTheme(customTheme: Partial<Theme> = {}): Theme {
   return {
     ...THEME,
     ...customTheme,
-  }
+  };
 }
 
 function setVariables(customTheme: Theme): void {

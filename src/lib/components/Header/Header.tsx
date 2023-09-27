@@ -1,11 +1,13 @@
-import { DaysRange } from 'lib/interfaces/daysRange.interface';
-import React, { FC } from 'react';
+import React from 'react';
+import type { FC } from 'react';
 import clsx from 'clsx';
+
+import type { DaysRange } from 'lib/interfaces/daysRange.interface';
 
 import { useMainContext } from 'lib/context';
 import { useDaysRange } from 'lib/hooks';
 
-import { HeaderProps } from './Header.interface';
+import type { HeaderProps } from './Header.interface';
 
 const Header: FC<HeaderProps> = ({ title, info }) => {
 
@@ -14,7 +16,7 @@ const Header: FC<HeaderProps> = ({ title, info }) => {
 
   const renderCell = (cell: DaysRange, field: keyof DaysRange) => {
 
-    const isWeekend = cell.isWeekend;
+    const { isWeekend } = cell;
     const isToday = highlightToday && cell.isToday;
     const isSelected = Array.isArray(selectedColumns) && selectedColumns.includes(cell.value);
 

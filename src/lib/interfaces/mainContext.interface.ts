@@ -1,6 +1,6 @@
-import { DayType } from './grid.interface'
-import { Theme } from './theme.interface';
-import { LocaleKey } from './locale.interface';
+import type { DayType } from './grid.interface';
+import type { Theme } from './theme.interface';
+import type { LocaleKey } from './locale.interface';
 
 type OnClickEventData = {
   value: string;

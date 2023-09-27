@@ -120,9 +120,17 @@ const data: Row[] = [
 #### Locale
 <a name="locale"></a>
 
-Locale can be either `en`, `ua` or `ru`:
+Available locales:
+- English
+- Ukrainian
+- German
+- French
+- Italian
+- Spain
+- Poland
+
 ```javascript
-type LocaleKey = 'en' | 'ua' | 'ru';
+type LocaleKey = 'en' | 'ua' | 'de' | 'fr' | 'it' | 'es' | 'pl';
 ```
 
 #### Theme

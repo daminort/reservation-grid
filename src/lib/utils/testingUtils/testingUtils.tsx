@@ -1,5 +1,9 @@
-import React, { FC, ReactElement, ReactNode } from 'react';
-import { render, RenderResult } from '@testing-library/react';
+import React from 'react';
+import type { FC, ReactElement, PropsWithChildren } from 'react';
+
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { render } from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
 
 import { MainContext } from 'lib/interfaces/mainContext.interface';
 import { MainProvider, initialValue } from 'lib/context';
@@ -11,14 +15,15 @@ type ReduxRenderResult = RenderResult & {
 function reduxRender(ui: ReactElement, partialValue?: Partial<MainContext>): ReduxRenderResult {
   const contextValue: MainContext = {
     ...initialValue,
-    ...(partialValue ? partialValue : {}),
-  }
+    ...(partialValue || {}),
+  };
 
-  const Wrapper: FC = ({ children }: { children: ReactNode }): ReactElement => {
+  const Wrapper: FC<PropsWithChildren> = ({ children }): ReactElement => {
     return (
       <MainProvider value={contextValue}>
         {children}
-      </MainProvider>)
+      </MainProvider>
+    );
   };
 
   const result = render(ui, { wrapper: Wrapper });
@@ -29,11 +34,8 @@ function reduxRender(ui: ReactElement, partialValue?: Partial<MainContext>): Red
   };
 }
 
-const testingUtils = {
-  reduxRender,
-};
+const testingUtils = { reduxRender };
 
 export {
   testingUtils,
-  ReduxRenderResult,
-}
+};

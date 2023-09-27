@@ -1,4 +1,4 @@
-import { DateStatus } from './grid.interface'
+import type { DateStatus } from './grid.interface';
 
 export interface ReservedPeriod {
   start: string;

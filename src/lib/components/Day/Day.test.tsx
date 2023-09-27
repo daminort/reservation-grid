@@ -2,7 +2,7 @@ import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import { DayType } from 'lib/interfaces/grid.interface';
+import type { DayType } from 'lib/interfaces/grid.interface';
 import { Day } from './index';
 
 describe('Day', () => {
@@ -13,7 +13,7 @@ describe('Day', () => {
 
   const setup = (type: DayType) => {
     return render(<Day type={type} />);
-  }
+  };
 
   const types: DayType[] = [
     'single.free',
@@ -35,5 +35,5 @@ describe('Day', () => {
 
     const actual = getByTestId(type);
     expect(actual).toBeInTheDocument();
-  })
+  });
 });

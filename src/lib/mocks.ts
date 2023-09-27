@@ -1,4 +1,4 @@
-import { Row } from 'lib/interfaces/row';
+import type { Row } from 'lib/interfaces/row';
 
 export const row01: Row = {
   value: 'Number 1',
