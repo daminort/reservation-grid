@@ -1,12 +1,12 @@
 import type { ReactNode } from 'react';
-import type { Row } from 'lib/interfaces/row';
+import type { TRow } from 'lib/interfaces/row';
 
-type RowProps = Omit<Row, 'value' | 'info'> & {
+type TRowProps = Omit<TRow, 'title' | 'info'> & {
   selected: boolean;
-  value: string | ReactNode;
+  title: string | ReactNode;
   info: string | ReactNode;
 };
 
 export type {
-  RowProps,
+  TRowProps,
 };

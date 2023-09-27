@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 
 import { grid } from 'lib/mocks';
 
-import { GridProps } from './Grid.interface';
+import { TGridProps } from './Grid.interface';
 import { Grid } from './index';
 
 describe('Grid', () => {
@@ -13,13 +13,13 @@ describe('Grid', () => {
     cleanup();
   });
 
-  const minProps: GridProps = {
+  const minProps: TGridProps = {
     start: '2021-11-01',
     end: '2021-11-30',
     data: grid,
   };
 
-  const props: GridProps = {
+  const props: TGridProps = {
     start: '2021-11-01',
     end: '2021-11-30',
     title: 'Number',
@@ -39,7 +39,7 @@ describe('Grid', () => {
     onClickCell: jest.fn(),
   };
 
-  const setup = (props: GridProps) => {
+  const setup = (props: TGridProps) => {
     return render(<Grid {...props} />);
   };
 

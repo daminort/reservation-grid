@@ -1,7 +1,7 @@
 import type { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 
-type RegularProps = Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'onChange'>;
+type TRegularProps = Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'onChange'>;
 
-export type InputProps = RegularProps & {
+export type TInputProps = TRegularProps & {
   onChange: (value: string) => void;
 };

@@ -1,10 +1,10 @@
 import React from 'react';
 import type { ChangeEvent, FC } from 'react';
 
-import type { InputProps } from './Input.interface';
+import type { TInputProps } from './Input.interface';
 import s from './Input.module.css';
 
-const Input: FC<InputProps> = ({ value, onChange, ...restProps }) => {
+const Input: FC<TInputProps> = ({ value, onChange, ...restProps }) => {
 
   const onChangeLocal = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);

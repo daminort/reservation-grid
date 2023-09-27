@@ -9,14 +9,14 @@ import {
   addDays,
 } from 'date-fns';
 
-import type { Locale } from 'lib/interfaces/locale.interface';
-import type { DaysRange, DaysRangeOptions } from 'lib/interfaces/daysRange.interface';
-import type { DatePosition, DateStatus, DayType } from 'lib/interfaces/grid.interface';
-import type { ReservedPeriod } from 'lib/interfaces/reservedPeriod';
+import type { TLocale } from 'lib/interfaces/locale.interface';
+import type { TDaysRange, TDaysRangeOptions } from 'lib/interfaces/daysRange.interface';
+import type { TDatePosition, TDateStatus, TDayType } from 'lib/interfaces/grid.interface';
+import type { TReservedPeriod } from 'lib/interfaces/reservedPeriod';
 
 import { FORMATS } from 'lib/constants/locales';
 
-import type { DateString, Unit, DayMap, Intersection } from './types';
+import type { TDateString, TUnit, TDayMap, TIntersection } from './types';
 
 function isInvalidDate(date: unknown): boolean {
   return date instanceof Date && date.toString() === 'Invalid Date';
@@ -33,7 +33,7 @@ function format(date: Date): string {
   return libFormat(date, FORMATS.date);
 }
 
-function isToday(date: DateString): boolean {
+function isToday(date: TDateString): boolean {
   const originDate = (typeof date === 'string')
     ? parse(date)
     : date;
@@ -52,7 +52,7 @@ function isWeekend(date: string): boolean {
   return (dayKey === 'sa' || dayKey === 'su');
 }
 
-function startOf(date: DateString, unit: Unit = 'day'): string {
+function startOf(date: TDateString, unit: TUnit = 'day'): string {
   const originDate = (typeof date === 'string')
     ? parse(date)
     : date;
@@ -69,7 +69,7 @@ function startOf(date: DateString, unit: Unit = 'day'): string {
   }
 }
 
-function endOf(date: DateString, unit: Unit = 'month'): string {
+function endOf(date: TDateString, unit: TUnit = 'month'): string {
   const originDate = (typeof date === 'string')
     ? parse(date)
     : date;
@@ -84,7 +84,7 @@ function endOf(date: DateString, unit: Unit = 'month'): string {
   }
 }
 
-function addDay(date: DateString, amount: number = 1): string {
+function addDay(date: TDateString, amount: number = 1): string {
   const originDate = (typeof date === 'string')
     ? parse(date)
     : startOfDay(date);
@@ -118,7 +118,7 @@ function getDate(date: string): number {
   return parsed.getDate();
 }
 
-function getDay(date: string, locale: Locale): string {
+function getDay(date: string, locale: TLocale): string {
   const parsed = parse(date);
   if (!parsed || format(parsed) === '1970-01-01') {
     return '??';
@@ -126,12 +126,12 @@ function getDay(date: string, locale: Locale): string {
 
   const dayKey = libFormat(parsed, 'cccccc').toLowerCase();
 
-  return locale[dayKey as keyof Locale] || '??';
+  return locale[dayKey as keyof TLocale] || '??';
 }
 
-function createDaysRange(options: DaysRangeOptions): DaysRange[] {
+function createDaysRange(options: TDaysRangeOptions): TDaysRange[] {
   const { start, end, locale } = options;
-  const result: DaysRange[] = [];
+  const result: TDaysRange[] = [];
 
   const range = createRange(start, end);
   if (range.length === 0) {
@@ -151,7 +151,7 @@ function createDaysRange(options: DaysRangeOptions): DaysRange[] {
   return result;
 }
 
-function detectDayPosition(date: string, start: string, end: string): DatePosition {
+function detectDayPosition(date: string, start: string, end: string): TDatePosition {
   if (date === start) {
     return 'start';
   }
@@ -167,7 +167,7 @@ function detectDayPosition(date: string, start: string, end: string): DatePositi
   return 'none';
 }
 
-function detectDayType(status: DateStatus, position: DatePosition): DayType {
+function detectDayType(status: TDateStatus, position: TDatePosition): TDayType {
   if (position === 'none') {
     return 'single.free';
   }
@@ -175,7 +175,7 @@ function detectDayType(status: DateStatus, position: DatePosition): DayType {
     return 'single.disabled';
   }
 
-  const map: DayMap = {
+  const map: TDayMap = {
     'awaiting': {
       'start': 'single.maybe.start',
       'middle': 'single.maybe.full',
@@ -191,7 +191,7 @@ function detectDayType(status: DateStatus, position: DatePosition): DayType {
   return map[status][position] || 'single.free';
 }
 
-function detectIntersectionDayType(intersection: Intersection): DayType {
+function detectIntersectionDayType(intersection: TIntersection): TDayType {
   const [one, two] = intersection;
 
   if (one === 'single.normal.end' && two === 'single.normal.start') {
@@ -210,11 +210,11 @@ function detectIntersectionDayType(intersection: Intersection): DayType {
   return one;
 }
 
-function getDayType(date: string, periods: ReservedPeriod[] = []): DayType {
+function getDayType(date: string, periods: TReservedPeriod[] = []): TDayType {
 
-  const intersection: Intersection = [];
+  const intersection: TIntersection = [];
 
-  const sortedPeriods: ReservedPeriod[] = periods.sort((a, b) => {
+  const sortedPeriods: TReservedPeriod[] = periods.sort((a, b) => {
     if (a.start === b.start) {
       return 0;
     }

@@ -1,12 +1,12 @@
-import type { Locale } from './locale.interface';
+import type { TLocale } from './locale.interface';
 
-export interface DaysRangeOptions {
+export interface TDaysRangeOptions {
   start: string;
   end: string;
-  locale: Locale;
+  locale: TLocale;
 }
 
-export interface DaysRange {
+export interface TDaysRange {
   value: string;
   date: number;
   day: string;

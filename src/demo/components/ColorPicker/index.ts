@@ -1,8 +1,8 @@
 import { ColorPicker } from './ColorPicker';
-import type { ColorPickerProps } from './ColorPicker.interface';
+import type { TColorPickerProps } from './ColorPicker.interface';
 
 export type {
-  ColorPickerProps,
+  TColorPickerProps,
 };
 
 export {

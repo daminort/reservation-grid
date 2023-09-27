@@ -3,15 +3,15 @@ import type { FC, ReactNode } from 'react';
 
 import { THEME } from 'lib/index';
 
-import type { MainContext } from 'demo/interfaces/mainContext.interface';
+import type { TMainContext } from 'demo/interfaces/mainContext.interface';
 import { grid } from 'demo/mocks';
 
-const initialValue: MainContext = {
+const initialValue: TMainContext = {
   year: '2021',
   month: '11',
   highlightToday: true,
   showInfo: true,
-  title: 'Number',
+  title: 'Room',
   info: 'Seats',
   selectedColumns: [
     '2021-11-17',
@@ -19,7 +19,7 @@ const initialValue: MainContext = {
     '2021-11-19',
   ],
   selectedRows: [
-    '# 3',
+    '3',
   ],
   theme: THEME,
   locale: 'en',
@@ -42,14 +42,14 @@ const initialValue: MainContext = {
   onChangeData: () => {},
 };
 
-const mainContext = createContext<MainContext>(initialValue);
+const mainContext = createContext<TMainContext>(initialValue);
 
-interface Props {
-  value: MainContext;
+interface TProps {
+  value: TMainContext;
   children: ReactNode;
 }
 
-const MainProvider: FC<Props> = ({ value, children }) => {
+const MainProvider: FC<TProps> = ({ value, children }) => {
   return (
     <mainContext.Provider value={value}>
       {children}
@@ -57,7 +57,7 @@ const MainProvider: FC<Props> = ({ value, children }) => {
   );
 };
 
-const useMainContext = (): MainContext => useContext<MainContext>(mainContext);
+const useMainContext = (): TMainContext => useContext<TMainContext>(mainContext);
 
 export {
   MainProvider,

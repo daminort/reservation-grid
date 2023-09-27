@@ -3,6 +3,7 @@ import React, { FC, useMemo, useCallback, MouseEvent } from 'react';
 import { useMainContext } from 'demo/context/mainContext';
 import { createStartEnd } from 'demo/utils/dateUtils';
 
+import iconCopy from 'demo/assets/iconCopy.svg';
 import s from './Props.module.css';
 
 const Props: FC = () => {
@@ -53,17 +54,17 @@ const Props: FC = () => {
     <div className={s.wrapper}>
       {showCopy && (
         <img
-          src="copy.svg"
           alt="Copy"
+          src={iconCopy}
           className={s.icon}
           onClick={onClickCopy}
         />
       )}
       <pre className={s.container}>
-      <code>
-        {props}
-      </code>
-    </pre>
+        <code>
+          {props}
+        </code>
+      </pre>
 
     </div>
   );

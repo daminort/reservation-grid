@@ -5,10 +5,10 @@ import { HexColorPicker } from 'react-colorful';
 
 import { Input } from 'demo/components/Input';
 
-import type { ColorPickerProps } from './ColorPicker.interface';
+import type { TColorPickerProps } from './ColorPicker.interface';
 import s from './ColorPicker.module.css';
 
-const ColorPicker: FC<ColorPickerProps> = ({ value, onChange }) => {
+const ColorPicker: FC<TColorPickerProps> = ({ value, onChange }) => {
 
   const [visible, setVisible] = useState<boolean>(false);
   const [color, setColor] = useState<string>(value);
@@ -26,14 +26,12 @@ const ColorPicker: FC<ColorPickerProps> = ({ value, onChange }) => {
     <div className={s.wrapper}>
       {visible && (
         <>
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
           <div className={s.dimmer} onClick={onChangeVisible(false)} />
           <div className={s.container}>
             <HexColorPicker color={color} onChange={onChangeLocal} />
           </div>
         </>
       )}
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
       <div
         className={s.example}
         style={{ backgroundColor: color }}

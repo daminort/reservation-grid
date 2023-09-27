@@ -1,19 +1,19 @@
 import React from 'react';
 import type { FC } from 'react';
 
-import type { DaysRangeOptions, DaysRange } from 'lib/interfaces/daysRange.interface';
-import type { DateStatus, DatePosition, DayType } from 'lib/interfaces/grid.interface';
-import type { Locale, Locales, LocaleKey } from 'lib/interfaces/locale.interface';
-import type { MainContext } from 'lib/interfaces/mainContext.interface';
-import type { ReservedPeriod } from 'lib/interfaces/reservedPeriod';
-import type { Row } from 'lib/interfaces/row';
-import type { Theme } from 'lib/interfaces/theme.interface';
+import type { TDaysRangeOptions, TDaysRange } from 'lib/interfaces/daysRange.interface';
+import type { TDateStatus, TDatePosition, TDayType } from 'lib/interfaces/grid.interface';
+import type { TLocale, TLocales, TLocaleKey } from 'lib/interfaces/locale.interface';
+import type { TMainContext } from 'lib/interfaces/mainContext.interface';
+import type { TReservedPeriod } from 'lib/interfaces/reservedPeriod';
+import type { TRow } from 'lib/interfaces/row';
+import type { TTheme } from 'lib/interfaces/theme.interface';
 import { THEME } from 'lib/constants/theme';
 
-import { Grid, GridProps } from 'lib/components/Grid';
+import { Grid, TGridProps } from 'lib/components/Grid';
 import './styles.scss';
 
-const ReservationGrid: FC<GridProps> = (props) => {
+const ReservationGrid: FC<TGridProps> = (props) => {
   return (
     <Grid {...props} />
   );
@@ -22,19 +22,19 @@ const ReservationGrid: FC<GridProps> = (props) => {
 export default ReservationGrid;
 
 export type {
-  GridProps,
-  DaysRange,
-  DaysRangeOptions,
-  DateStatus,
-  DatePosition,
-  DayType,
-  Locale,
-  Locales,
-  LocaleKey,
-  MainContext,
-  ReservedPeriod,
-  Row,
-  Theme,
+  TGridProps,
+  TDaysRange,
+  TDaysRangeOptions,
+  TDateStatus,
+  TDatePosition,
+  TDayType,
+  TLocale,
+  TLocales,
+  TLocaleKey,
+  TMainContext,
+  TReservedPeriod,
+  TRow,
+  TTheme,
 };
 
 export {

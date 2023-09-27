@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import type { FC } from 'react';
 
-import type { Theme, LocaleKey, Row } from 'lib/index';
+import type { TTheme, TLocaleKey, TRow } from 'lib/index';
 
-import type { MainContext } from 'demo/interfaces/mainContext.interface';
+import type { TMainContext } from 'demo/interfaces/mainContext.interface';
 import { MainProvider, initialValue } from 'demo/context/mainContext';
 
 import { Grid } from 'demo/containers/Grid';
@@ -28,20 +28,20 @@ const App: FC = () => {
   const [selectedColumns, setSelectedColumns] = useState<string[]>(initialValue.selectedColumns);
   const [selectedRows, setSelectedRows] = useState<string[]>(initialValue.selectedRows);
 
-  const [theme, setTheme] = useState<Theme>(initialValue.theme);
-  const [locale, setLocale] = useState<LocaleKey>(initialValue.locale);
+  const [theme, setTheme] = useState<TTheme>(initialValue.theme);
+  const [locale, setLocale] = useState<TLocaleKey>(initialValue.locale);
 
-  const [data, setData] = useState<Row[]>(initialValue.data);
+  const [data, setData] = useState<TRow[]>(initialValue.data);
 
-  const onChangeTheme = useCallback((partialTheme: Partial<Theme>) => {
-    const nextTheme: Theme = {
+  const onChangeTheme = useCallback((partialTheme: Partial<TTheme>) => {
+    const nextTheme: TTheme = {
       ...theme,
       ...partialTheme,
     };
     setTheme(nextTheme);
   }, [theme]);
 
-  const contextValue: MainContext = {
+  const contextValue: TMainContext = {
     year,
     month,
     highlightToday,

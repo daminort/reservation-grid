@@ -1,8 +1,9 @@
-import type { Row } from 'lib/interfaces/row';
-import type { SelectItem } from 'demo/components/Select';
+import type { TRow } from 'lib/interfaces/row';
+import type { TSelectItem } from 'demo/components/Select';
 
-export const row01: Row = {
-  value: '# 1',
+export const row01: TRow = {
+  id: '1',
+  title: 'Room #1',
   info: '4',
   periods: [
     { start: '2021-11-04', end: '2021-11-09', status: 'confirmed' },
@@ -11,8 +12,9 @@ export const row01: Row = {
   ],
 };
 
-export const row02: Row = {
-  value: '# 2',
+export const row02: TRow = {
+  id: '2',
+  title: 'Room #2',
   info: '3 + 1',
   periods: [
     { start: '2021-11-01', end: '2021-11-02', status: 'confirmed' },
@@ -20,22 +22,25 @@ export const row02: Row = {
   ],
 };
 
-export const row03: Row = {
-  value: '# 3',
+export const row03: TRow = {
+  id: '3',
+  title: 'Room #3',
   info: '6',
   periods: [],
 };
 
-export const row04: Row = {
-  value: '# 4',
+export const row04: TRow = {
+  id: '4',
+  title: 'Room #4',
   info: '2 + 1',
   periods: [
     { start: '2021-11-03', end: '2021-11-11', status: 'awaiting' },
   ],
 };
 
-export const row05: Row = {
-  value: '# 5',
+export const row05: TRow = {
+  id: '5',
+  title: 'Room #5',
   info: '4',
   periods: [
     { start: '2021-11-01', end: '2021-11-05', status: 'inaccessible' },
@@ -50,7 +55,7 @@ export const grid = [
   row05,
 ];
 
-export const monthItems: SelectItem[] = [
+export const monthItems: TSelectItem[] = [
   { value: '01', title: 'January' },
   { value: '02', title: 'February' },
   { value: '03', title: 'March' },
@@ -65,7 +70,7 @@ export const monthItems: SelectItem[] = [
   { value: '12', title: 'December' },
 ];
 
-export const yearItems: SelectItem[] = [
+export const yearItems: TSelectItem[] = [
   { value: '2021', title: '2021' },
   { value: '2022', title: '2022' },
   { value: '2023', title: '2023' },
@@ -73,7 +78,7 @@ export const yearItems: SelectItem[] = [
   { value: '2025', title: '2025' },
 ];
 
-export const localeItems: SelectItem[] = [
+export const localeItems: TSelectItem[] = [
   { value: 'en', title: 'English' },
   { value: 'ua', title: 'Ukrainian' },
   { value: 'de', title: 'German' },

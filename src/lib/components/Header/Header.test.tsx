@@ -2,10 +2,10 @@ import React from 'react';
 import { cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import type { MainContext } from 'lib/interfaces/mainContext.interface';
+import type { TMainContext } from 'lib/interfaces/mainContext.interface';
 import { testingUtils } from 'lib/utils/testingUtils';
 
-import type { HeaderProps } from './Header.interface';
+import type { THeaderProps } from './Header.interface';
 import { Header } from './index';
 
 describe('Header', () => {
@@ -14,17 +14,17 @@ describe('Header', () => {
     cleanup();
   });
 
-  const partialContext: Partial<MainContext> = {
+  const partialContext: Partial<TMainContext> = {
     start: '2021-11-01',
     end: '2021-11-30',
   };
 
-  const props: HeaderProps = {
+  const props: THeaderProps = {
     title: 'Number',
     info: 'Seats',
   };
 
-  const setup = (props: HeaderProps) => {
+  const setup = (props: THeaderProps) => {
     const table = (
       <table>
         <Header {...props} />

@@ -1,5 +1,5 @@
-import type { DayType } from 'lib/interfaces/grid.interface';
+import type { TDayType } from 'lib/interfaces/grid.interface';
 
-export interface DayProps {
-  type: DayType,
+export interface TDayProps {
+  type: TDayType,
 }

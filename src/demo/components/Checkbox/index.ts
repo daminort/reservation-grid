@@ -1,7 +1,9 @@
 import { Checkbox } from './Checkbox';
-import type { CheckboxProps } from './Checkbox.interface';
+import type { TCheckboxProps } from './Checkbox.interface';
 
-export type { CheckboxProps };
+export type {
+  TCheckboxProps,
+};
 export {
   Checkbox,
-}
+};

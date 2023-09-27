@@ -2,19 +2,19 @@ import React from 'react';
 import type { FC } from 'react';
 import clsx from 'clsx';
 
-import type { DaysRange } from 'lib/interfaces/daysRange.interface';
+import type { TDaysRange } from 'lib/interfaces/daysRange.interface';
 
 import { useMainContext } from 'lib/context';
 import { useDaysRange } from 'lib/hooks';
 
-import type { HeaderProps } from './Header.interface';
+import type { THeaderProps } from './Header.interface';
 
-const Header: FC<HeaderProps> = ({ title, info }) => {
+const Header: FC<THeaderProps> = ({ title, info }) => {
 
   const { start, end, locale = 'en', highlightToday, showInfo, selectedColumns } = useMainContext();
   const range = useDaysRange(start, end, locale);
 
-  const renderCell = (cell: DaysRange, field: keyof DaysRange) => {
+  const renderCell = (cell: TDaysRange, field: keyof TDaysRange) => {
 
     const { isWeekend } = cell;
     const isToday = highlightToday && cell.isToday;

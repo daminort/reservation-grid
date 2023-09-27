@@ -1,8 +1,8 @@
 import { Select } from './Select';
-import type { SelectProps, SelectItem } from './Select.interface';
+import type { TSelectProps, TSelectItem } from './Select.interface';
 
 export type {
-  SelectProps, SelectItem,
+  TSelectProps, TSelectItem,
 };
 
 export {

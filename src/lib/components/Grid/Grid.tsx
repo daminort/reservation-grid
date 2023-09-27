@@ -1,16 +1,16 @@
 import React, { FC, useState, useEffect } from 'react';
 
-import type { Theme } from 'lib/interfaces/theme.interface';
-import type { Row } from 'lib/interfaces/row';
+import type { TTheme } from 'lib/interfaces/theme.interface';
+import type { TRow } from 'lib/interfaces/row';
 import { MainProvider } from 'lib/context';
 import { styleUtils } from 'lib/utils/styleUtils';
 
 import { Header } from 'lib/components/Header';
 import { Row as VisualRow } from 'lib/components/Row';
 
-import { GridProps } from './Grid.interface';
+import { TGridProps } from './Grid.interface';
 
-const Grid: FC<GridProps> = (props) => {
+const Grid: FC<TGridProps> = (props) => {
   const {
     start,
     end,
@@ -29,7 +29,7 @@ const Grid: FC<GridProps> = (props) => {
     onClickCell = () => {},
   } = props;
 
-  const [customTheme, setCustomTheme] = useState<Theme>(styleUtils.createTheme(theme));
+  const [customTheme, setCustomTheme] = useState<TTheme>(styleUtils.createTheme(theme));
 
   useEffect(() => {
     const resTheme = styleUtils.createTheme(theme);
@@ -51,15 +51,16 @@ const Grid: FC<GridProps> = (props) => {
     onClickCell,
   };
 
-  const renderRow = (row: Row) => {
-    const isSelected = Array.isArray(selectedRows) && selectedRows.includes(row.value);
-    const value = renderTitle ? renderTitle(row) : row.value;
+  const renderRow = (row: TRow) => {
+    const isSelected = Array.isArray(selectedRows) && selectedRows.includes(row.id);
+    const title = renderTitle ? renderTitle(row) : row.title;
     const info = renderInfo ? renderInfo(row) : row.info;
 
     return (
       <VisualRow
-        key={row.value}
-        value={value}
+        key={row.id}
+        id={row.id}
+        title={title}
         info={info}
         periods={row.periods}
         selected={isSelected}

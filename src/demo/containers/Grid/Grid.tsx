@@ -2,7 +2,7 @@ import React, { useMemo, useCallback } from 'react';
 import type { FC } from 'react';
 
 import { ReservationGrid } from 'lib/index';
-import type { GridProps, Row } from 'lib/index';
+import type { TGridProps, TRow } from 'lib/index';
 
 import { useMainContext } from 'demo/context/mainContext';
 import { createStartEnd } from 'demo/utils/dateUtils';
@@ -30,16 +30,16 @@ const Grid: FC = () => {
     onChangeSelectedRows([value]);
   }, [onChangeSelectedRows]);
 
-  const onClickCell = useCallback((data: { value: string, date: string }) => {
+  const onClickCell = useCallback((data: { id: string, date: string }) => {
     onChangeSelectedColumns([data.date]);
-    onChangeSelectedRows([data.value]);
+    onChangeSelectedRows([data.id]);
   }, [onChangeSelectedColumns, onChangeSelectedRows]);
 
-  const renderTitle = useCallback((row: Row) => {
-    return `Room ${row.value}`;
+  const renderTitle = useCallback((row: TRow) => {
+    return row.title;
   }, []);
 
-  const props: GridProps = {
+  const props: TGridProps = {
     start,
     end,
     title,

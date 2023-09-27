@@ -1,13 +1,13 @@
 import type { DetailedHTMLProps, SelectHTMLAttributes } from 'react';
 
-export type SelectItem = {
+export type TSelectItem = {
   value: string | number;
   title: string | number;
 };
 
-type RegularProps = Omit<DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>, 'onChange'>;
+type TRegularProps = Omit<DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>, 'onChange'>;
 
-export type SelectProps = RegularProps & {
-  items: SelectItem[];
+export type TSelectProps = TRegularProps & {
+  items: TSelectItem[];
   onChange: (value: string) => void;
 };

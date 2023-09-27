@@ -15,7 +15,7 @@ npm install @daminort/reservation-grid
 
 ```javascript
 import React, { FC, useCallback } from 'react';
-import { ReservationGrid, DayType, Row } from '@daminort/reservation-grid';
+import { ReservationGrid, TDayType, TRow } from '@daminort/reservation-grid';
 
 const App: FC = () => {
 
@@ -23,12 +23,13 @@ const App: FC = () => {
     console.log(`Selected row with # ${value}`);
   }, []);
 
-  const onClickCell = useCallback(({ value: string, date: string, dayType: DayType }) => {
+  const onClickCell = useCallback(({ id: string, date: string, dayType: TDayType }) => {
     console.log('Selected cell:', { value, date, dayType });
   }, []);
 
-  const data: Row[] = [
-    value: '# 1',
+  const data: TRow[] = [
+    id: '1',
+    title: 'Room #1',
     info: '4',
     periods: [
       { start: '2021-11-04', end: '2021-11-09', status: 'confirmed' },
@@ -66,10 +67,10 @@ const App: FC = () => {
 |selectedColumns|string[]|-|[ ]|['2021-11-01', '2021-11-02']
 |selectedRows|string[]|-|[ ]|['# 1']
 |theme|Theme|-|default theme|
-|locale|LocaleKey|-|en|
+|locale|TLocaleKey|-|en|
 |title|string|-|'Number'|
 |info|string|-|empty string|
-|data|Row[]|*|-|see example above
+|data|TRow[]|*|-|see example above
 |onClickTitle|Function|-|-|(value) => console.log(value)
 |onClickCell|Function|-|-|({ value, date, dayType }) => console.log({ value, date, dayType })
 
@@ -77,28 +78,30 @@ const App: FC = () => {
 <a name="data"></a>
 
 The data is an array of the Rows:
-```javascript
-type DateStatus = 'awaiting' | 'confirmed' | 'inaccessible';
 
-interface ReservedPeriod {
+```javascript
+type TDateStatus = 'awaiting' | 'confirmed' | 'inaccessible';
+
+interface TReservedPeriod {
   start: string;
   end: string;
-  status: DateStatus;
+  status: TDateStatus;
 }
 
-interface Row {
-  value: string;
+interface TRow {
+  id: string;
+  title: string;
   info: string;
-  periods: ReservedPeriod[];
+  periods: TReservedPeriod[];
 }
-
 ```
 
 Example:
 ```javascript
-const data: Row[] = [
+const data: TRow[] = [
   {
-    value: 'Number 1',
+    id: '1',
+    title: 'Number 1',
     info: '4 seats',
     periods: [
       { start: '2021-11-04', end: '2021-11-09', status: 'confirmed' },
@@ -107,7 +110,8 @@ const data: Row[] = [
     ],
   },
   {
-    value: 'Number 2',
+    id: '2',
+    title: 'Number 2',
     info: '3 seats',
     periods: [
       { start: '2021-11-01', end: '2021-11-02', status: 'confirmed' },
@@ -130,7 +134,8 @@ Available locales:
 - Poland
 
 ```javascript
-type LocaleKey = 'en' | 'ua' | 'de' | 'fr' | 'it' | 'es' | 'pl';
+type
+TLocaleKey = 'en' | 'ua' | 'de' | 'fr' | 'it' | 'es' | 'pl';
 ```
 
 #### Theme
@@ -140,7 +145,7 @@ You can change appearance of the Reservation Grid. And you don't need to pass th
 
 Default theme:
 ```javascript
-const THEME: Theme = {
+const THEME: TTheme = {
   'font.face': 'sans-serif',
   'font.size': '14px',
   'color.text': '#30424F',
@@ -161,32 +166,16 @@ const THEME: Theme = {
 ## Local development
 <a name="local"></a>
 
-In order to have an ability test package locally without need to publish it to the NPM follow the next steps:
-
-1. Build package
+Just start an application as usual:
 ```
-npm run build
+npm start
 ```
-
-2. Go to the package in which you are planning to use Reservation Grid and link it there (in our case - `example` folder)
-```
-cd example
-npm run relink
-```
-This command will remove folder `node_modules/@daminort` and create new actual linked folder.
-
-3. Go back to the package folder and link React package. It is needed to avoid errors regarding different React instances:
-```
-cd ..
-npm run relink
-```
-
-You should go through points 1-2 every time you update package.
 
 ## Publishing
 <a name="publishing"></a>
 
 ```
+npm run build
 npm login
 npm publish --access public
 ```
@@ -198,7 +187,7 @@ npm publish --access public
 npm run deploy
 ```
 
-It will build the demo application from `/example` folder and publish it via `gh-pages` package 
+It will build the demo application from `/demo` folder and publish it via `gh-pages` package 
 
 ## License
 <a name="license"></a>

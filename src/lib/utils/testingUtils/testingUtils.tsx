@@ -5,15 +5,15 @@ import type { FC, ReactElement, PropsWithChildren } from 'react';
 import { render } from '@testing-library/react';
 import type { RenderResult } from '@testing-library/react';
 
-import { MainContext } from 'lib/interfaces/mainContext.interface';
+import { TMainContext } from 'lib/interfaces/mainContext.interface';
 import { MainProvider, initialValue } from 'lib/context';
 
-type ReduxRenderResult = RenderResult & {
-  context: MainContext;
+type TReduxRenderResult = RenderResult & {
+  context: TMainContext;
 };
 
-function reduxRender(ui: ReactElement, partialValue?: Partial<MainContext>): ReduxRenderResult {
-  const contextValue: MainContext = {
+function reduxRender(ui: ReactElement, partialValue?: Partial<TMainContext>): TReduxRenderResult {
+  const contextValue: TMainContext = {
     ...initialValue,
     ...(partialValue || {}),
   };

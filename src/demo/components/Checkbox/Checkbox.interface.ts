@@ -1,8 +1,8 @@
 import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 
-type RegularProps = Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'onChange'>;
+type TRegularProps = Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'onChange'>;
 
-export type CheckboxProps = RegularProps & {
+export type TCheckboxProps = TRegularProps & {
   onChange: (value: boolean) => void;
   label: string;
 };

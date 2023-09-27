@@ -1,4 +1,4 @@
-export interface HeaderProps {
+export interface THeaderProps {
   title: string;
   info: string;
 }

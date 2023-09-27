@@ -1,7 +1,8 @@
-import type { Row } from 'lib/interfaces/row';
+import type { TRow } from 'lib/interfaces/row';
 
-export const row01: Row = {
-  value: 'Number 1',
+export const row01: TRow = {
+  id: '1',
+  title: 'Number 1',
   info: '4 seats',
   periods: [
     { start: '2021-11-04', end: '2021-11-09', status: 'confirmed' },
@@ -10,8 +11,9 @@ export const row01: Row = {
   ],
 };
 
-export const row02: Row = {
-  value: 'Number 2',
+export const row02: TRow = {
+  id: '2',
+  title: 'Number 2',
   info: '3 seats',
   periods: [
     { start: '2021-11-01', end: '2021-11-02', status: 'confirmed' },
@@ -19,22 +21,25 @@ export const row02: Row = {
   ],
 };
 
-export const row03: Row = {
-  value: 'Number 3',
+export const row03: TRow = {
+  id: '3',
+  title: 'Number 3',
   info: '6 seats',
   periods: [],
 };
 
-export const row04: Row = {
-  value: 'Number 4',
+export const row04: TRow = {
+  id: '4',
+  title: 'Number 4',
   info: '2 seats',
   periods: [
     { start: '2021-11-03', end: '2021-11-11', status: 'awaiting' },
   ],
 };
 
-export const row05: Row = {
-  value: 'Number 5',
+export const row05: TRow = {
+  id: '5',
+  title: 'Number 5',
   info: '4 seats',
   periods: [
     { start: '2021-11-01', end: '2021-11-05', status: 'inaccessible' },

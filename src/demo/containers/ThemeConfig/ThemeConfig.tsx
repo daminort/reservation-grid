@@ -1,6 +1,6 @@
 import React, { useCallback, Fragment, useMemo } from 'react';
 import type { FC } from 'react';
-import type { Theme } from 'lib/index';
+import type { TTheme } from 'lib/index';
 
 import { useMainContext } from 'demo/context/mainContext';
 import { ColorPicker } from 'demo/components/ColorPicker';
@@ -8,7 +8,7 @@ import { debounce } from 'demo/utils/commonUtils';
 
 import s from './Theme.module.css';
 
-const keys: Array<keyof Theme> = [
+const keys: Array<keyof TTheme> = [
   'color.text',
   'color.background',
   'color.border',
@@ -28,7 +28,7 @@ const ThemeConfig: FC = () => {
     return debounce(onChangeTheme, 1000);
   }, [onChangeTheme]);
 
-  const onChangeColor = useCallback((key: keyof Theme) => (value: string) => {
+  const onChangeColor = useCallback((key: keyof TTheme) => (value: string) => {
     const resTheme = {
       ...theme,
       [key]: value,

@@ -1,10 +1,10 @@
 import React from 'react';
 import type { ChangeEvent, FC } from 'react';
 
-import type { CheckboxProps } from './Checkbox.interface';
+import type { TCheckboxProps } from './Checkbox.interface';
 import s from './Checkbox.module.css';
 
-const Checkbox: FC<CheckboxProps> = ({ id, checked, label, onChange, ...restProps }) => {
+const Checkbox: FC<TCheckboxProps> = ({ id, checked, label, onChange, ...restProps }) => {
 
   const onChangeLocal = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.checked);

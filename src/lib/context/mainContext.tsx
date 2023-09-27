@@ -1,13 +1,13 @@
 import React, { createContext, useContext } from 'react';
 import type { FC, ReactNode } from 'react';
 
-import type { MainContext } from 'lib/interfaces/mainContext.interface';
+import type { TMainContext } from 'lib/interfaces/mainContext.interface';
 import { THEME } from 'lib/constants/theme';
 import { dateUtils } from 'lib/utils/dateUtils';
 
 const today = dateUtils.format(new Date());
 
-const initialValue: MainContext = {
+const initialValue: TMainContext = {
   start: dateUtils.startOf(today, 'month'),
   end: dateUtils.endOf(today, 'month'),
   highlightToday: true,
@@ -20,14 +20,14 @@ const initialValue: MainContext = {
   onClickCell: () => {},
 };
 
-const mainContext = createContext<MainContext>(initialValue);
+const mainContext = createContext<TMainContext>(initialValue);
 
-interface Props {
-  value: MainContext;
+interface TProps {
+  value: TMainContext;
   children: ReactNode;
 }
 
-const MainProvider: FC<Props> = ({ value, children }) => {
+const MainProvider: FC<TProps> = ({ value, children }) => {
   return (
     <mainContext.Provider value={value}>
       {children}
@@ -35,7 +35,7 @@ const MainProvider: FC<Props> = ({ value, children }) => {
   );
 };
 
-const useMainContext = (): MainContext => useContext<MainContext>(mainContext);
+const useMainContext = (): TMainContext => useContext<TMainContext>(mainContext);
 
 export {
   MainProvider,

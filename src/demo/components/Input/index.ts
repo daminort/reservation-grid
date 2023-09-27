@@ -1,8 +1,8 @@
 import { Input } from './Input';
-import type { InputProps } from './Input.interface';
+import type { TInputProps } from './Input.interface';
 
 export type {
-  InputProps,
+  TInputProps,
 };
 
 export {

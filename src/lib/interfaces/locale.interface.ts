@@ -1,4 +1,4 @@
-export interface Locale {
+export interface TLocale {
   mo: string;
   tu: string;
   we: string;
@@ -8,14 +8,14 @@ export interface Locale {
   su: string;
 }
 
-export interface Locales {
-  en: Locale,
-  ua: Locale,
-  de: Locale,
-  fr: Locale,
-  it: Locale,
-  es: Locale,
-  pl: Locale,
+export interface TLocales {
+  en: TLocale,
+  ua: TLocale,
+  de: TLocale,
+  fr: TLocale,
+  it: TLocale,
+  es: TLocale,
+  pl: TLocale,
 }
 
-export type LocaleKey = keyof Locales;
+export type TLocaleKey = keyof TLocales;

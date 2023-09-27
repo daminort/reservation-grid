@@ -1,7 +1,7 @@
-type DateStatus = 'awaiting' | 'confirmed' | 'inaccessible';
-type DatePosition = 'none' | 'start' | 'middle' | 'end';
+type TDateStatus = 'awaiting' | 'confirmed' | 'inaccessible';
+type TDatePosition = 'none' | 'start' | 'middle' | 'end';
 
-type DayType =
+type TDayType =
   | 'single.free'
   | 'single.disabled'
   | 'single.normal.full'
@@ -16,7 +16,7 @@ type DayType =
   | 'intersection.maybe.end.normal.start';
 
 export type {
-  DateStatus,
-  DatePosition,
-  DayType,
+  TDateStatus,
+  TDatePosition,
+  TDayType,
 };

@@ -1,4 +1,4 @@
-export interface Theme {
+export interface TTheme {
   'font.face': string;
   'font.size': string;
   'color.text': string;

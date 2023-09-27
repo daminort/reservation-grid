@@ -1,8 +1,8 @@
 import React, { FC, useCallback } from 'react';
 import clsx from 'clsx';
 
-import type { DayType } from 'lib/interfaces/grid.interface';
-import type { DaysRange } from 'lib/interfaces/daysRange.interface';
+import type { TDayType } from 'lib/interfaces/grid.interface';
+import type { TDaysRange } from 'lib/interfaces/daysRange.interface';
 
 import { useMainContext } from 'lib/context';
 import { useDaysRange } from 'lib/hooks';
@@ -10,31 +10,41 @@ import { dateUtils } from 'lib/utils/dateUtils';
 
 import { Day } from 'lib/components/Day';
 
-import type { RowProps } from './Row.interface';
+import type { TRowProps } from './Row.interface';
 
-const Row: FC<RowProps> = (props) => {
-  const { value, info, periods, selected } = props;
+const Row: FC<TRowProps> = (props) => {
+  const { id, title, info, periods, selected } = props;
 
-  const { start, end, locale = 'en', highlightToday, showInfo, selectedColumns, onClickTitle, onClickCell } = useMainContext();
-  const range: DaysRange[] = useDaysRange(start, end, locale);
+  const {
+    start,
+    end,
+    locale = 'en',
+    highlightToday,
+    showInfo,
+    selectedColumns,
+    onClickTitle,
+    onClickCell,
+  } = useMainContext();
+
+  const range: TDaysRange[] = useDaysRange(start, end, locale);
 
   const onClickTitleLocal = useCallback(() => {
     if (!onClickTitle) {
       return;
     }
 
-    onClickTitle(value as string);
-  }, [value, onClickTitle]);
+    onClickTitle(id);
+  }, [id, onClickTitle]);
 
-  const onClickCellLocal = useCallback((date: string, dayType: DayType) => () => {
+  const onClickCellLocal = useCallback((date: string, dayType: TDayType) => () => {
     if (!onClickCell) {
       return;
     }
 
-    onClickCell({ value: value as string, date, dayType });
-  }, [value, onClickCell]);
+    onClickCell({ id, date, dayType });
+  }, [id, onClickCell]);
 
-  const renderCell = (cell: DaysRange) => {
+  const renderCell = (cell: TDaysRange) => {
 
     const { isWeekend } = cell;
     const isToday = highlightToday && cell.isToday;
@@ -53,7 +63,7 @@ const Row: FC<RowProps> = (props) => {
         key={cell.value}
         className={className}
         onClick={onClickCellLocal(cell.value, dayType)}
-        data-testid={`cell-${value}-${cell.value}`}
+        data-testid={`cell-${id}-${cell.value}`}
       >
         <Day type={dayType} />
       </td>
@@ -64,9 +74,9 @@ const Row: FC<RowProps> = (props) => {
   const clsInfo = clsx('info', { selected });
 
   return (
-    <tr data-testid={`row-${value}`}>
-      <td className={clsTitle} onClick={onClickTitleLocal} data-testid={`title-${value}`}>{value}</td>
-      {showInfo && (<td className={clsInfo} data-testid={`info-${value}`}>{info}</td>)}
+    <tr data-testid={`row-${id}`}>
+      <td className={clsTitle} onClick={onClickTitleLocal} data-testid={`title-${id}`}>{title}</td>
+      {showInfo && (<td className={clsInfo} data-testid={`info-${id}`}>{info}</td>)}
       {range.map(cell => renderCell(cell))}
     </tr>
   );

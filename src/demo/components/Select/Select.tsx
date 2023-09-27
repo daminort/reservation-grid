@@ -1,10 +1,10 @@
 import React from 'react';
 import type { ChangeEvent, FC } from 'react';
 
-import type { SelectProps } from './Select.interface';
+import type { TSelectProps } from './Select.interface';
 import s from './Select.module.css';
 
-const Select: FC<SelectProps> = ({ value, items, onChange, ...restProps }) => {
+const Select: FC<TSelectProps> = ({ value, items, onChange, ...restProps }) => {
 
   const onChangeLocal = (e: ChangeEvent<HTMLSelectElement>) => {
     onChange(e.target.value);

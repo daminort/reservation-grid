@@ -1,8 +1,8 @@
 import { Grid } from './Grid';
-import type { GridProps } from './Grid.interface';
+import type { TGridProps } from './Grid.interface';
 
 export type {
-  GridProps,
+  TGridProps,
 };
 
 export {

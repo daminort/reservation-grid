@@ -1,6 +1,6 @@
-import type { Theme, LocaleKey, Row } from 'lib/index';
+import type { TTheme, TLocaleKey, TRow } from 'lib/index';
 
-export interface MainContext {
+export interface TMainContext {
   year: string;
   month: string;
   highlightToday: boolean;
@@ -9,10 +9,10 @@ export interface MainContext {
   info: string;
   selectedColumns: string[];
   selectedRows: string[];
-  theme: Theme;
-  locale: LocaleKey;
+  theme: TTheme;
+  locale: TLocaleKey;
 
-  data: Row[];
+  data: TRow[];
 
   onChangeYear: (year: string) => void;
   onChangeMonth: (month: string) => void;
@@ -25,8 +25,8 @@ export interface MainContext {
   onChangeSelectedColumns: (columns: string[]) => void;
   onChangeSelectedRows: (rows: string[]) => void;
 
-  onChangeTheme: (theme: Partial<Theme>) => void;
-  onChangeLocale: (locale: LocaleKey) => void;
+  onChangeTheme: (theme: Partial<TTheme>) => void;
+  onChangeLocale: (locale: TLocaleKey) => void;
 
-  onChangeData: (data: Row[]) => void;
+  onChangeData: (data: TRow[]) => void;
 }

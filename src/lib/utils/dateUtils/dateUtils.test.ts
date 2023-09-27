@@ -1,5 +1,5 @@
-import type { Locale } from 'lib/interfaces/locale.interface';
-import type { ReservedPeriod } from 'lib/interfaces/reservedPeriod';
+import type { TLocale } from 'lib/interfaces/locale.interface';
+import type { TReservedPeriod } from 'lib/interfaces/reservedPeriod';
 import { LOCALES } from 'lib/constants/locales';
 
 import { dateUtils } from './index';
@@ -18,7 +18,7 @@ describe('dateUtils', () => {
     '2021-08-02',
   ];
 
-  const locale: Locale = LOCALES.en;
+  const locale: TLocale = LOCALES.en;
 
   describe('isWeekend', () => {
 
@@ -294,7 +294,7 @@ describe('dateUtils', () => {
 
   describe('getDayType', () => {
 
-    const periods: ReservedPeriod[] = [
+    const periods: TReservedPeriod[] = [
       { start: '2021-06-04', end: '2021-06-09', status: 'confirmed' },
       { start: '2021-06-10', end: '2021-06-12', status: 'awaiting' },
       { start: '2021-06-16', end: '2021-06-20', status: 'confirmed' },

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import type { FC } from 'react';
-import type { LocaleKey } from 'lib/index';
+import type { TLocaleKey } from 'lib/index';
 
 import { useMainContext } from 'demo/context/mainContext';
 import { Select } from 'demo/components/Select';
@@ -36,7 +36,7 @@ const Header: FC = () => {
   }, [data, month, onChangeYear, onChangeData]);
 
   const onChangeLocaleLocal = useCallback((locale: string) => {
-    onChangeLocale(locale as LocaleKey);
+    onChangeLocale(locale as TLocaleKey);
   }, [onChangeLocale]);
 
   return (

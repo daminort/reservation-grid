@@ -1,10 +1,10 @@
-import type { Theme } from 'lib/interfaces/theme.interface';
+import type { TTheme } from 'lib/interfaces/theme.interface';
 import { THEME } from 'lib/constants/theme';
 import { styleUtils } from './index';
 
 describe('styleUtils', () => {
 
-  const customTheme: Partial<Theme> = {
+  const customTheme: Partial<TTheme> = {
     'font.face': 'arial',
     'font.size': '16px',
   };
@@ -12,14 +12,14 @@ describe('styleUtils', () => {
   describe('createTheme', () => {
 
     it('correct input', () => {
-      const theme: Theme = styleUtils.createTheme(customTheme);
+      const theme: TTheme = styleUtils.createTheme(customTheme);
 
       expect(theme['font.face']).toEqual('arial');
       expect(theme['font.size']).toEqual('16px');
     });
 
     it('empty input', () => {
-      const theme: Theme = styleUtils.createTheme();
+      const theme: TTheme = styleUtils.createTheme();
       expect(theme).toEqual(THEME);
     });
 

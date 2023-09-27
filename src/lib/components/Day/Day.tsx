@@ -16,7 +16,7 @@ import {
   SingleNormalStart,
 } from 'lib/components/Days';
 
-import { DayProps } from './Day.interface';
+import { TDayProps } from './Day.interface';
 
 const days = {
   'single.free': <SingleFree />,
@@ -33,7 +33,7 @@ const days = {
   'intersection.maybe.end.normal.start': <IntersectionMaybeEndNormalStart />,
 };
 
-const Day: FC<DayProps> = ({ type }) => {
+const Day: FC<TDayProps> = ({ type }) => {
 
   const day = days[type] || <SingleFree />;
 

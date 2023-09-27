@@ -77,6 +77,11 @@ module.exports = {
     ],
     'import/no-duplicates': 'error',
 
+    'jsx-a11y/label-has-associated-control': 'off',
+    'jsx-a11y/no-noninteractive-element-interactions': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+
     'react/jsx-no-useless-fragment': [
       'error',
       { allowExpressions: true },
@@ -88,5 +93,18 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/no-shadow': 'off',
     '@typescript-eslint/lines-between-class-members': 'off',
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: 'typeAlias',
+        format: ['PascalCase'],
+        prefix: ['T'],
+      },
+      {
+        selector: 'interface',
+        format: ['PascalCase'],
+        prefix: ['T'],
+      },
+    ],
   },
 }

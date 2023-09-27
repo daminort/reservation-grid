@@ -1,7 +1,8 @@
-import type { ReservedPeriod } from './reservedPeriod';
+import type { TReservedPeriod } from './reservedPeriod';
 
-export interface Row {
-  value: string;
+export interface TRow {
+  id: string;
+  title: string;
   info: string;
-  periods: ReservedPeriod[];
+  periods: TReservedPeriod[];
 }

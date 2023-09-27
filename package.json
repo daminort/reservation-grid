@@ -9,12 +9,13 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/my-lib.umd.cjs",
-  "module": "./dist/my-lib.js",
+  "main": "./dist/reservation-grid.umd.cjs",
+  "module": "./dist/reservation-grid.js",
+  "types": "./dist/src/lib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/my-lib.js",
-      "require": "./dist/my-lib.umd.cjs"
+      "import": "./dist/reservation-grid.js",
+      "require": "./dist/reservation-grid.umd.cjs"
     }
   },
   "repository": {

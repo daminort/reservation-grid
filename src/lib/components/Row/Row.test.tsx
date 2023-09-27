@@ -2,12 +2,12 @@ import React from 'react';
 import { cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import type { MainContext } from 'lib/interfaces/mainContext.interface';
+import type { TMainContext } from 'lib/interfaces/mainContext.interface';
 
 import { testingUtils } from 'lib/utils/testingUtils';
 import { row01 } from 'lib/mocks';
 
-import type { RowProps } from './Row.interface';
+import type { TRowProps } from './Row.interface';
 import { Row } from './index';
 
 describe('Row', () => {
@@ -16,7 +16,7 @@ describe('Row', () => {
     cleanup();
   });
 
-  const partialContext: Partial<MainContext> = {
+  const partialContext: Partial<TMainContext> = {
     start: '2021-11-01',
     end: '2021-11-30',
     selectedColumns: [
@@ -28,7 +28,7 @@ describe('Row', () => {
     onClickCell: jest.fn(),
   };
 
-  const setup = (props: RowProps) => {
+  const setup = (props: TRowProps) => {
     const row = (
       <table>
         <tbody>
@@ -42,11 +42,11 @@ describe('Row', () => {
   it('normal render', () => {
     const { getByTestId } = setup({ ...row01, selected: false });
 
-    const row = getByTestId(`row-${row01.value}`);
-    const title = getByTestId(`title-${row01.value}`);
-    const info = getByTestId(`info-${row01.value}`);
-    const start = getByTestId(`cell-${row01.value}-${partialContext.start}`);
-    const end = getByTestId(`cell-${row01.value}-${partialContext.end}`);
+    const row = getByTestId(`row-${row01.id}`);
+    const title = getByTestId(`title-${row01.id}`);
+    const info = getByTestId(`info-${row01.id}`);
+    const start = getByTestId(`cell-${row01.id}-${partialContext.start}`);
+    const end = getByTestId(`cell-${row01.id}-${partialContext.end}`);
     const selected01 = getByTestId('cell-Number 1-2021-11-17');
     const selected02 = getByTestId('cell-Number 1-2021-11-18');
     const selected03 = getByTestId('cell-Number 1-2021-11-17');
@@ -76,8 +76,8 @@ describe('Row', () => {
   it('selected row', () => {
     const { getByTestId } = setup({ ...row01, selected: true });
 
-    const title = getByTestId(`title-${row01.value}`);
-    const info = getByTestId(`info-${row01.value}`);
+    const title = getByTestId(`title-${row01.id}`);
+    const info = getByTestId(`info-${row01.id}`);
 
     expect(title).toHaveClass('selected');
     expect(info).toHaveClass('selected');
@@ -86,10 +86,10 @@ describe('Row', () => {
   it('onClickTitle', () => {
     const { getByTestId } = setup({ ...row01, selected: true });
 
-    const title = getByTestId(`title-${row01.value}`);
+    const title = getByTestId(`title-${row01.id}`);
 
     fireEvent.click(title);
-    expect(partialContext.onClickTitle).toHaveBeenCalledWith(row01.value);
+    expect(partialContext.onClickTitle).toHaveBeenCalledWith(row01.id);
   });
 
   it('onClickCell', () => {
@@ -101,21 +101,21 @@ describe('Row', () => {
 
     fireEvent.click(c1);
     expect(partialContext.onClickCell).toHaveBeenCalledWith({
-      value: row01.value,
+      id: row01.id,
       date: '2021-11-04',
       dayType: 'single.normal.start',
     });
 
     fireEvent.click(c2);
     expect(partialContext.onClickCell).toHaveBeenCalledWith({
-      value: row01.value,
+      id: row01.id,
       date: '2021-11-11',
       dayType: 'single.maybe.full',
     });
 
     fireEvent.click(c3);
     expect(partialContext.onClickCell).toHaveBeenCalledWith({
-      value: row01.value,
+      id: row01.id,
       date: '2021-11-26',
       dayType: 'single.normal.end',
     });

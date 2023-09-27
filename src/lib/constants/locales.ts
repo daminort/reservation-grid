@@ -1,7 +1,7 @@
 /* eslint-disable object-curly-newline */
-import type { Locales } from 'lib/interfaces/locale.interface';
+import type { TLocales } from 'lib/interfaces/locale.interface';
 
-const LOCALES: Locales = {
+const LOCALES: TLocales = {
   en: { mo: 'Mo', tu: 'Tu', we: 'We', th: 'Th', fr: 'Fr', sa: 'Sa', su: 'Su' },
   ua: { mo: 'Пн', tu: 'Вт', we: 'Ср', th: 'Чт', fr: 'Пт', sa: 'Сб', su: 'Нд' },
   de: { mo: 'Mo', tu: 'Di', we: 'Mi', th: 'Do', fr: 'Fr', sa: 'Sa', su: 'So' },

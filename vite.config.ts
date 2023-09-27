@@ -34,9 +34,10 @@ export default defineConfig({
 
   // https://vitejs.dev/guide/build.html#library-mode
   build: {
+    copyPublicDir: false,
     lib: {
       // Could also be a dictionary or array of multiple entry points
-      entry: path.resolve(__dirname, 'lib/main.js'),
+      entry: path.resolve(__dirname, 'src/lib/index.tsx'),
       name: 'Reservation Grid',
       // the proper extensions will be added
       fileName: 'reservation-grid',
