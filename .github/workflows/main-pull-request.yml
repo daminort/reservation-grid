@@ -12,9 +12,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use NodeJS 16
+      - name: Use NodeJS 18
         uses: actions/setup-node@v2.5.0
         with:
-          node-version: '16.x'
+          node-version: '18.x'
       - run: npm ci
       - run: npm run test
