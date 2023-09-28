@@ -1,4 +1,5 @@
-import React, { FC, useState, useEffect } from 'react';
+import type { FC } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import type { TTheme } from 'lib/interfaces/theme.interface';
 import type { TRow } from 'lib/interfaces/row';
@@ -8,7 +9,7 @@ import { styleUtils } from 'lib/utils/styleUtils';
 import { Header } from 'lib/components/Header';
 import { Row as VisualRow } from 'lib/components/Row';
 
-import { TGridProps } from './Grid.interface';
+import type { TGridProps } from './Grid.interface';
 
 const Grid: FC<TGridProps> = (props) => {
   const {
@@ -70,8 +71,8 @@ const Grid: FC<TGridProps> = (props) => {
 
   return (
     <MainProvider value={contextValue}>
-      <div className="wrapper" data-testid="grid-wrapper">
-        <table className="table">
+      <div className="rvg-wrapper" data-testid="grid-wrapper">
+        <table className="rvg-table">
           <Header
             title={title}
             info={info}

@@ -1,4 +1,5 @@
-import React, { FC, useCallback } from 'react';
+import type { FC } from 'react';
+import React, { useCallback } from 'react';
 import clsx from 'clsx';
 
 import type { TDayType } from 'lib/interfaces/grid.interface';
@@ -50,7 +51,7 @@ const Row: FC<TRowProps> = (props) => {
     const isToday = highlightToday && cell.isToday;
     const isSelected = selected || (Array.isArray(selectedColumns) && selectedColumns.includes(cell.value));
 
-    const className = clsx('cell', 'clickable', {
+    const className = clsx('rvg-cell', 'rvg-clickable', {
       'weekend': isWeekend,
       'today': isToday,
       'selected': isSelected,
@@ -70,8 +71,8 @@ const Row: FC<TRowProps> = (props) => {
     );
   };
 
-  const clsTitle = clsx('title', 'clickable', 'fixed', { selected });
-  const clsInfo = clsx('info', { selected });
+  const clsTitle = clsx('rvg-title', 'rvg-clickable', 'rvg-fixed', { selected });
+  const clsInfo = clsx('rvg-info', { selected });
 
   return (
     <tr data-testid={`row-${id}`}>

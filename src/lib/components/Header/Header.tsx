@@ -20,7 +20,7 @@ const Header: FC<THeaderProps> = ({ title, info }) => {
     const isToday = highlightToday && cell.isToday;
     const isSelected = Array.isArray(selectedColumns) && selectedColumns.includes(cell.value);
 
-    const className = clsx('cell', {
+    const className = clsx('rvg-cell', {
       'weekend': isWeekend,
       'today': isToday,
       'selected': isSelected,
@@ -37,13 +37,13 @@ const Header: FC<THeaderProps> = ({ title, info }) => {
     );
   };
 
-  const clsTitle = clsx('title', 'fixed');
+  const clsTitle = clsx('rvg-title', 'rvg-fixed');
 
   return (
     <thead data-testid="header">
       <tr data-testid="row-days">
         <td rowSpan={2} className={clsTitle} data-testid="title">{title}</td>
-        {showInfo && (<td rowSpan={2} className="info" data-testid="info">{info}</td>)}
+        {showInfo && (<td rowSpan={2} className="rvg-info" data-testid="info">{info}</td>)}
         {range.map(cell => renderCell(cell, 'day'))}
       </tr>
       <tr data-testid="row-dates">

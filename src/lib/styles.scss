@@ -15,7 +15,7 @@
   --rvg-width-info: 50%;
 }
 
-.wrapper {
+.rvg-wrapper {
   width: 100%;
   position: relative;
   overflow-x: auto;
@@ -24,23 +24,23 @@
   border-right: 1px solid var(--rvg-color-border);
 }
 
-.table {
+.rvg-table {
   border-collapse: separate;
   border-spacing: 0;
   border-top: 1px solid var(--rvg-color-border);
   background: var(--rvg-color-background);
 }
 
-.table tr,
-.table tbody > tr {
+.rvg-table tr,
+.rvg-table tbody > tr {
   padding: 0;
 }
 
-.table tbody {
+.rvg-table tbody {
   max-width: 100%;
 }
 
-.table td {
+.rvg-table td {
   display: table-cell;
   border-right: 1px solid var(--rvg-color-border);
   border-bottom: 1px solid var(--rvg-color-border);
@@ -53,47 +53,47 @@
   background: var(--rvg-color-background);
 }
 
-.table td:last-child {
+.rvg-table td:last-child {
   border-right: none;
 }
 
-.table td.weekend {
+.rvg-table td.weekend {
   background: var(--rvg-color-weekend);
 }
 
-.table td.today {
+.rvg-table td.today {
   background: var(--rvg-color-today);
 }
 
-.table td.selected {
+.rvg-table td.selected {
   background: var(--rvg-color-selected);
 }
 
-.table td > svg {
+.rvg-table td > svg {
   margin-bottom: -3px;
 }
 
-.title,
-.info {
+.rvg-title,
+.rvg-info {
   min-width: 54px;
 }
 
-.title {
+.rvg-title {
   width: var(--rvg-width-title);
 }
 
-.info {
+.rvg-info {
   width: var(--rvg-width-info);
 }
 
-.fixed {
+.rvg-fixed {
   position: sticky;
   top: auto;
   left: -1px;
   z-index: 2;
 }
 
-.cell {
+.rvg-cell {
   height: 32px;
   width: 32px;
 
@@ -104,7 +104,6 @@
   max-height: 32px;
 }
 
-.clickable {
+.rvg-clickable {
   cursor: pointer;
 }
-

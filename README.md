@@ -19,6 +19,13 @@ import type { FC } from 'react';
 
 import { ReservationGrid } from '@daminort/reservation-grid';
 import type { TDayType, TRow } from '@daminort/reservation-grid';
+import '@daminort/reservation-grid/dist/style.css';
+
+type TClickCell = {
+  id: string;
+  date: string;
+  dayType: TDayType;
+};
 
 const App: FC = () => {
 
@@ -26,7 +33,7 @@ const App: FC = () => {
     console.log(`Selected row with # ${value}`);
   }, []);
 
-  const onClickCell = useCallback(({ id: string, date: string, dayType: TDayType }) => {
+  const onClickCell = useCallback(({ id, date, dayType }: TClickCell) => {
     console.log('Selected cell:', { value, date, dayType });
   }, []);
 
