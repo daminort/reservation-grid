@@ -10,7 +10,10 @@ module.exports = {
   ignorePatterns: [
     'dist',
     '.eslintrc.cjs',
-    'vite.config.ts'
+    'vite.common.ts',
+    'vite.config.ts',
+    'vite.config-gh.ts',
+    'jest.config.ts',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {

@@ -1,3 +1,5 @@
 import { createPlugin } from './postBuild';
 
-export default createPlugin;
+export {
+  createPlugin as postBuild,
+};

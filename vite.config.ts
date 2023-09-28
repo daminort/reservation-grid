@@ -3,26 +3,8 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import dts from 'vite-plugin-dts';
 
-// @ts-ignore
-import tsConfig from './tsconfig.json';
-
-import postBuild from './src/plugins/postBuild';
-
-const createAliases = () => {
-  const tsAliases = tsConfig.compilerOptions.paths;
-  type TKey = keyof typeof tsAliases;
-
-  return Object.keys(tsAliases).reduce((result, key) => {
-    const alias = tsAliases[key as TKey][0]?.replace('/*', '') || '';
-    const resKey = key.replace('/*', '') as TKey;
-
-    if (alias) {
-      result[resKey] = path.resolve(__dirname, `./${alias}`);
-    }
-
-    return result;
-  }, {} as Record<TKey, string>);
-}
+import { postBuild } from './src/plugins/postBuild';
+import { createAliases } from './vite.common';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -58,7 +40,6 @@ export default defineConfig({
           reactDOM: 'ReactDOM',
         },
       },
-
     },
   },
 });

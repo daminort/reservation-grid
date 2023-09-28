@@ -1,5 +1,5 @@
 import { join, isAbsolute } from 'node:path';
-import { rmdir, cp, mkdir, rm } from 'fs/promises';
+import { cp, mkdir, rm } from 'fs/promises';
 import type { Plugin } from 'vite';
 
 const toAbsolutePath = (path: string) => {
@@ -13,14 +13,11 @@ const toAbsolutePath = (path: string) => {
 
 function createPlugin(): Plugin {
 
-  const plugin: Plugin = {
-    //
-    name: 'vite:postBuild',
-  };
+  const plugin: Plugin = { name: 'vite:postBuild' };
 
   let called = false;
 
-  plugin.closeBundle = async function () {
+  plugin.closeBundle = async function postBundle() {
     // run once
     if (called) {
       return;
@@ -40,6 +37,8 @@ function createPlugin(): Plugin {
     await rm(configPath);
 
     const expired = Number((Date.now() - startTime) / 1000);
+
+    // eslint-disable-next-line no-console
     console.info(`Post-build done in ${expired.toFixed(1)}s`);
   };
 
