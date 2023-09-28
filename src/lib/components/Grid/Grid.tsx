@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 import type { TTheme } from 'lib/interfaces/theme.interface';
 import type { TRow } from 'lib/interfaces/row';
+
 import { MainProvider } from 'lib/context';
 import { styleUtils } from 'lib/utils/styleUtils';
 

@@ -5,7 +5,7 @@ import type { FC, ReactElement, PropsWithChildren } from 'react';
 import { render } from '@testing-library/react';
 import type { RenderResult } from '@testing-library/react';
 
-import { TMainContext } from 'lib/interfaces/mainContext.interface';
+import type { TMainContext } from 'lib/interfaces/mainContext.interface';
 import { MainProvider, initialValue } from 'lib/context';
 
 type TReduxRenderResult = RenderResult & {

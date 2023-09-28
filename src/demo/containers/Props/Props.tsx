@@ -1,4 +1,5 @@
-import React, { FC, useMemo, useCallback, MouseEvent } from 'react';
+import React, { useMemo, useCallback } from 'react';
+import type { FC, MouseEvent } from 'react';
 
 import { useMainContext } from 'demo/context/mainContext';
 import { createStartEnd } from 'demo/utils/dateUtils';

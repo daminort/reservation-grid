@@ -1,5 +1,7 @@
-import type { TTheme } from 'lib/interfaces/theme.interface';
-import { THEME } from 'lib/constants/theme';
+// noinspection ES6PreferShortImport
+
+import type { TTheme } from '../../interfaces/theme.interface';
+import { THEME } from '../../constants/theme';
 import { styleUtils } from './index';
 
 describe('styleUtils', () => {

@@ -5,7 +5,7 @@ import '@testing-library/jest-dom';
 import type { TMainContext } from 'lib/interfaces/mainContext.interface';
 
 import { testingUtils } from 'lib/utils/testingUtils';
-import { row01 } from 'lib/components/Grid/mocks';
+import { row01 } from 'lib/utils/mocks';
 
 import type { TRowProps } from './Row.interface';
 import { Row } from './index';
@@ -47,11 +47,12 @@ describe('Row', () => {
     const info = getByTestId(`info-${row01.id}`);
     const start = getByTestId(`cell-${row01.id}-${partialContext.start}`);
     const end = getByTestId(`cell-${row01.id}-${partialContext.end}`);
-    const selected01 = getByTestId('cell-Number 1-2021-11-17');
-    const selected02 = getByTestId('cell-Number 1-2021-11-18');
-    const selected03 = getByTestId('cell-Number 1-2021-11-17');
-    const weekend01 = getByTestId('cell-Number 1-2021-11-14');
-    const weekend02 = getByTestId('cell-Number 1-2021-11-27');
+
+    const selected01 = getByTestId('cell-1-2021-11-17');
+    const selected02 = getByTestId('cell-1-2021-11-18');
+    const selected03 = getByTestId('cell-1-2021-11-17');
+    const weekend01 = getByTestId('cell-1-2021-11-14');
+    const weekend02 = getByTestId('cell-1-2021-11-27');
 
     expect(row).toBeInTheDocument();
     expect(title).toBeInTheDocument();
@@ -59,10 +60,10 @@ describe('Row', () => {
     expect(start).toBeInTheDocument();
     expect(end).toBeInTheDocument();
 
-    expect(title).toHaveClass('title', 'clickable', 'fixed');
+    expect(title).toHaveClass('rvg-title', 'rvg-clickable', 'rvg-fixed');
     expect(title).not.toHaveClass('selected');
 
-    expect(info).toHaveClass('info');
+    expect(info).toHaveClass('rvg-info');
     expect(info).not.toHaveClass('selected');
 
     expect(weekend01).toHaveClass('weekend');
@@ -95,9 +96,9 @@ describe('Row', () => {
   it('onClickCell', () => {
     const { getByTestId } = setup({ ...row01, selected: false });
 
-    const c1 = getByTestId('cell-Number 1-2021-11-04');
-    const c2 = getByTestId('cell-Number 1-2021-11-11');
-    const c3 = getByTestId('cell-Number 1-2021-11-26');
+    const c1 = getByTestId('cell-1-2021-11-04');
+    const c2 = getByTestId('cell-1-2021-11-11');
+    const c3 = getByTestId('cell-1-2021-11-26');
 
     fireEvent.click(c1);
     expect(partialContext.onClickCell).toHaveBeenCalledWith({

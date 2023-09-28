@@ -4,6 +4,7 @@ import type { TCheckboxProps } from './Checkbox.interface';
 export type {
   TCheckboxProps,
 };
+
 export {
   Checkbox,
 };

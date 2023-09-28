@@ -16,7 +16,7 @@ import {
   SingleNormalStart,
 } from 'lib/components/Days';
 
-import { TDayProps } from './Day.interface';
+import type { TDayProps } from './Day.interface';
 
 const days = {
   'single.free': <SingleFree />,
