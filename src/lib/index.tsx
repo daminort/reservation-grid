@@ -7,10 +7,12 @@ import type { TLocale, TLocales, TLocaleKey } from 'lib/interfaces/locale.interf
 import type { TMainContext } from 'lib/interfaces/mainContext.interface';
 import type { TReservedPeriod } from 'lib/interfaces/reservedPeriod';
 import type { TRow } from 'lib/interfaces/row';
+import type { TGridProps } from 'lib/components/Grid';
 import type { TTheme } from 'lib/interfaces/theme.interface';
-import { THEME } from 'lib/constants/theme';
 
-import { Grid, TGridProps } from 'lib/components/Grid';
+import { THEME } from 'lib/constants/theme';
+import { Grid } from 'lib/components/Grid';
+
 import './styles.scss';
 
 const ReservationGrid: FC<TGridProps> = (props) => {
@@ -18,8 +20,6 @@ const ReservationGrid: FC<TGridProps> = (props) => {
     <Grid {...props} />
   );
 };
-
-export default ReservationGrid;
 
 export type {
   TGridProps,

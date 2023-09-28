@@ -6,6 +6,8 @@ import dts from 'vite-plugin-dts';
 // @ts-ignore
 import tsConfig from './tsconfig.json';
 
+import postBuild from './src/plugins/postBuild';
+
 const createAliases = () => {
   const tsAliases = tsConfig.compilerOptions.paths;
   type TKey = keyof typeof tsAliases;
@@ -29,7 +31,9 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    dts(), // check: https://onderonur.netlify.app/blog/creating-a-typescript-library-with-vite/
+    // check: https://onderonur.netlify.app/blog/creating-a-typescript-library-with-vite/
+    dts(),
+    postBuild(),
   ],
 
   // https://vitejs.dev/guide/build.html#library-mode
@@ -54,6 +58,7 @@ export default defineConfig({
           reactDOM: 'ReactDOM',
         },
       },
+
     },
   },
 });

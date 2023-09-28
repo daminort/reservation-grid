@@ -2,9 +2,8 @@ import React from 'react';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import { grid } from 'lib/mocks';
-
-import { TGridProps } from './Grid.interface';
+import type { TGridProps } from './Grid.interface';
+import { grid } from './mocks';
 import { Grid } from './index';
 
 describe('Grid', () => {

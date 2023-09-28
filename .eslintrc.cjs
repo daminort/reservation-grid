@@ -90,6 +90,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'react/react-in-jsx-scope': 'off',
 
+    '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/no-shadow': 'off',
     '@typescript-eslint/lines-between-class-members': 'off',

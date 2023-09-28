@@ -5,7 +5,7 @@ import '@testing-library/jest-dom';
 import type { TMainContext } from 'lib/interfaces/mainContext.interface';
 
 import { testingUtils } from 'lib/utils/testingUtils';
-import { row01 } from 'lib/mocks';
+import { row01 } from 'lib/components/Grid/mocks';
 
 import type { TRowProps } from './Row.interface';
 import { Row } from './index';

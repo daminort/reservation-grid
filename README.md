@@ -14,8 +14,11 @@ npm install @daminort/reservation-grid
 <a name="usage"></a>
 
 ```javascript
-import React, { FC, useCallback } from 'react';
-import { ReservationGrid, TDayType, TRow } from '@daminort/reservation-grid';
+import React, { useCallback } from 'react';
+import type { FC } from 'react';
+
+import { ReservationGrid } from '@daminort/reservation-grid';
+import type { TDayType, TRow } from '@daminort/reservation-grid';
 
 const App: FC = () => {
 
@@ -134,8 +137,7 @@ Available locales:
 - Poland
 
 ```javascript
-type
-TLocaleKey = 'en' | 'ua' | 'de' | 'fr' | 'it' | 'es' | 'pl';
+type TLocaleKey = 'en' | 'ua' | 'de' | 'fr' | 'it' | 'es' | 'pl';
 ```
 
 #### Theme
