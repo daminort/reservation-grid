@@ -1,4 +1,6 @@
 ### 2.0.0
+This release contains breaking changes.
+
 - Migrated from Rollup to Vite
 - Removed "ru" locale
 - Added locales: "de", "fr", "it", "es", "pl"

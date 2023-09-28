@@ -1,8 +1,7 @@
 #!/bin/bash
 
-dir=$(pwd)
-buildPath="$dir/dist-gh"
+DIR=$(pwd)
+DIST="$DIR/dist-gh"
 
 npm run build-gh
-
-npx gh-pages -d $buildPath
+npx gh-pages -d "$DIST"
