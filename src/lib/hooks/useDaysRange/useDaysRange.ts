@@ -1,18 +1,20 @@
 import { useMemo } from 'react';
 
-import { DaysRange } from 'lib/interfaces/daysRange.interface';
-import { LocaleKey } from 'lib/interfaces/locale.interface';
+import type { TDaysRange } from 'lib/interfaces/daysRange.interface';
+import type { TLocaleKey } from 'lib/interfaces/locale.interface';
+
 import { LOCALES } from 'lib/constants/locales';
 import { dateUtils } from 'lib/utils/dateUtils';
 
-const useDaysRange = (start: string, end: string, locale: LocaleKey ): DaysRange[] => {
+const useDaysRange = (start: string, end: string, locale: TLocaleKey): TDaysRange[] => {
 
   const range = useMemo(() => {
     const options = {
       start,
       end,
       locale: LOCALES[locale],
-    }
+    };
+
     return dateUtils.createDaysRange(options);
   }, [start, end, locale]);
 
@@ -21,4 +23,4 @@ const useDaysRange = (start: string, end: string, locale: LocaleKey ): DaysRange
 
 export {
   useDaysRange,
-}
+};

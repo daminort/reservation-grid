@@ -1,10 +1,8 @@
 #!/bin/bash
 
 dir=$(pwd)
-examplePath="$dir/example"
-buildPath="$examplePath/build"
+buildPath="$dir/dist-gh"
 
-cd $examplePath
-npm run build
+npm run build-gh
 
 npx gh-pages -d $buildPath

@@ -1,7 +1,8 @@
-type DateStatus = 'awaiting' | 'confirmed' | 'inaccessible';
-type DatePosition = 'none' | 'start' | 'middle' | 'end';
+type TDateStatus = 'awaiting' | 'confirmed' | 'inaccessible';
+type TDatePosition = 'none' | 'start' | 'middle' | 'end';
 
-type DayType = 'single.free'
+type TDayType =
+  | 'single.free'
   | 'single.disabled'
   | 'single.normal.full'
   | 'single.normal.start'
@@ -14,8 +15,8 @@ type DayType = 'single.free'
   | 'intersection.normal.end.maybe.start'
   | 'intersection.maybe.end.normal.start';
 
-export {
-  DateStatus,
-  DatePosition,
-  DayType,
-}
+export type {
+  TDateStatus,
+  TDatePosition,
+  TDayType,
+};

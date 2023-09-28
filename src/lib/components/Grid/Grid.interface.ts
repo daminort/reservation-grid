@@ -1,12 +1,16 @@
-import { LocaleKey } from 'lib/interfaces/locale.interface';
-import { MainContext } from 'lib/interfaces/mainContext.interface';
-import { Row } from 'lib/interfaces/row';
-import { Theme } from 'lib/interfaces/theme.interface';
+import type { ReactNode } from 'react';
 
-export type GridProps = Omit<MainContext, 'theme' | 'locale'> & {
+import type { TLocaleKey } from 'lib/interfaces/locale.interface';
+import type { TMainContext } from 'lib/interfaces/mainContext.interface';
+import type { TRow } from 'lib/interfaces/row';
+import type { TTheme } from 'lib/interfaces/theme.interface';
+
+export type TGridProps = Omit<TMainContext, 'theme' | 'locale'> & {
   title?: string;
   info?: string;
-  data: Row[];
-  theme?: Partial<Theme>;
-  locale?: LocaleKey;
-}
+  data: TRow[];
+  theme?: Partial<TTheme>;
+  locale?: TLocaleKey;
+  renderTitle?: (row: TRow) => ReactNode;
+  renderInfo?: (row: TRow) => ReactNode;
+};

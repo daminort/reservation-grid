@@ -22,7 +22,7 @@ const SingleDisabled = (): JSX.Element => {
       </g>
       <defs>
         <clipPath id="clip0_383_3078">
-          <rect width="10" height="16" fill="white" transform="translate(8 5)"/>
+          <rect width="10" height="16" fill="white" transform="translate(8 5)" />
         </clipPath>
       </defs>
     </svg>

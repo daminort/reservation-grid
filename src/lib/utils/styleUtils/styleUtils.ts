@@ -1,14 +1,14 @@
-import { Theme } from 'lib/interfaces/theme.interface';
+import type { TTheme } from 'lib/interfaces/theme.interface';
 import { THEME } from 'lib/constants/theme';
 
-function createTheme(customTheme: Partial<Theme> = {}): Theme {
+function createTheme(customTheme: Partial<TTheme> = {}): TTheme {
   return {
     ...THEME,
     ...customTheme,
-  }
+  };
 }
 
-function setVariables(customTheme: Theme): void {
+function setVariables(customTheme: TTheme): void {
 
   const root = document.documentElement;
 

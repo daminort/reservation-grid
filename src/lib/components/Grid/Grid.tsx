@@ -1,16 +1,18 @@
-import React, { FC, useState, useEffect } from 'react';
+import type { FC } from 'react';
+import React, { useState, useEffect } from 'react';
+
+import type { TTheme } from 'lib/interfaces/theme.interface';
+import type { TRow } from 'lib/interfaces/row';
 
 import { MainProvider } from 'lib/context';
-import { Theme } from 'lib/interfaces/theme.interface';
-import { Row } from 'lib/interfaces/row';
 import { styleUtils } from 'lib/utils/styleUtils';
 
 import { Header } from 'lib/components/Header';
 import { Row as VisualRow } from 'lib/components/Row';
 
-import { GridProps } from './Grid.interface';
+import type { TGridProps } from './Grid.interface';
 
-const Grid: FC<GridProps> = (props) => {
+const Grid: FC<TGridProps> = (props) => {
   const {
     start,
     end,
@@ -22,12 +24,14 @@ const Grid: FC<GridProps> = (props) => {
     selectedRows = [],
     data,
     theme,
+    renderTitle,
+    renderInfo,
     locale = 'en',
     onClickTitle = () => {},
     onClickCell = () => {},
   } = props;
 
-  const [customTheme, setCustomTheme] = useState<Theme>(styleUtils.createTheme(theme));
+  const [customTheme, setCustomTheme] = useState<TTheme>(styleUtils.createTheme(theme));
 
   useEffect(() => {
     const resTheme = styleUtils.createTheme(theme);
@@ -49,24 +53,27 @@ const Grid: FC<GridProps> = (props) => {
     onClickCell,
   };
 
-  const renderRow = (row: Row) => {
-    const isSelected = Array.isArray(selectedRows) && selectedRows.includes(row.value);
+  const renderRow = (row: TRow) => {
+    const isSelected = Array.isArray(selectedRows) && selectedRows.includes(row.id);
+    const title = renderTitle ? renderTitle(row) : row.title;
+    const info = renderInfo ? renderInfo(row) : row.info;
 
     return (
       <VisualRow
-        key={row.value}
-        value={row.value}
-        info={row.info}
+        key={row.id}
+        id={row.id}
+        title={title}
+        info={info}
         periods={row.periods}
         selected={isSelected}
       />
-    )
-  }
+    );
+  };
 
   return (
     <MainProvider value={contextValue}>
-      <div className="wrapper" data-testid="grid-wrapper">
-        <table className="table">
+      <div className="rvg-wrapper" data-testid="grid-wrapper">
+        <table className="rvg-table">
           <Header
             title={title}
             info={info}
@@ -80,4 +87,6 @@ const Grid: FC<GridProps> = (props) => {
   );
 };
 
-export { Grid };
+export {
+  Grid,
+};

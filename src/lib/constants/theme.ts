@@ -1,6 +1,6 @@
-import { Theme } from 'lib/interfaces/theme.interface';
+import type { TTheme } from 'lib/interfaces/theme.interface';
 
-const THEME: Theme = {
+const THEME: TTheme = {
   'font.face': 'sans-serif',
   'font.size': '14px',
   'color.text': '#30424F',
@@ -19,4 +19,4 @@ const THEME: Theme = {
 
 export {
   THEME,
-}
+};

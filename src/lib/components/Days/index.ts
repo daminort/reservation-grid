@@ -24,4 +24,4 @@ export {
   SingleNormalEnd,
   SingleNormalFull,
   SingleNormalStart,
-}
+};

@@ -1,7 +1,7 @@
-import { DateStatus } from './grid.interface'
+import type { TDateStatus } from './grid.interface';
 
-export interface ReservedPeriod {
+export interface TReservedPeriod {
   start: string;
   end: string;
-  status: DateStatus;
+  status: TDateStatus;
 }

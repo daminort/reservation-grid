@@ -1,24 +1,29 @@
-import React, { FC, ReactElement } from 'react';
-import { render, RenderResult } from '@testing-library/react';
+import React from 'react';
+import type { FC, ReactElement, PropsWithChildren } from 'react';
 
-import { MainContext } from 'lib/interfaces/mainContext.interface';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { render } from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
+
+import type { TMainContext } from 'lib/interfaces/mainContext.interface';
 import { MainProvider, initialValue } from 'lib/context';
 
-type ReduxRenderResult = RenderResult & {
-  context: MainContext;
+type TReduxRenderResult = RenderResult & {
+  context: TMainContext;
 };
 
-function reduxRender(ui: ReactElement, partialValue?: Partial<MainContext>): ReduxRenderResult {
-  const contextValue: MainContext = {
+function reduxRender(ui: ReactElement, partialValue?: Partial<TMainContext>): TReduxRenderResult {
+  const contextValue: TMainContext = {
     ...initialValue,
-    ...(partialValue ? partialValue : {}),
-  }
+    ...(partialValue || {}),
+  };
 
-  const Wrapper: FC = ({ children }): ReactElement => {
+  const Wrapper: FC<PropsWithChildren> = ({ children }): ReactElement => {
     return (
       <MainProvider value={contextValue}>
         {children}
-      </MainProvider>)
+      </MainProvider>
+    );
   };
 
   const result = render(ui, { wrapper: Wrapper });
@@ -29,11 +34,8 @@ function reduxRender(ui: ReactElement, partialValue?: Partial<MainContext>): Red
   };
 }
 
-const testingUtils = {
-  reduxRender,
-};
+const testingUtils = { reduxRender };
 
 export {
   testingUtils,
-  ReduxRenderResult,
-}
+};

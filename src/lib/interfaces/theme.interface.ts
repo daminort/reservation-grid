@@ -1,4 +1,4 @@
-export interface Theme {
+export interface TTheme {
   'font.face': string;
   'font.size': string;
   'color.text': string;
@@ -13,4 +13,4 @@ export interface Theme {
   'color.weekend': string;
   'width.title': string;
   'width.info': string;
-};
+}

@@ -1,12 +1,13 @@
-import React, { FC, createContext, useContext } from 'react';
+import React, { createContext, useContext } from 'react';
+import type { FC, ReactNode } from 'react';
 
-import { MainContext } from 'lib/interfaces/mainContext.interface';
+import type { TMainContext } from 'lib/interfaces/mainContext.interface';
 import { THEME } from 'lib/constants/theme';
 import { dateUtils } from 'lib/utils/dateUtils';
 
 const today = dateUtils.format(new Date());
 
-const initialValue: MainContext = {
+const initialValue: TMainContext = {
   start: dateUtils.startOf(today, 'month'),
   end: dateUtils.endOf(today, 'month'),
   highlightToday: true,
@@ -17,15 +18,16 @@ const initialValue: MainContext = {
   locale: 'en',
   onClickTitle: () => {},
   onClickCell: () => {},
-}
-
-const mainContext = createContext<MainContext>(initialValue);
-
-interface Props {
-  value: MainContext;
 };
 
-const MainProvider: FC<Props> = ({ value, children }) => {
+const mainContext = createContext<TMainContext>(initialValue);
+
+interface TProps {
+  value: TMainContext;
+  children: ReactNode;
+}
+
+const MainProvider: FC<TProps> = ({ value, children }) => {
   return (
     <mainContext.Provider value={value}>
       {children}
@@ -33,10 +35,10 @@ const MainProvider: FC<Props> = ({ value, children }) => {
   );
 };
 
-const useMainContext = (): MainContext => useContext<MainContext>(mainContext);
+const useMainContext = (): TMainContext => useContext<TMainContext>(mainContext);
 
 export {
   MainProvider,
   useMainContext,
   initialValue,
-}
+};

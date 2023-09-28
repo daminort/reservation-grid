@@ -4,4 +4,4 @@ export {
   MainProvider,
   useMainContext,
   initialValue,
-}
+};

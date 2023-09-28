@@ -4,4 +4,4 @@ import { useTheme } from 'lib/hooks/useTheme';
 export {
   useDaysRange,
   useTheme,
-}
+};

@@ -1,25 +1,25 @@
-import { DayType } from './grid.interface'
-import { Theme } from './theme.interface';
-import { LocaleKey } from './locale.interface';
+import type { TDayType } from './grid.interface';
+import type { TTheme } from './theme.interface';
+import type { TLocaleKey } from './locale.interface';
 
-type OnClickEventData = {
-  value: string;
+type TClickEventData = {
+  id: string;
   date: string;
-  dayType: DayType;
+  dayType: TDayType;
 };
 
-type OnClickTitle = (value: string) => void;
-type OnClickCell = (eventData: OnClickEventData) => void;
+type TClickTitle = (value: string) => void;
+type TClickCell = (eventData: TClickEventData) => void;
 
-export interface MainContext {
+export interface TMainContext {
   start: string;
   end: string;
   highlightToday?: boolean;
   showInfo?: boolean;
   selectedColumns?: string[];
   selectedRows?: string[];
-  theme?: Theme;
-  locale?: LocaleKey;
-  onClickTitle?: OnClickTitle,
-  onClickCell?: OnClickCell,
+  theme?: TTheme;
+  locale?: TLocaleKey;
+  onClickTitle?: TClickTitle,
+  onClickCell?: TClickCell,
 }

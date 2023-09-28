@@ -1,9 +1,9 @@
-import { DatePosition, DateStatus, DayType } from 'lib/interfaces/grid.interface'
+import type { TDatePosition, TDateStatus, TDayType } from 'lib/interfaces/grid.interface';
 
-export type DateString = Date | string;
-export type Unit = 'day' | 'month' | 'year';
+export type TDateString = Date | string;
+export type TUnit = 'day' | 'month' | 'year';
 
-export type DayMapVariant = Record<Exclude<DatePosition, 'none'>, DayType>;
-export type DayMap = Record<Exclude<DateStatus, 'inaccessible'>, DayMapVariant>;
+export type TDayMapVariant = Record<Exclude<TDatePosition, 'none'>, TDayType>;
+export type TDayMap = Record<Exclude<TDateStatus, 'inaccessible'>, TDayMapVariant>;
 
-export type Intersection = DayType[];
+export type TIntersection = TDayType[];

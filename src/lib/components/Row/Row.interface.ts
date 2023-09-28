@@ -1,5 +1,12 @@
-import { Row } from 'lib/interfaces/row';
+import type { ReactNode } from 'react';
+import type { TRow } from 'lib/interfaces/row';
 
-export interface RowProps extends Row {
+type TRowProps = Omit<TRow, 'title' | 'info'> & {
   selected: boolean;
-}
+  title: string | ReactNode;
+  info: string | ReactNode;
+};
+
+export type {
+  TRowProps,
+};

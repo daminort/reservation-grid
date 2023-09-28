@@ -2,10 +2,10 @@ import React from 'react';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import { GridProps } from './Grid.interface';
-import { Grid } from './index';
+import { grid } from 'lib/utils/mocks';
 
-import { grid } from 'lib/mocks';
+import type { TGridProps } from './Grid.interface';
+import { Grid } from './index';
 
 describe('Grid', () => {
 
@@ -13,13 +13,13 @@ describe('Grid', () => {
     cleanup();
   });
 
-  const minProps: GridProps = {
+  const minProps: TGridProps = {
     start: '2021-11-01',
     end: '2021-11-30',
     data: grid,
   };
 
-  const props: GridProps = {
+  const props: TGridProps = {
     start: '2021-11-01',
     end: '2021-11-30',
     title: 'Number',
@@ -32,27 +32,27 @@ describe('Grid', () => {
       '2021-11-19',
     ],
     selectedRows: [
-      'Number 3',
+      '3',
     ],
     data: grid,
     onClickTitle: jest.fn(),
     onClickCell: jest.fn(),
-  }
+  };
 
-  const setup = (props: GridProps) => {
+  const setup = (props: TGridProps) => {
     return render(<Grid {...props} />);
-  }
+  };
 
   it('render with minimal props', () => {
     const { getByTestId } = setup(minProps);
 
     const wrapper = getByTestId('grid-wrapper');
-    const title = getByTestId('title-Number 2');
-    const c1 = getByTestId('cell-Number 1-2021-11-04');
-    const c2 = getByTestId('cell-Number 2-2021-11-11');
-    const c3 = getByTestId('cell-Number 5-2021-11-05');
-    const weekend01 = getByTestId('cell-Number 4-2021-11-14');
-    const weekend02 = getByTestId('cell-Number 5-2021-11-27');
+    const title = getByTestId('title-2');
+    const c1 = getByTestId('cell-1-2021-11-04');
+    const c2 = getByTestId('cell-2-2021-11-11');
+    const c3 = getByTestId('cell-5-2021-11-05');
+    const weekend01 = getByTestId('cell-4-2021-11-14');
+    const weekend02 = getByTestId('cell-5-2021-11-27');
 
     expect(wrapper).toBeInTheDocument();
     expect(title).toBeInTheDocument();
@@ -68,11 +68,11 @@ describe('Grid', () => {
     const { getByTestId } = setup(props);
 
     const wrapper = getByTestId('grid-wrapper');
-    const title = getByTestId('title-Number 3');
+    const title = getByTestId('title-3');
     const selected01 = getByTestId('cell-day-2021-11-17');
     const selected02 = getByTestId('cell-date-2021-11-18');
-    const weekend01 = getByTestId('cell-Number 4-2021-11-14');
-    const weekend02 = getByTestId('cell-Number 5-2021-11-27');
+    const weekend01 = getByTestId('cell-4-2021-11-14');
+    const weekend02 = getByTestId('cell-5-2021-11-27');
 
     expect(wrapper).toBeInTheDocument();
 
@@ -87,36 +87,36 @@ describe('Grid', () => {
   it('onClickTitle', () => {
     const { getByTestId } = setup(props);
 
-    const title = getByTestId('title-Number 2');
+    const title = getByTestId('title-2');
 
     fireEvent.click(title);
-    expect(props.onClickTitle).toHaveBeenCalledWith('Number 2');
+    expect(props.onClickTitle).toHaveBeenCalledWith('2');
   });
 
   it('onClickCell', () => {
     const { getByTestId } = setup(props);
 
-    const c1 = getByTestId('cell-Number 1-2021-11-04');
-    const c2 = getByTestId('cell-Number 2-2021-11-11');
-    const c3 = getByTestId('cell-Number 5-2021-11-05');
+    const c1 = getByTestId('cell-1-2021-11-04');
+    const c2 = getByTestId('cell-2-2021-11-11');
+    const c3 = getByTestId('cell-5-2021-11-05');
 
     fireEvent.click(c1);
     expect(props.onClickCell).toHaveBeenCalledWith({
-      value: 'Number 1',
+      id: '1',
       date: '2021-11-04',
       dayType: 'single.normal.start',
     });
 
     fireEvent.click(c2);
     expect(props.onClickCell).toHaveBeenCalledWith({
-      value: 'Number 2',
+      id: '2',
       date: '2021-11-11',
       dayType: 'single.free',
     });
 
     fireEvent.click(c3);
     expect(props.onClickCell).toHaveBeenCalledWith({
-      value: 'Number 5',
+      id: '5',
       date: '2021-11-05',
       dayType: 'single.disabled',
     });
