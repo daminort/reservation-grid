@@ -26,6 +26,7 @@ function createPlugin(): Plugin {
       return;
     }
 
+    const startTime = Date.now();
     called = true;
 
     const src = toAbsolutePath('dist/src');
@@ -37,6 +38,9 @@ function createPlugin(): Plugin {
     await cp(srcLib, destLib, { recursive: true });
     await rm(src, { recursive: true });
     await rm(configPath);
+
+    const expired = Number((Date.now() - startTime) / 1000);
+    console.info(`Post-build done in ${expired.toFixed(1)}s`);
   };
 
   return plugin;
