@@ -46,7 +46,6 @@ const Row: FC<TRowProps> = (props) => {
   }, [id, onClickCell]);
 
   const renderCell = (cell: TDaysRange) => {
-
     const { isWeekend } = cell;
     const isToday = highlightToday && cell.isToday;
     const isSelected = selected || (Array.isArray(selectedColumns) && selectedColumns.includes(cell.value));
@@ -66,7 +65,9 @@ const Row: FC<TRowProps> = (props) => {
         onClick={onClickCellLocal(cell.value, dayType)}
         data-testid={`cell-${id}-${cell.value}`}
       >
-        <Day type={dayType} />
+        <div className="day">
+          <Day type={dayType} />
+        </div>
       </td>
     );
   };
