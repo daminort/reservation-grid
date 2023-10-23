@@ -109,21 +109,21 @@ return (
 ## Props
 <a name="props"></a>
 
-|Name| Type       |Required|Default|Example|
-|----|------------|--------|-------|-------|
-|start| string     |*|-|'2021-11-01'
-|end| string     |*|-|'2021-11-30'
-|highlightToday| boolean    |-|true|
-|showInfo| boolean    |-|true|
-|selectedColumns| string[]   |-|[ ]|['2021-11-01', '2021-11-02']
-|selectedRows| string[]   |-|[ ]|['# 1']
-|theme| TTheme     |-|default theme|
-|locale| TLocaleKey |-|en|
-|title| string     |-|'Number'|
-|info| string     |-|empty string|
-|data| TRow[]     |*|-|see example above
-|onClickTitle| Function   |-|-|(value) => console.log(value)
-|onClickCell| Function   |-|-|({ value, date, dayType }) => console.log({ value, date, dayType })
+|Name| Type       |Required| Default       |Example|
+|----|------------|--------|---------------|-------|
+|start| string     |*| -             |'2021-11-01'
+|end| string     |*| -             |'2021-11-30'
+|highlightToday| boolean    |-| true          |
+|showInfo| boolean    |-| true          |
+|selectedColumns| string[]   |-| [ ]           |['2021-11-01', '2021-11-02']
+|selectedRows| string[]   |-| [ ]           |['# 1']
+|theme| TTheme     |-| default theme |
+|locale| TLocaleKey |-| en            |
+|title| string     |-| 'Room'        |
+|info| string     |-| empty string  |
+|data| TRow[]     |*| -             |see example above
+|onClickTitle| Function   |-| -             |(value) => console.log(value)
+|onClickCell| Function   |-| -             |({ value, date, dayType }) => console.log({ value, date, dayType })
 
 #### Data
 <a name="data"></a>
