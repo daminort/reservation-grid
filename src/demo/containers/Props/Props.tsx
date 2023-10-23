@@ -1,11 +1,17 @@
-import React, { useMemo, useCallback } from 'react';
-import type { FC, MouseEvent } from 'react';
+/* eslint-disable import/no-extraneous-dependencies */
+import React, { useMemo } from 'react';
+import type { FC } from 'react';
+
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import { useMainContext } from 'demo/context/mainContext';
 import { createStartEnd } from 'demo/utils/dateUtils';
 
-import iconCopy from 'demo/assets/iconCopy.svg';
+import { createCode } from './assets';
 import s from './Props.module.css';
+
+const customStyle = { fontSize: 13 };
 
 const Props: FC = () => {
 
@@ -41,32 +47,18 @@ const Props: FC = () => {
     onClickCell: '({ value, date, dateType }) => console.log({ value, date, dateType })',
   }, null, 2);
 
-  const showCopy = Boolean(navigator.clipboard);
-
-  const onClickCopy = useCallback(async (event: MouseEvent<HTMLImageElement>) => {
-    const target = event.target as HTMLImageElement;
-
-    target.classList.toggle(s.active);
-
-    await navigator.clipboard.writeText(props);
-  }, [props]);
+  const code = createCode(props);
 
   return (
     <div className={s.wrapper}>
-      {showCopy && (
-        <img
-          alt="Copy"
-          src={iconCopy}
-          className={s.icon}
-          onClick={onClickCopy}
-        />
-      )}
-      <pre className={s.container}>
-        <code>
-          {props}
-        </code>
-      </pre>
-
+      <SyntaxHighlighter
+        showLineNumbers
+        language="typescript"
+        style={darcula}
+        customStyle={customStyle}
+      >
+        {code}
+      </SyntaxHighlighter>
     </div>
   );
 };

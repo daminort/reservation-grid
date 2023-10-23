@@ -1,6 +1,6 @@
 import type { TReservedPeriod } from './reservedPeriod';
 
-export interface TRow<TCustomStatus extends string = ''> {
+export interface TRow<TCustomStatus extends string = never> {
   id: string;
   title: string;
   info: string;

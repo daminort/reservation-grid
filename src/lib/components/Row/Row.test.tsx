@@ -104,21 +104,24 @@ describe('Row', () => {
     expect(partialContext.onClickCell).toHaveBeenCalledWith({
       id: row01.id,
       date: '2021-11-04',
-      dayType: 'single.normal.start',
+      dayType: 'single.start',
+      dayStatus: ['confirmed'],
     });
 
     fireEvent.click(c2);
     expect(partialContext.onClickCell).toHaveBeenCalledWith({
       id: row01.id,
       date: '2021-11-11',
-      dayType: 'single.maybe.full',
+      dayType: 'single.full',
+      dayStatus: ['awaiting'],
     });
 
     fireEvent.click(c3);
     expect(partialContext.onClickCell).toHaveBeenCalledWith({
       id: row01.id,
       date: '2021-11-26',
-      dayType: 'single.normal.end',
+      dayType: 'single.end',
+      dayStatus: ['confirmed'],
     });
   });
 });

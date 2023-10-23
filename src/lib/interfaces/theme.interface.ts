@@ -1,6 +1,6 @@
 import type { TDateStatus } from './grid.interface';
 
-interface TTheme<TCustomStatus extends string = ''> {
+interface TTheme<TCustomStatus extends string = never> {
   'font.face': string;
   'font.size': string;
   'color.text': string;

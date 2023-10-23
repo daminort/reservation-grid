@@ -12,7 +12,6 @@ const THEME: TTheme = {
   'width.title': '50%',
   'width.info': '50%',
   'date.status': {
-    '': 'transparent',
     'free': 'transparent',
     'disabled': '#759AB5',
     'awaiting': '#DDEBF3',

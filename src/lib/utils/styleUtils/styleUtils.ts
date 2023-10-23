@@ -1,14 +1,23 @@
 import type { TTheme } from 'lib/interfaces/theme.interface';
 import { THEME } from 'lib/constants/theme';
 
-function createTheme<TCustomStatus extends string = ''>(customTheme: Partial<TTheme<TCustomStatus>> = {}): TTheme<TCustomStatus> {
-  return {
+function createTheme<TCustomStatus extends string = never>(customTheme: Partial<TTheme<TCustomStatus>> = {}): TTheme<TCustomStatus> {
+
+  const dateStatus = {
+    ...THEME['date.status'],
+    ...(customTheme['date.status'] ? { ...customTheme['date.status'] } : {}),
+  } as TTheme<TCustomStatus>['date.status'];
+
+  const theme: TTheme<TCustomStatus> = {
     ...THEME,
     ...customTheme,
+    'date.status': dateStatus,
   };
+
+  return theme;
 }
 
-function setVariables<TCustomStatus extends string = ''>(customTheme: TTheme<TCustomStatus>): void {
+function setVariables<TCustomStatus extends string = never>(customTheme: TTheme<TCustomStatus>): void {
 
   const root = document.documentElement;
 

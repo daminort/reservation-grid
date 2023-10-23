@@ -6,36 +6,30 @@ A modular grid that allows managing reservations for a hotel
 ## Installation
 <a name="installation"></a>
 
-```
+```shell
 npm install @daminort/reservation-grid
 ```
 
 ## Usage
 <a name="usage"></a>
 
-```javascript
-import React, { useCallback } from 'react';
+```typescript
+import React from 'react';
 import type { FC } from 'react';
 
 import { ReservationGrid } from '@daminort/reservation-grid';
-import type { TDayType, TRow } from '@daminort/reservation-grid';
+import type { TDayType, TRow, TClickCellEventData } from '@daminort/reservation-grid';
 import '@daminort/reservation-grid/dist/style.css';
-
-type TClickCell = {
-  id: string;
-  date: string;
-  dayType: TDayType;
-};
 
 const App: FC = () => {
 
-  const onClickTitle = useCallback((value: string) => {
+  const onClickTitle = (value: string) => {
     console.log(`Selected row with # ${value}`);
-  }, []);
+  };
 
-  const onClickCell = useCallback(({ id, date, dayType }: TClickCell) => {
-    console.log('Selected cell:', { value, date, dayType });
-  }, []);
+  const onClickCell = ({ id, date, dayType, dayStatus }: TClickCellEventData) => {
+    console.log('Selected cell:', { value, date, dayType, dayStatus });
+  };
 
   const data: TRow[] = [
     id: '1',
@@ -62,27 +56,74 @@ const App: FC = () => {
     />
   );
 };
+```
+
+## Custom date statuses
+<a name="custom-status"></a>
+
+You can define your own date statuses in addition to pre-defined.<br />
+Pre-defined statuses are:
+- `free`
+- `disabled`
+- `awaiting`
+- `confirmed`
+
+In order to define your own date statuses you need to extend `TDateStatus` type and define colors for custom statuses:
+```typescript
+import { ReservationGrid, THEME } from '@daminort/reservation-grid';
+import type { TTheme, TRow, TReservedPeriod } from '@daminort/reservation-grid';
+
+type TCustomStatus = 'reserved' | 'renovation';
+
+type TGridRow = TRow<TCustomStatus>;
+type TMainTheme = TTheme<TCustomStatus>;
+
+const data: TGridRow[] = [
+  id: '1',
+  title: 'Room #1',
+  info: '4',
+  periods: [
+    { start: '2021-11-04', end: '2021-11-09', status: 'confirmed' },
+    { start: '2021-11-09', end: '2021-11-12', status: 'reserved' },
+  ],
+];
+
+const theme: Partial<TMainTheme> = {
+  'date.status': { 
+    reserved: 'green',
+    renovation: 'blue',   
+  },  
+};
+...
+
+return (
+  <ReservationGrid
+    data={data}
+    theme={theme}
+    ...
+  />
+);
 
 ```
 
 ## Props
 <a name="props"></a>
 
-|Name|Type|Required|Default|Example|
-|----|----|--------|-------|-------|
-|start|string|*|-|'2021-11-01'
-|end|string|*|-|'2021-11-30'
-|highlightToday|boolean|-|true|
-|showInfo|boolean|-|true|
-|selectedColumns|string[]|-|[ ]|['2021-11-01', '2021-11-02']
-|selectedRows|string[]|-|[ ]|['# 1']
-|theme|Theme|-|default theme|
-|locale|TLocaleKey|-|en|
-|title|string|-|'Number'|
-|info|string|-|empty string|
-|data|TRow[]|*|-|see example above
-|onClickTitle|Function|-|-|(value) => console.log(value)
-|onClickCell|Function|-|-|({ value, date, dayType }) => console.log({ value, date, dayType })
+|Name| Type       |Required|Default|Example|
+|----|------------|--------|-------|-------|
+|start| string     |*|-|'2021-11-01'
+|end| string     |*|-|'2021-11-30'
+|highlightToday| boolean    |-|true|
+|showInfo| boolean    |-|true|
+|selectedColumns| string[]   |-|[ ]|['2021-11-01', '2021-11-02']
+|selectedRows| string[]   |-|[ ]|['# 1']
+|theme| TTheme     |-|default theme|
+|locale| TLocaleKey |-|en|
+|title| string     |-|'Number'|
+|info| string     |-|empty string|
+|data| TRow[]     |*|-|see example above
+|onClickTitle| Function   |-|-|(value) => console.log(value)
+|onClickCell| Function   |-|-|({ value, date, dayType }) => console.log({ value, date, dayType })
 
 #### Data
 <a name="data"></a>
@@ -160,15 +201,17 @@ const THEME: TTheme = {
   'color.text': '#30424F',
   'color.background': '#FFFFFF',
   'color.border': '#DDEBF3',
-  'color.free': 'transparent',
-  'color.awaiting': '#DDEBF3',
-  'color.confirmed': '#006490',
-  'color.inaccessible': '#759AB5',
   'color.today': '#E4FFE6',
   'color.selected': '#FFF2F2',
   'color.weekend': '#F8FAFB',
   'width.title': '50%',
   'width.info': '50%',
+  'date.status': {
+    'free': 'transparent',
+    'disabled': '#759AB5',
+    'awaiting': '#DDEBF3',
+    'confirmed': '#006490',
+  },
 };
 ```
 

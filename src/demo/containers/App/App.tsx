@@ -1,14 +1,16 @@
 import React, { useState, useCallback } from 'react';
 import type { FC } from 'react';
 
-import type { TTheme, TLocaleKey, TRow } from 'lib/index';
+import type { TLocaleKey } from 'lib/index';
 
+import type { TGridRow, TMainTheme } from 'demo/interfaces/common.interface';
 import type { TMainContext } from 'demo/interfaces/mainContext.interface';
 import { MainProvider, initialValue } from 'demo/context/mainContext';
 
 import { Grid } from 'demo/containers/Grid';
 import { Header } from 'demo/containers/Header';
 import { Config } from 'demo/containers/Config';
+import { DayStatus } from 'demo/containers/DayStatus';
 import { ThemeConfig } from 'demo/containers/ThemeConfig';
 import { Props } from 'demo/containers/Props';
 
@@ -28,13 +30,13 @@ const App: FC = () => {
   const [selectedColumns, setSelectedColumns] = useState<string[]>(initialValue.selectedColumns);
   const [selectedRows, setSelectedRows] = useState<string[]>(initialValue.selectedRows);
 
-  const [theme, setTheme] = useState<TTheme>(initialValue.theme);
+  const [theme, setTheme] = useState<TMainTheme>(initialValue.theme);
   const [locale, setLocale] = useState<TLocaleKey>(initialValue.locale);
 
-  const [data, setData] = useState<TRow[]>(initialValue.data);
+  const [data, setData] = useState<TGridRow[]>(initialValue.data);
 
-  const onChangeTheme = useCallback((partialTheme: Partial<TTheme>) => {
-    const nextTheme: TTheme = {
+  const onChangeTheme = useCallback((partialTheme: Partial<TMainTheme>) => {
+    const nextTheme: TMainTheme = {
       ...theme,
       ...partialTheme,
     };
@@ -77,20 +79,26 @@ const App: FC = () => {
         <Header />
         <Grid />
         <div className={s.settings}>
-          <div className={s.left}>
+          <div>
             <div className={s.config}>
               <h3>Configuration</h3>
               <Config />
             </div>
+            <div className={s.status}>
+              <h3>Day Status</h3>
+              <DayStatus />
+            </div>
+          </div>
+          <div>
             <div className={s.theme}>
               <h3>Theme</h3>
               <ThemeConfig />
             </div>
           </div>
-          <div className={s.props}>
-            <h3>Props</h3>
-            <Props />
-          </div>
+        </div>
+        <div className={s.example}>
+          <h3>Code Example</h3>
+          <Props />
         </div>
       </div>
     </MainProvider>

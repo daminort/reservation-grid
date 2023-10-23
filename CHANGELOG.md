@@ -1,4 +1,9 @@
-### 2.0.0
+### 3.0.0
+This release contains breaking changes and has no backward compatibility.
+
+- implemented support for custom date statuses
+
+### 2.0.5
 This release contains breaking changes.
 
 - Migrated from Rollup to Vite
@@ -6,7 +11,7 @@ This release contains breaking changes.
 - Added locales: "de", "fr", "it", "es", "pl"
 - added custom render for info
 - renamed interfaces
-- renames CSS classes
+- renamed CSS classes
 
 ### 1.0.1
 - Added support for React 18

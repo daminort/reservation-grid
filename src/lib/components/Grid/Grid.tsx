@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import type { TMainContext } from 'lib/interfaces/mainContext.interface';
 import type { TTheme } from 'lib/interfaces/theme.interface';
 import type { TRow } from 'lib/interfaces/row';
 
@@ -11,7 +12,7 @@ import { Row as VisualRow } from 'lib/components/Row';
 
 import type { TGridProps } from './Grid.interface';
 
-function Grid<TCustomStatus extends string = ''>(props: TGridProps<TCustomStatus>) {
+function Grid<TCustomStatus extends string = never>(props: TGridProps<TCustomStatus>) {
   const {
     start,
     end,
@@ -39,7 +40,7 @@ function Grid<TCustomStatus extends string = ''>(props: TGridProps<TCustomStatus
     styleUtils.setVariables(resTheme);
   }, [theme]);
 
-  const contextValue = {
+  const contextValue: TMainContext<TCustomStatus> = {
     start,
     end,
     highlightToday,

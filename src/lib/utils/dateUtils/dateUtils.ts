@@ -168,7 +168,10 @@ function detectDayPosition(date: string, start: string, end: string): TDatePosit
   return 'none';
 }
 
-function detectDayType<TCustomStatus extends string = ''>(status: TDateStatus<TCustomStatus>, position: TDatePosition): TDayType {
+function detectDayType<TCustomStatus extends string = never>(status: TDateStatus<TCustomStatus>, position: TDatePosition): TDayType {
+  if (position === 'none') {
+    return 'single.free';
+  }
   if (status === 'disabled') {
     return 'single.disabled';
   }
@@ -183,7 +186,7 @@ function detectDayType<TCustomStatus extends string = ''>(status: TDateStatus<TC
   return dayTypes[position] || 'single.free';
 }
 
-function getDayParams<TCustomStatus extends string = ''>(date: string, periods: TReservedPeriod<TCustomStatus>[] = []): TDayParams<TCustomStatus> {
+function getDayParams<TCustomStatus extends string = never>(date: string, periods: TReservedPeriod<TCustomStatus>[] = []): TDayParams<TCustomStatus> {
 
   const intersections: TDayType[] = [];
   const dayStatus: TDateStatus<TCustomStatus>[] = [];
@@ -209,7 +212,7 @@ function getDayParams<TCustomStatus extends string = ''>(date: string, periods: 
   if (intersections.length === 0) {
     return {
       dayType: 'single.free',
-      dayStatus,
+      dayStatus: [],
     };
   }
 

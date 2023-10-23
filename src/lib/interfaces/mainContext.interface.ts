@@ -3,9 +3,9 @@ import type { TTheme } from './theme.interface';
 import type { TLocaleKey } from './locale.interface';
 
 type TClickTitle = (value: string) => void;
-type TClickCell = (eventData: TClickCellEventData) => void;
+type TClickCell = <TCustomStatus extends string = never>(eventData: TClickCellEventData<TCustomStatus>) => void;
 
-interface TMainContext<TCustomStatus extends string = ''> {
+interface TMainContext<TCustomStatus extends string = never> {
   start: string;
   end: string;
   highlightToday?: boolean;

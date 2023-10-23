@@ -39,6 +39,7 @@ const ColorPicker: FC<TColorPickerProps> = ({ value, onChange }) => {
       />
       <Input
         value={color}
+        className={s.input}
         onChange={onChangeLocal}
         onFocus={onChangeVisible(true)}
       />

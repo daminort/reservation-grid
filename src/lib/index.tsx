@@ -14,7 +14,7 @@ import { Grid } from 'lib/components/Grid';
 
 import './styles.scss';
 
-function ReservationGrid<TCustomStatus extends string = ''>(props: TGridProps<TCustomStatus>) {
+function ReservationGrid<TCustomStatus extends string = never>(props: TGridProps<TCustomStatus>) {
   return (
     <Grid {...props} />
   );

@@ -1,6 +1,8 @@
-import type { TTheme, TLocaleKey, TRow } from 'lib/index';
+import type { TLocaleKey } from 'lib/index';
 
-export interface TMainContext {
+import type { TGridRow, TMainTheme } from './common.interface';
+
+interface TMainContext {
   year: string;
   month: string;
   highlightToday: boolean;
@@ -9,10 +11,10 @@ export interface TMainContext {
   info: string;
   selectedColumns: string[];
   selectedRows: string[];
-  theme: TTheme;
+  theme: TMainTheme;
   locale: TLocaleKey;
 
-  data: TRow[];
+  data: TGridRow[];
 
   onChangeYear: (year: string) => void;
   onChangeMonth: (month: string) => void;
@@ -25,8 +27,12 @@ export interface TMainContext {
   onChangeSelectedColumns: (columns: string[]) => void;
   onChangeSelectedRows: (rows: string[]) => void;
 
-  onChangeTheme: (theme: Partial<TTheme>) => void;
+  onChangeTheme: (theme: Partial<TMainTheme>) => void;
   onChangeLocale: (locale: TLocaleKey) => void;
 
-  onChangeData: (data: TRow[]) => void;
+  onChangeData: (data: TGridRow[]) => void;
 }
+
+export type {
+  TMainContext,
+};

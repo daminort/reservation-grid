@@ -1,7 +1,7 @@
+import type { TDateStatus, TDayType } from 'lib/interfaces/grid.interface';
 import React, { useCallback } from 'react';
 import clsx from 'clsx';
 
-import type { TDayType } from 'lib/interfaces/grid.interface';
 import type { TDaysRange } from 'lib/interfaces/daysRange.interface';
 import type { TTheme } from 'lib/interfaces/theme.interface';
 
@@ -13,7 +13,7 @@ import { Day } from 'lib/components/Day';
 
 import type { TRowProps } from './Row.interface';
 
-function Row<TCustomStatus extends string = ''>(props: TRowProps<TCustomStatus>) {
+function Row<TCustomStatus extends string = never>(props: TRowProps<TCustomStatus>) {
   const { id, title, info, periods, selected } = props;
 
   const {
@@ -38,12 +38,17 @@ function Row<TCustomStatus extends string = ''>(props: TRowProps<TCustomStatus>)
     onClickTitle(id);
   }, [id, onClickTitle]);
 
-  const onClickCellLocal = useCallback((date: string, dayType: TDayType) => () => {
+  const onClickCellLocal = useCallback((date: string, dayType: TDayType, dayStatus: TDateStatus<TCustomStatus>[]) => () => {
     if (!onClickCell) {
       return;
     }
 
-    onClickCell({ id, date, dayType });
+    onClickCell({
+      id,
+      date,
+      dayType,
+      dayStatus,
+    });
   }, [id, onClickCell]);
 
   const renderCell = (cell: TDaysRange) => {
@@ -67,7 +72,7 @@ function Row<TCustomStatus extends string = ''>(props: TRowProps<TCustomStatus>)
       <td
         key={cell.value}
         className={className}
-        onClick={onClickCellLocal(cell.value, dayType)}
+        onClick={onClickCellLocal(cell.value, dayType, dayStatus)}
         data-testid={`cell-${id}-${cell.value}`}
       >
         <div className="day">

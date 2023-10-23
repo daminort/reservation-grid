@@ -3,19 +3,16 @@ import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import {
-  DoubleMaybeEndStart,
-  DoubleNormalEndStart,
-  IntersectionMaybeEndNormalStart,
   Intersection,
   SingleDisabled,
   SingleFree,
-  SingleMaybeEnd,
-  SingleMaybeFull,
-  SingleMaybeStart,
   SingleEnd,
   SingleFull,
   SingleStart,
 } from './index';
+
+const topColor = 'blue';
+const bottomColor = 'green';
 
 describe('Days', () => {
 
@@ -24,86 +21,44 @@ describe('Days', () => {
   });
 
   it('single.free', () => {
-    const { getByTestId } = render(<SingleFree />);
+    const { getByTestId } = render(<SingleFree topColor={topColor} />);
 
     const actual = getByTestId('single.free');
     expect(actual).toBeInTheDocument();
   });
 
   it('single.disabled', () => {
-    const { getByTestId } = render(<SingleDisabled />);
+    const { getByTestId } = render(<SingleDisabled topColor={topColor} />);
 
     const actual = getByTestId('single.disabled');
     expect(actual).toBeInTheDocument();
   });
 
-  it('single.normal.full', () => {
-    const { getByTestId } = render(<SingleFull />);
+  it('single.full', () => {
+    const { getByTestId } = render(<SingleFull topColor={topColor} />);
 
-    const actual = getByTestId('single.normal.full');
+    const actual = getByTestId('single.full');
     expect(actual).toBeInTheDocument();
   });
 
-  it('single.normal.start', () => {
-    const { getByTestId } = render(<SingleStart />);
+  it('single.start', () => {
+    const { getByTestId } = render(<SingleStart topColor={topColor} />);
 
-    const actual = getByTestId('single.normal.start');
+    const actual = getByTestId('single.start');
     expect(actual).toBeInTheDocument();
   });
 
-  it('single.normal.end', () => {
-    const { getByTestId } = render(<SingleEnd />);
+  it('single.end', () => {
+    const { getByTestId } = render(<SingleEnd topColor={topColor} />);
 
-    const actual = getByTestId('single.normal.end');
+    const actual = getByTestId('single.end');
     expect(actual).toBeInTheDocument();
   });
 
-  it('single.maybe.full', () => {
-    const { getByTestId } = render(<SingleMaybeFull />);
+  it('intersection', () => {
+    const { getByTestId } = render(<Intersection topColor={topColor} bottomColor={bottomColor} />);
 
-    const actual = getByTestId('single.maybe.full');
-    expect(actual).toBeInTheDocument();
-  });
-
-  it('single.maybe.start', () => {
-    const { getByTestId } = render(<SingleMaybeStart />);
-
-    const actual = getByTestId('single.maybe.start');
-    expect(actual).toBeInTheDocument();
-  });
-
-  it('single.maybe.end', () => {
-    const { getByTestId } = render(<SingleMaybeEnd />);
-
-    const actual = getByTestId('single.maybe.end');
-    expect(actual).toBeInTheDocument();
-  });
-
-  it('double.normal.end.start', () => {
-    const { getByTestId } = render(<DoubleNormalEndStart />);
-
-    const actual = getByTestId('double.normal.end.start');
-    expect(actual).toBeInTheDocument();
-  });
-
-  it('double.maybe.end.start', () => {
-    const { getByTestId } = render(<DoubleMaybeEndStart />);
-
-    const actual = getByTestId('double.maybe.end.start');
-    expect(actual).toBeInTheDocument();
-  });
-
-  it('intersection.normal.end.maybe.start', () => {
-    const { getByTestId } = render(<Intersection />);
-
-    const actual = getByTestId('intersection.normal.end.maybe.start');
-    expect(actual).toBeInTheDocument();
-  });
-
-  it('intersection.maybe.end.normal.start', () => {
-    const { getByTestId } = render(<IntersectionMaybeEndNormalStart />);
-
-    const actual = getByTestId('intersection.maybe.end.normal.start');
+    const actual = getByTestId('intersection');
     expect(actual).toBeInTheDocument();
   });
 });

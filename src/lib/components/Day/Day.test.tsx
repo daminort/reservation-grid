@@ -12,22 +12,16 @@ describe('Day', () => {
   });
 
   const setup = (type: TDayType) => {
-    return render(<Day type={type} />);
+    return render(<Day type={type} topColor="blue" bottomColor="green" />);
   };
 
   const types: TDayType[] = [
     'single.free',
     'single.disabled',
-    'single.normal.full',
-    'single.normal.start',
-    'single.normal.end',
-    'single.maybe.full',
-    'single.maybe.start',
-    'single.maybe.end',
-    'double.normal.end.start',
-    'double.maybe.end.start',
-    'intersection.normal.end.maybe.start',
-    'intersection.maybe.end.normal.start',
+    'single.full',
+    'single.start',
+    'single.end',
+    'intersection',
   ];
 
   it.each(types)('%s', (type: TDayType) => {
