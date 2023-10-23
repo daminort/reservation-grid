@@ -1,19 +1,19 @@
-import type { FC } from 'react';
 import React, { useCallback } from 'react';
 import clsx from 'clsx';
 
 import type { TDayType } from 'lib/interfaces/grid.interface';
 import type { TDaysRange } from 'lib/interfaces/daysRange.interface';
+import type { TTheme } from 'lib/interfaces/theme.interface';
 
 import { useMainContext } from 'lib/context';
-import { useDaysRange } from 'lib/hooks';
+import { useDaysRange, useTheme } from 'lib/hooks';
 import { dateUtils } from 'lib/utils/dateUtils';
 
 import { Day } from 'lib/components/Day';
 
 import type { TRowProps } from './Row.interface';
 
-const Row: FC<TRowProps> = (props) => {
+function Row<TCustomStatus extends string = ''>(props: TRowProps<TCustomStatus>) {
   const { id, title, info, periods, selected } = props;
 
   const {
@@ -27,6 +27,7 @@ const Row: FC<TRowProps> = (props) => {
     onClickCell,
   } = useMainContext();
 
+  const theme: TTheme<TCustomStatus> = useTheme();
   const range: TDaysRange[] = useDaysRange(start, end, locale);
 
   const onClickTitleLocal = useCallback(() => {
@@ -56,7 +57,11 @@ const Row: FC<TRowProps> = (props) => {
       'selected': isSelected,
     });
 
-    const dayType = dateUtils.getDayType(cell.value, periods);
+    const dayParams = dateUtils.getDayParams(cell.value, periods);
+    const { dayType, dayStatus } = dayParams;
+
+    const topColor = theme['date.status'][dayStatus[0]];
+    const bottomColor = theme['date.status'][dayStatus[1]];
 
     return (
       <td
@@ -66,7 +71,11 @@ const Row: FC<TRowProps> = (props) => {
         data-testid={`cell-${id}-${cell.value}`}
       >
         <div className="day">
-          <Day type={dayType} />
+          <Day
+            type={dayType}
+            topColor={topColor}
+            bottomColor={bottomColor}
+          />
         </div>
       </td>
     );
@@ -82,7 +91,7 @@ const Row: FC<TRowProps> = (props) => {
       {range.map(cell => renderCell(cell))}
     </tr>
   );
-};
+}
 
 export {
   Row,

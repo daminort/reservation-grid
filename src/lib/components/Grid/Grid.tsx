@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import React, { useState, useEffect } from 'react';
 
 import type { TTheme } from 'lib/interfaces/theme.interface';
@@ -12,11 +11,11 @@ import { Row as VisualRow } from 'lib/components/Row';
 
 import type { TGridProps } from './Grid.interface';
 
-const Grid: FC<TGridProps> = (props) => {
+function Grid<TCustomStatus extends string = ''>(props: TGridProps<TCustomStatus>) {
   const {
     start,
     end,
-    title = 'Number',
+    title = 'Room',
     info = '',
     highlightToday = true,
     showInfo = true,
@@ -31,10 +30,10 @@ const Grid: FC<TGridProps> = (props) => {
     onClickCell = () => {},
   } = props;
 
-  const [customTheme, setCustomTheme] = useState<TTheme>(styleUtils.createTheme(theme));
+  const [customTheme, setCustomTheme] = useState<TTheme<TCustomStatus>>(styleUtils.createTheme<TCustomStatus>(theme));
 
   useEffect(() => {
-    const resTheme = styleUtils.createTheme(theme);
+    const resTheme = styleUtils.createTheme<TCustomStatus>(theme);
     setCustomTheme(resTheme);
 
     styleUtils.setVariables(resTheme);
@@ -53,7 +52,7 @@ const Grid: FC<TGridProps> = (props) => {
     onClickCell,
   };
 
-  const renderRow = (row: TRow) => {
+  const renderRow = (row: TRow<TCustomStatus>) => {
     const isSelected = Array.isArray(selectedRows) && selectedRows.includes(row.id);
     const title = renderTitle ? renderTitle(row) : row.title;
     const info = renderInfo ? renderInfo(row) : row.info;
@@ -85,7 +84,7 @@ const Grid: FC<TGridProps> = (props) => {
       </div>
     </MainProvider>
   );
-};
+}
 
 export {
   Grid,

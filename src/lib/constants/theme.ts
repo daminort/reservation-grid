@@ -6,15 +6,18 @@ const THEME: TTheme = {
   'color.text': '#30424F',
   'color.background': '#FFFFFF',
   'color.border': '#DDEBF3',
-  'color.free': 'transparent',
-  'color.awaiting': '#DDEBF3',
-  'color.confirmed': '#006490',
-  'color.inaccessible': '#759AB5',
   'color.today': '#E4FFE6',
   'color.selected': '#FFF2F2',
   'color.weekend': '#F8FAFB',
   'width.title': '50%',
   'width.info': '50%',
+  'date.status': {
+    '': 'transparent',
+    'free': 'transparent',
+    'disabled': '#759AB5',
+    'awaiting': '#DDEBF3',
+    'confirmed': '#006490',
+  },
 };
 
 export {

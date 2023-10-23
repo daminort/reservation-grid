@@ -1,8 +1,7 @@
 import React from 'react';
-import type { FC } from 'react';
 
 import type { TDaysRangeOptions, TDaysRange } from 'lib/interfaces/daysRange.interface';
-import type { TDateStatus, TDatePosition, TDayType } from 'lib/interfaces/grid.interface';
+import type { TDateStatus, TDatePosition, TDayType, TClickCellEventData } from 'lib/interfaces/grid.interface';
 import type { TLocale, TLocales, TLocaleKey } from 'lib/interfaces/locale.interface';
 import type { TMainContext } from 'lib/interfaces/mainContext.interface';
 import type { TReservedPeriod } from 'lib/interfaces/reservedPeriod';
@@ -15,11 +14,11 @@ import { Grid } from 'lib/components/Grid';
 
 import './styles.scss';
 
-const ReservationGrid: FC<TGridProps> = (props) => {
+function ReservationGrid<TCustomStatus extends string = ''>(props: TGridProps<TCustomStatus>) {
   return (
     <Grid {...props} />
   );
-};
+}
 
 export type {
   TGridProps,
@@ -28,6 +27,7 @@ export type {
   TDateStatus,
   TDatePosition,
   TDayType,
+  TClickCellEventData,
   TLocale,
   TLocales,
   TLocaleKey,

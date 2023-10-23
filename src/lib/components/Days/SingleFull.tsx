@@ -1,10 +1,9 @@
 import React from 'react';
-import { useTheme } from 'lib/hooks';
+import type { FC } from 'react';
 
-const SingleNormalFull = () => {
-  const theme = useTheme();
-  const color = theme['color.confirmed'];
+import type { TDaysProps } from './Days.interface';
 
+const SingleFull: FC<TDaysProps> = ({ topColor }) => {
   return (
     <svg
       width="26"
@@ -14,11 +13,11 @@ const SingleNormalFull = () => {
       xmlns="http://www.w3.org/2000/svg"
       data-testid="single.normal.full"
     >
-      <rect width="26" height="26" rx="2" fill={color} />
+      <rect width="26" height="26" rx="2" fill={topColor} />
     </svg>
   );
 };
 
 export {
-  SingleNormalFull,
+  SingleFull,
 };

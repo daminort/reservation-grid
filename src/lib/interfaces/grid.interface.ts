@@ -1,22 +1,25 @@
-type TDateStatus = 'awaiting' | 'confirmed' | 'inaccessible';
+type TDefaultDateStatus = 'free' | 'awaiting' | 'confirmed' | 'disabled';
 type TDatePosition = 'none' | 'start' | 'middle' | 'end';
+
+type TDateStatus<TCustomStatus extends string = ''> = TDefaultDateStatus | TCustomStatus;
 
 type TDayType =
   | 'single.free'
   | 'single.disabled'
-  | 'single.normal.full'
-  | 'single.normal.start'
-  | 'single.normal.end'
-  | 'single.maybe.full'
-  | 'single.maybe.start'
-  | 'single.maybe.end'
-  | 'double.normal.end.start'
-  | 'double.maybe.end.start'
-  | 'intersection.normal.end.maybe.start'
-  | 'intersection.maybe.end.normal.start';
+  | 'single.full'
+  | 'single.start'
+  | 'single.end'
+  | 'intersection';
+
+type TClickCellEventData = {
+  id: string;
+  date: string;
+  dayType: TDayType;
+};
 
 export type {
   TDateStatus,
   TDatePosition,
   TDayType,
+  TClickCellEventData,
 };

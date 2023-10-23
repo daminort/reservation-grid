@@ -1,16 +1,19 @@
-export interface TTheme {
+import type { TDateStatus } from './grid.interface';
+
+interface TTheme<TCustomStatus extends string = ''> {
   'font.face': string;
   'font.size': string;
   'color.text': string;
   'color.background': string;
   'color.border': string;
-  'color.free': string;
-  'color.awaiting': string;
-  'color.confirmed': string;
-  'color.inaccessible': string;
   'color.today': string;
   'color.selected': string;
   'color.weekend': string;
   'width.title': string;
   'width.info': string;
+  'date.status': Record<TDateStatus<TCustomStatus>, string>;
 }
+
+export type {
+  TTheme,
+};

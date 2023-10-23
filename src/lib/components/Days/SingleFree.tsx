@@ -1,10 +1,9 @@
 import React from 'react';
-import { useTheme } from 'lib/hooks';
+import type { FC } from 'react';
 
-const SingleFree = (): JSX.Element => {
-  const theme = useTheme();
-  const color = theme['color.free'];
+import type { TDaysProps } from './Days.interface';
 
+const SingleFree: FC<TDaysProps> = ({ topColor }) => {
   return (
     <svg
       width="26"
@@ -14,7 +13,7 @@ const SingleFree = (): JSX.Element => {
       xmlns="http://www.w3.org/2000/svg"
       data-testid="single.free"
     >
-      <rect width="26" height="26" rx="2" fill={color} />
+      <rect width="26" height="26" rx="2" fill={topColor} />
     </svg>
   );
 };

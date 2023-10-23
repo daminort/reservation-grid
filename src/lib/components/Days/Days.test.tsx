@@ -6,15 +6,15 @@ import {
   DoubleMaybeEndStart,
   DoubleNormalEndStart,
   IntersectionMaybeEndNormalStart,
-  IntersectionNormalEndMaybeStart,
+  Intersection,
   SingleDisabled,
   SingleFree,
   SingleMaybeEnd,
   SingleMaybeFull,
   SingleMaybeStart,
-  SingleNormalEnd,
-  SingleNormalFull,
-  SingleNormalStart,
+  SingleEnd,
+  SingleFull,
+  SingleStart,
 } from './index';
 
 describe('Days', () => {
@@ -38,21 +38,21 @@ describe('Days', () => {
   });
 
   it('single.normal.full', () => {
-    const { getByTestId } = render(<SingleNormalFull />);
+    const { getByTestId } = render(<SingleFull />);
 
     const actual = getByTestId('single.normal.full');
     expect(actual).toBeInTheDocument();
   });
 
   it('single.normal.start', () => {
-    const { getByTestId } = render(<SingleNormalStart />);
+    const { getByTestId } = render(<SingleStart />);
 
     const actual = getByTestId('single.normal.start');
     expect(actual).toBeInTheDocument();
   });
 
   it('single.normal.end', () => {
-    const { getByTestId } = render(<SingleNormalEnd />);
+    const { getByTestId } = render(<SingleEnd />);
 
     const actual = getByTestId('single.normal.end');
     expect(actual).toBeInTheDocument();
@@ -94,7 +94,7 @@ describe('Days', () => {
   });
 
   it('intersection.normal.end.maybe.start', () => {
-    const { getByTestId } = render(<IntersectionNormalEndMaybeStart />);
+    const { getByTestId } = render(<Intersection />);
 
     const actual = getByTestId('intersection.normal.end.maybe.start');
     expect(actual).toBeInTheDocument();
