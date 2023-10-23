@@ -1,10 +1,10 @@
 import React, { createContext, useContext } from 'react';
 import type { FC, ReactNode } from 'react';
 
-import { THEME } from 'lib/index';
-
 import type { TMainContext } from 'demo/interfaces/mainContext.interface';
 import { grid } from 'demo/mocks';
+
+import { themeUtils } from 'demo/utils/themeUtils';
 
 const initialValue: TMainContext = {
   year: '2021',
@@ -15,13 +15,11 @@ const initialValue: TMainContext = {
   info: 'Seats',
   selectedColumns: [
     '2021-11-17',
-    '2021-11-18',
-    '2021-11-19',
   ],
   selectedRows: [
     '3',
   ],
-  theme: THEME,
+  theme: themeUtils.createTheme(),
   locale: 'en',
   data: grid,
 

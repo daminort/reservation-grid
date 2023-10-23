@@ -104,7 +104,8 @@ describe('Grid', () => {
     expect(props.onClickCell).toHaveBeenCalledWith({
       id: '1',
       date: '2021-11-04',
-      dayType: 'single.normal.start',
+      dayType: 'single.start',
+      dayStatus: ['confirmed'],
     });
 
     fireEvent.click(c2);
@@ -112,6 +113,7 @@ describe('Grid', () => {
       id: '2',
       date: '2021-11-11',
       dayType: 'single.free',
+      dayStatus: [],
     });
 
     fireEvent.click(c3);
@@ -119,6 +121,7 @@ describe('Grid', () => {
       id: '5',
       date: '2021-11-05',
       dayType: 'single.disabled',
+      dayStatus: ['disabled'],
     });
   });
 });

@@ -42,7 +42,7 @@ export const row05: TRow = {
   title: 'Number 5',
   info: '4 seats',
   periods: [
-    { start: '2021-11-01', end: '2021-11-05', status: 'inaccessible' },
+    { start: '2021-11-01', end: '2021-11-05', status: 'disabled' },
   ],
 };
 

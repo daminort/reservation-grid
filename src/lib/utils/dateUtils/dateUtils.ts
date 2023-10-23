@@ -8,6 +8,7 @@ import {
   endOfYear,
   addDays,
 } from 'date-fns';
+import type { TDayParams } from 'lib/components/Row/Row.interface';
 
 import type { TLocale } from 'lib/interfaces/locale.interface';
 import type { TDaysRange, TDaysRangeOptions } from 'lib/interfaces/daysRange.interface';
@@ -16,7 +17,7 @@ import type { TReservedPeriod } from 'lib/interfaces/reservedPeriod';
 
 import { FORMATS } from 'lib/constants/locales';
 
-import type { TDateString, TUnit, TDayMap, TIntersection } from './types';
+import type { TDateString, TUnit } from './types';
 
 function isInvalidDate(date: unknown): boolean {
   return date instanceof Date && date.toString() === 'Invalid Date';
@@ -167,54 +168,30 @@ function detectDayPosition(date: string, start: string, end: string): TDatePosit
   return 'none';
 }
 
-function detectDayType(status: TDateStatus, position: TDatePosition): TDayType {
+function detectDayType<TCustomStatus extends string = never>(status: TDateStatus<TCustomStatus>, position: TDatePosition): TDayType {
   if (position === 'none') {
     return 'single.free';
   }
-  if (status === 'inaccessible') {
+  if (status === 'disabled') {
     return 'single.disabled';
   }
 
-  const map: TDayMap = {
-    'awaiting': {
-      'start': 'single.maybe.start',
-      'middle': 'single.maybe.full',
-      'end': 'single.maybe.end',
-    },
-    'confirmed': {
-      'start': 'single.normal.start',
-      'middle': 'single.normal.full',
-      'end': 'single.normal.end',
-    },
+  const dayTypes: Record<TDatePosition, TDayType> = {
+    none: 'single.free',
+    start: 'single.start',
+    end: 'single.end',
+    middle: 'single.full',
   };
 
-  return map[status][position] || 'single.free';
+  return dayTypes[position] || 'single.free';
 }
 
-function detectIntersectionDayType(intersection: TIntersection): TDayType {
-  const [one, two] = intersection;
+function getDayParams<TCustomStatus extends string = never>(date: string, periods: TReservedPeriod<TCustomStatus>[] = []): TDayParams<TCustomStatus> {
 
-  if (one === 'single.normal.end' && two === 'single.normal.start') {
-    return 'double.normal.end.start';
-  }
-  if (one === 'single.maybe.end' && two === 'single.maybe.start') {
-    return 'double.maybe.end.start';
-  }
-  if (one === 'single.normal.end' && two === 'single.maybe.start') {
-    return 'intersection.normal.end.maybe.start';
-  }
-  if (one === 'single.maybe.end' && two === 'single.normal.start') {
-    return 'intersection.maybe.end.normal.start';
-  }
+  const intersections: TDayType[] = [];
+  const dayStatus: TDateStatus<TCustomStatus>[] = [];
 
-  return one;
-}
-
-function getDayType(date: string, periods: TReservedPeriod[] = []): TDayType {
-
-  const intersection: TIntersection = [];
-
-  const sortedPeriods: TReservedPeriod[] = periods.sort((a, b) => {
+  const sortedPeriods: TReservedPeriod<TCustomStatus>[] = periods.sort((a, b) => {
     if (a.start === b.start) {
       return 0;
     }
@@ -227,17 +204,29 @@ function getDayType(date: string, periods: TReservedPeriod[] = []): TDayType {
     const dayType = detectDayType(period.status, position);
 
     if (dayType !== 'single.free') {
-      intersection.push(dayType);
+      intersections.push(dayType);
+      dayStatus.push(period.status);
     }
   }
 
-  if (intersection.length === 0) {
-    return 'single.free';
+  if (intersections.length === 0) {
+    return {
+      dayType: 'single.free',
+      dayStatus: [],
+    };
   }
 
-  return intersection.length === 1
-    ? intersection[0]
-    : detectIntersectionDayType(intersection);
+  if (intersections.length === 1) {
+    return {
+      dayType: intersections[0],
+      dayStatus,
+    };
+  }
+
+  return {
+    dayType: 'intersection',
+    dayStatus,
+  };
 }
 
 const dateUtils = {
@@ -255,8 +244,7 @@ const dateUtils = {
   createDaysRange,
   detectDayPosition,
   detectDayType,
-  detectIntersectionDayType,
-  getDayType,
+  getDayParams,
 };
 
 export {

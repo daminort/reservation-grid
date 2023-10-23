@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 2fr;
   grid-gap: 0.5rem 1rem;
   align-items: center;
 }

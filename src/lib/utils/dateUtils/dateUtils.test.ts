@@ -249,7 +249,7 @@ describe('dateUtils', () => {
 
     it('correct input', () => {
       const free = dateUtils.detectDayType('confirmed', 'none');
-      const disabled = dateUtils.detectDayType('inaccessible', 'middle');
+      const disabled = dateUtils.detectDayType('disabled', 'middle');
 
       const maybeStart = dateUtils.detectDayType('awaiting', 'start');
       const maybeFull = dateUtils.detectDayType('awaiting', 'middle');
@@ -262,37 +262,17 @@ describe('dateUtils', () => {
       expect(free).toEqual('single.free');
       expect(disabled).toEqual('single.disabled');
 
-      expect(maybeStart).toEqual('single.maybe.start');
-      expect(maybeFull).toEqual('single.maybe.full');
-      expect(maybeEnd).toEqual('single.maybe.end');
+      expect(maybeStart).toEqual('single.start');
+      expect(maybeFull).toEqual('single.full');
+      expect(maybeEnd).toEqual('single.end');
 
-      expect(start).toEqual('single.normal.start');
-      expect(full).toEqual('single.normal.full');
-      expect(end).toEqual('single.normal.end');
+      expect(start).toEqual('single.start');
+      expect(full).toEqual('single.full');
+      expect(end).toEqual('single.end');
     });
   });
 
-  describe('detectIntersectionDayType', () => {
-
-    it('correct input', () => {
-      const endStart = dateUtils.detectIntersectionDayType(['single.normal.end', 'single.normal.start']);
-      const maybeEndStart = dateUtils.detectIntersectionDayType(['single.maybe.end', 'single.maybe.start']);
-      const normalEndMaybeStart = dateUtils.detectIntersectionDayType(['single.normal.end', 'single.maybe.start']);
-      const maybeEndNormalStart = dateUtils.detectIntersectionDayType(['single.maybe.end', 'single.normal.start']);
-
-      expect(endStart).toEqual('double.normal.end.start');
-      expect(maybeEndStart).toEqual('double.maybe.end.start');
-      expect(normalEndMaybeStart).toEqual('intersection.normal.end.maybe.start');
-      expect(maybeEndNormalStart).toEqual('intersection.maybe.end.normal.start');
-    });
-
-    it('incorrect input', () => {
-      const actual = dateUtils.detectIntersectionDayType(['single.normal.end', 'single.normal.full']);
-      expect(actual).toEqual('single.normal.end');
-    });
-  });
-
-  describe('getDayType', () => {
+  describe('getDayParams', () => {
 
     const periods: TReservedPeriod[] = [
       { start: '2021-06-04', end: '2021-06-09', status: 'confirmed' },
@@ -300,42 +280,42 @@ describe('dateUtils', () => {
       { start: '2021-06-16', end: '2021-06-20', status: 'confirmed' },
       { start: '2021-06-20', end: '2021-06-25', status: 'awaiting' },
       { start: '2021-06-25', end: '2021-06-28', status: 'awaiting' },
-      { start: '2021-06-29', end: '2021-06-30', status: 'inaccessible' },
+      { start: '2021-06-29', end: '2021-06-30', status: 'disabled' },
     ];
 
     it('start', () => {
-      const actual = dateUtils.getDayType('2021-06-10', periods);
-      expect(actual).toEqual('single.maybe.start');
+      const actual = dateUtils.getDayParams('2021-06-10', periods);
+      expect(actual.dayType).toEqual('single.start');
     });
 
     it('middle', () => {
-      const actual = dateUtils.getDayType('2021-06-19', periods);
-      expect(actual).toEqual('single.normal.full');
+      const actual = dateUtils.getDayParams('2021-06-19', periods);
+      expect(actual.dayType).toEqual('single.full');
     });
 
     it('end', () => {
-      const actual = dateUtils.getDayType('2021-06-09', periods);
-      expect(actual).toEqual('single.normal.end');
+      const actual = dateUtils.getDayParams('2021-06-09', periods);
+      expect(actual.dayType).toEqual('single.end');
     });
 
-    it('end + maybeStart', () => {
-      const actual = dateUtils.getDayType('2021-06-20', periods);
-      expect(actual).toEqual('intersection.normal.end.maybe.start');
+    it('confirmed + awaiting', () => {
+      const actual = dateUtils.getDayParams('2021-06-20', periods);
+      expect(actual.dayType).toEqual('intersection');
     });
 
-    it('maybeEnd + maybeStart', () => {
-      const actual = dateUtils.getDayType('2021-06-25', periods);
-      expect(actual).toEqual('double.maybe.end.start');
+    it('awaiting + awaiting', () => {
+      const actual = dateUtils.getDayParams('2021-06-25', periods);
+      expect(actual.dayType).toEqual('intersection');
     });
 
-    it('inaccessible', () => {
-      const actual = dateUtils.getDayType('2021-06-29', periods);
-      expect(actual).toEqual('single.disabled');
+    it('disabled', () => {
+      const actual = dateUtils.getDayParams('2021-06-29', periods);
+      expect(actual.dayType).toEqual('single.disabled');
     });
 
     it('free', () => {
-      const actual = dateUtils.getDayType('2021-06-14', periods);
-      expect(actual).toEqual('single.free');
+      const actual = dateUtils.getDayParams('2021-06-14', periods);
+      expect(actual.dayType).toEqual('single.free');
     });
   });
 });

@@ -1,7 +1,7 @@
 .container {
-  margin: 1rem auto 2rem auto;
+  margin: 0.5rem auto 1rem auto;
   width: 65vw;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.25), 0 0px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.25), 0 0 10px rgba(0,0,0,0.22);
   padding: 2rem;
   border-radius: 0.5rem;
 }
@@ -15,7 +15,16 @@
 }
 
 .theme {
+  padding-right: 0;
+}
+
+.status {
   margin-top: 2rem;
+}
+
+.example {
+  width: 100%;
+  margin-top: 1rem;
 }
 
 @media (max-width: 1700px) {

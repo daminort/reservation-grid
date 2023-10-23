@@ -2,45 +2,31 @@ import React from 'react';
 import type { FC } from 'react';
 
 import {
-  DoubleMaybeEndStart,
-  DoubleNormalEndStart,
-  IntersectionMaybeEndNormalStart,
-  IntersectionNormalEndMaybeStart,
+  Intersection,
   SingleDisabled,
   SingleFree,
-  SingleMaybeEnd,
-  SingleMaybeFull,
-  SingleMaybeStart,
-  SingleNormalEnd,
-  SingleNormalFull,
-  SingleNormalStart,
+  SingleEnd,
+  SingleFull,
+  SingleStart,
 } from 'lib/components/Days';
 
 import type { TDayProps } from './Day.interface';
 
 const days = {
-  'single.free': <SingleFree />,
-  'single.disabled': <SingleDisabled />,
-  'single.normal.full': <SingleNormalFull />,
-  'single.normal.start': <SingleNormalStart />,
-  'single.normal.end': <SingleNormalEnd />,
-  'single.maybe.full': <SingleMaybeFull />,
-  'single.maybe.start': <SingleMaybeStart />,
-  'single.maybe.end': <SingleMaybeEnd />,
-  'double.normal.end.start': <DoubleNormalEndStart />,
-  'double.maybe.end.start': <DoubleMaybeEndStart />,
-  'intersection.normal.end.maybe.start': <IntersectionNormalEndMaybeStart />,
-  'intersection.maybe.end.normal.start': <IntersectionMaybeEndNormalStart />,
+  'single.free': SingleFree,
+  'single.disabled': SingleDisabled,
+  'single.full': SingleFull,
+  'single.start': SingleStart,
+  'single.end': SingleEnd,
+  'intersection': Intersection,
 };
 
-const Day: FC<TDayProps> = ({ type }) => {
+const Day: FC<TDayProps> = ({ type, topColor, bottomColor }) => {
 
-  const day = days[type] || <SingleFree />;
+  const Component = days[type] || SingleFree;
 
   return (
-    <>
-      {day}
-    </>
+    <Component topColor={topColor} bottomColor={bottomColor} />
   );
 };
 
